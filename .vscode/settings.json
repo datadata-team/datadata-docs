@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "changefreq",
+    "easyops",
+    "noreply",
+    "peaceiris"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/deploy.yml"
+  }
+}
