@@ -1,0 +1,19 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400"
+  style="enable-background:new 0 0 400 400;" xml:space="preserve">
+  <style type="text/css">
+    .st0 {
+      fill: #2B4ABD;
+    }
+
+    .st1 {
+      fill: #42C6EC;
+    }
+  </style>
+  <g>
+    <rect x="31" y="-0.2" class="st0" width="65.1" height="65.1" />
+    <rect x="31" y="84.5" class="st0" width="65.1" height="230.4" />
+    <polygon class="st1" points="96.1,334.6 96.1,334.6 96.1,334.5 31,334.5 31,399.8 96.1,399.8 	" />
+    <path class="st0" d="M179.8-0.2h-64.2v65.1h70.9v0.3c86.7,3.3,117.9,71.1,117.9,134.6c0,63.5-31.2,131.3-117.9,134.6v0h-1.7
+      c-1.7,0-3.3,0.1-5,0.1h-64.2v65.2h64.2c121.5,0,189.7-89.5,189.7-200v0C369.5,89.4,301.3-0.2,179.8-0.2z" />
+  </g>
+</svg>
