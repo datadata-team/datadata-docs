@@ -1,0 +1,156 @@
+---
+tags: []
+draft: false
+title: 嵌入编辑器
+sidebar_label: 嵌入编辑器
+sidebar_position: 3
+last_update:
+  date: 2024-03-04
+  author: hungtcs
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+嵌入编辑器组件可以让您方便的集成 Datadata 平台的核心功能。
+
+## Web Components
+
+```html
+<datadata-embedded-editor api-token="<your-token>" default-view="chart:new">
+  <div>loading...</div>
+</datadata-embedded-editor>
+```
+
+## Attributes
+
+| Attribute          | Description                                                      |
+| ------------------ | ---------------------------------------------------------------- |
+| theme              | 可选，指定配置方案，用来适配网站的颜色模式，值有 `light`、`dark` |
+| language           | 可选，指定组件的语言，值有 `zh-CN`、`en-US`                      |
+| api-token \*       | 必须，执行 API-Token                                             |
+| default-view       | 可选，指定默认视图。见[Default View](#default-view)部分          |
+| upload-tables      | 可选，是否开启上传功能。可以省略值                               |
+| enable-sharing     | 可选，是否开启分享功能。见 分享事件。                            |
+| enable-list-button | 可选，是否显示列表按钮                                           |
+
+### Default View
+
+`default-view` 属性可以指定组件的默认视图，可选的值有：
+
+1. `list:queries` 默认显示 Chart 列表
+2. `list:uploads` 默认显示上传列表
+3. `chart:new` 默认显示新建视图
+4. `chart:<query-id>` 默认显示指定 Chart 的编辑视图
+
+## Events
+
+| Event Name | Description                        |
+| ---------- | ---------------------------------- |
+| sharechart | 分享事件，在用户点击分享按钮后触发 |
+| savechart  | 保存事件，在 Chart 被保存后触发    |
+
+## 框架集成
+
+Web-Components 可以支持任何前段框架，其他框架集成参考官方的使用 Web-Components 流程即可。
+
+<Tabs>
+  <TabItem value="react" label="React" default>
+    ```tsx
+    import { forwardRef, useEffect, useLayoutEffect, useState, type HTMLAttributes, type PropsWithChildren } from "react";
+
+    export type DatadataEmbeddedEditorProps = HTMLAttributes<HTMLElement> &
+      PropsWithChildren<{
+        theme?: 'dark' | 'light';
+        queryId: string;
+        apiToken: string;
+        language?: 'zh-CN' | 'en-US';
+        defaultView?: string;
+        uploadTables?: true | string;
+        enableSharing?: boolean;
+        enableListButton?: boolean;
+        onSaveChart?: (chart: Chart) => void;
+        onShareChart?: (chart: Chart) => void;
+      }>;
+
+    export const DatadataEmbeddedEditor = forwardRef<HTMLElement, DatadataEmbeddedEditorProps>((props, ref) => {
+      const {
+        theme, queryId, apiToken, language, defaultView, uploadTables, enableSharing, enableListButton,
+        onSaveChart, onShareChart,
+        children, ...htmlProps,
+      } = props;
+
+      const [hostElement, setHostElement] = useState<HTMLElement>(null);
+
+      useLayoutEffect(() => {
+        // import(/* webpackIgnore: true */ "https://www.datadata.cn/web-components/embedded-editor/index.mjs");
+        loadDatadataComponents();
+      }, []);
+
+      useEffect(() => {
+        if (typeof ref === "function") {
+          ref(hostElement);
+        } else if (ref) {
+          ref.current = hostElement;
+        }
+      }, [hostElement]);
+
+      useEffect(() => {
+        if (!hostElement) {
+          return;
+        }
+        const handleSaveChart = (event) => {
+          const chart = (event as CustomEvent).detail.chart;
+          onSaveChart?.(chart);
+        };
+        const handleShareChart = (event) => {
+          const chart = (event as CustomEvent).detail.chart;
+          onShareChart?.(chart);
+        };
+        hostElement.addEventListener('savechart', handleSaveChart);
+        hostElement.addEventListener('sharechart', handleShareChart);
+        return () => {
+          hostElement.removeEventListener('savechart', handleSaveChart);
+          hostElement.removeEventListener('sharechart', handleShareChart);
+        };
+      }, [hostElement, onSaveChart, onShareChart])
+
+      return (
+        <datadata-embedded-editor
+          {...htmlProps}
+          ref={setHostElement}
+          theme={theme}
+          query-id={queryId}
+          language={language}
+          api-token={apiToken}
+          default-view={defaultView}
+          upload-tables={uploadTables === true ? 'Uploads' : uploadTables}
+          enable-sharing={enableSharing}
+          enable-list-button={enableListButton}
+        >
+          {children}
+        </datadata-embedded-editor>
+      );
+    });
+
+    async function loadDatadataComponents() {
+      await eval(`import("https://www.datadata.cn/web-components/embedded-editor/index.mjs")`);
+    }
+
+    declare global {
+      namespace React {
+        namespace JSX {
+          interface IntrinsicElements {
+            "datadata-embedded-editor": any;
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem value="vue" label="Vue">
+    ```tsx
+    // TODO
+    ```
+  </TabItem>
+</Tabs>

@@ -29,14 +29,31 @@ const config: Config = {
         indexPages: true,
       } satisfies SearchLocalPluginOptions,
     ],
+    [
+      "plugin-image-zoom",
+      {
+        selector: ".markdown img",
+        options: {
+          margin: 24,
+          background: "#0000009C",
+          // scrollOffset: 0,
+          // template: "#image-zoom-template",
+          container: "#image-zoom-container",
+          // template: "#zoom-template",
+        },
+      },
+    ],
   ],
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/hungtcs/datadata-docs/tree/master/",
+          sidebarPath: "./sidebars-docs.ts",
           routeBasePath: "docs",
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         blog: {
           showReadingTime: true,
@@ -53,13 +70,43 @@ const config: Config = {
     ],
   ],
   plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "my-plugin",
+        injectHtmlTags(args) {
+          return {
+            postBodyTags: [
+              // {
+              //   tagName: "template",
+              //   innerHTML: `<div><div id="image-zoom-container"></div></div>`,
+              //   attributes: {
+              //     id: "image-zoom-template",
+              //     // style: "position: fixed; insert: 0px;",
+              //   },
+              // },
+              {
+                tagName: "div",
+                innerHTML: ``,
+                attributes: {
+                  id: "image-zoom-container",
+                  // style: "position: fixed; insert: 0px;",
+                },
+              },
+            ],
+          };
+        },
+      };
+    },
     [
       "@docusaurus/plugin-content-docs",
       {
         id: "api",
         path: "api",
+        editUrl: "https://github.com/hungtcs/datadata-docs/tree/master/",
         sidebarPath: "./sidebars-api.ts",
         routeBasePath: "api",
+        showLastUpdateTime: true,
+        showLastUpdateAuthor: true,
       } satisfies DocsOptions,
     ],
   ],
@@ -81,7 +128,7 @@ const config: Config = {
         },
         {
           type: "docSidebar",
-          label: "API",
+          label: "API Reference",
           position: "left",
           sidebarId: "api",
           docsPluginId: "api",
@@ -90,17 +137,6 @@ const config: Config = {
           to: "/blog",
           label: "Blog",
           position: "left",
-        },
-        {
-          type: "dropdown",
-          label: "Demos",
-          position: "left",
-          items: [
-            {
-              to: "/echarts-demo",
-              label: "ECharts Demo",
-            },
-          ],
         },
         {
           type: "search",
@@ -152,10 +188,22 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ["json", "bash"],
     },
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    // imageZoom: {
+    //   selector: ".markdown img",
+    //   options: {
+    //     margin: 24,
+    //     background: "#0000009C",
+    //     // scrollOffset: 0,
+    //     // template: "#image-zoom-template",
+    //     container: "#image-zoom-container",
+    //     // template: "#zoom-template",
+    //   },
+    // },
   } satisfies Preset.ThemeConfig,
 };
 

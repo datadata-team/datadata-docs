@@ -2,5 +2,17 @@
   "version.label": {
     "message": "Next",
     "description": "The label for version current"
+  },
+  "sidebar.api.category.概览": {
+    "message": "概览",
+    "description": "The label for category 概览 in sidebar api"
+  },
+  "sidebar.api.category.API 接口": {
+    "message": "API 接口",
+    "description": "The label for category API 接口 in sidebar api"
+  },
+  "sidebar.api.category.可嵌入组件": {
+    "message": "可嵌入组件",
+    "description": "The label for category 可嵌入组件 in sidebar api"
   }
 }

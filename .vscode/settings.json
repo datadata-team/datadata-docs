@@ -3,10 +3,24 @@
     "changefreq",
     "easyops",
     "noreply",
-    "peaceiris"
+    "peaceiris",
+    "savechart",
+    "sharechart"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
+  },
+  "editor.quickSuggestions": {
+    "strings": "inline",
+    "comments": "inline"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "off",
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "inline",
+      "strings": "inline"
+    }
   },
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/deploy.yml"

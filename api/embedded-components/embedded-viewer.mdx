@@ -1,0 +1,101 @@
+---
+tags: []
+draft: false
+title: 嵌入查看组件
+sidebar_label: 嵌入查看组件
+sidebar_position: 4
+last_update:
+  date: 2024-03-04
+  author: hungtcs
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+嵌入查看器组件可以让您快速在您的页面中嵌入一个可交互的图表。
+
+```html
+<datadata-embedded-viewer theme="fmz-dark" language="zh-CN" query-id="<query-id>" api-token="<your-token>">
+  <div>loading...</div>
+</datadata-embedded-viewer>
+```
+
+## Attributes
+
+| Attribute    | Description                                                      |
+| ------------ | ---------------------------------------------------------------- |
+| theme        | 可选，指定配置方案，用来适配网站的颜色模式，值有 `light`、`dark` |
+| language     | 可选，指定组件的语言，值有 `zh-CN`、`en-US`                      |
+| api-token \* | 必须，执行 API-Token                                             |
+| query-id \*  | 必须，要查看的 Chart ID                                          |
+
+## 框架集成
+
+Web-Components 可以支持任何前段框架，其他框架集成参考官方的使用 Web-Components 流程即可。
+
+<Tabs>
+  <TabItem value="react" label="React" default>
+    ```tsx
+    import { forwardRef, useEffect, useLayoutEffect, useState, type HTMLAttributes, type PropsWithChildren } from "react";
+
+    export type DatadataEmbeddedViewerProps = HTMLAttributes<HTMLElement> &
+      PropsWithChildren<{
+        theme?: 'dark' | 'light';
+        queryId: string;
+        apiToken: string;
+        language?: 'zh-CN' | 'en-US';
+      }>;
+
+    export const DatadataEmbeddedViewer = forwardRef<HTMLElement, DatadataEmbeddedViewerProps>((props, ref) => {
+      const { theme, queryId, apiToken, language, children, ...htmlProps } = props;
+
+      const [hostElement, setHostElement] = useState<HTMLElement>(null);
+
+      useLayoutEffect(() => {
+        // import(/* webpackIgnore: true */ "https://www.datadata.cn/web-components/embedded-editor/index.mjs");
+        loadDatadataComponents();
+      }, []);
+
+      useEffect(() => {
+        if (typeof ref === "function") {
+          ref(hostElement);
+        } else if (ref) {
+          ref.current = hostElement;
+        }
+      }, [hostElement]);
+
+      return (
+        <datadata-embedded-viewer
+          {...htmlProps}
+          ref={setHostElement}
+          theme={theme}
+          language={language}
+          query-id={queryId}
+          api-token={apiToken}
+        >
+          {children}
+        </datadata-embedded-viewer>
+      );
+    });
+
+    async function loadDatadataComponents() {
+      await eval(`import("https://www.datadata.cn/web-components/embedded-editor/index.mjs")`);
+    }
+
+    declare global {
+      namespace React {
+        namespace JSX {
+          interface IntrinsicElements {
+            "datadata-embedded-viewer": any;
+          }
+        }
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem value="vue" label="Vue">
+    ```tsx
+    // TODO
+    ```
+  </TabItem>
+</Tabs>

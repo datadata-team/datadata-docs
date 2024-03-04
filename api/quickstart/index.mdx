@@ -1,0 +1,43 @@
+---
+tags: []
+draft: false
+title: 快速开始
+sidebar_label: 快速开始
+sidebar_position: 1
+last_update:
+  date: 2024-03-04
+  author: hungtcs
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+现在，让我们来模拟获取您创建的 Charts，即通过 `GET` 方法请求 `/api/v1/charts`。
+
+在 [概览/身份认证](../overview/authentication) 章节中，我们已经详细了解了如何获取 API-Token。
+
+现在准备好您的 API-Token ，从下面的方法中任选一种，立即尝试一下吧。
+
+<Tabs>
+  <TabItem value="curl" label="Curl" default>
+    ```shell
+    curl https://www.datadata.cn/api/v1/charts \
+      -H 'x-datadata-api-token: <your-token>'
+    ```
+  </TabItem>
+  <TabItem value="node" label="Node">
+    ```js
+    const response = await fetch('https://www.datadata.cn/api/v1/charts', {
+      headers: {
+        'x-datadata-api-token': '<your token>'
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+    ```
+  </TabItem>
+</Tabs>
+
+:::tip
+更多 API 端点请查看 API-Endpoints 章节。
+:::

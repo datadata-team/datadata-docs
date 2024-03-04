@@ -4,5 +4,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "verbatimModuleSyntax": true
-  }
+  },
+  "includes": [
+    "./src/index.d.ts"
+  ]
 }

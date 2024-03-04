@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.1.1",
+    "@docusaurus/plugin-client-redirects": "^3.1.1",
     "@docusaurus/plugin-sitemap": "^3.1.1",
     "@docusaurus/preset-classic": "3.1.1",
     "@docusaurus/theme-classic": "^3.1.1",
@@ -21,6 +22,7 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "echarts": "^5.5.0",
+    "plugin-image-zoom": "^1.2.0",
     "prism-react-renderer": "^2.3.0",
     "rc-resize-observer": "^1.4.0",
     "react": "^18.0.0",
@@ -33,6 +35,7 @@
     "@docusaurus/types": "3.1.1",
     "@types/node": "^20.11.22",
     "@types/react": "^18.2.60",
+    "raw-loader": "^4.0.2",
     "typescript": "~5.2.2"
   },
   "browserslist": {

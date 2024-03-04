@@ -1,0 +1,102 @@
+---
+tags: []
+draft: false
+title: 快速集成
+sidebar_label: 快速集成
+sidebar_position: 2
+last_update:
+  date: 2024-03-04
+  author: hungtcs
+---
+
+import { DatadataEmbeddedViewer } from '@site/src/components/datadata-embedded-viewer';
+
+通过引用一个 [ESModule](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) 模块，即可使用 Datadata Component。
+
+目前，有 4 种可用的引用方法，分别是：
+
+1. 直接在您的 `index.html` 中引用，这种方式最简单，您不需要编写任何 js 代码。
+
+   ```html
+   <script
+     src="https://www.datadata.cn/web-components/embedded-editor/index.mjs"
+     type="module"></script>
+   ```
+
+2. 在您的 js, ts 入口文件中引用，如 `(main|index).(js|ts)` 中。
+
+   ```js
+   import "https://www.datadata.cn/web-components/embedded-editor/index.mjs";
+   ```
+
+   :::warning
+   请缺保您的环境支持 ESModule ，如果您使用的打包工具工具输出的不是 ESModule 格式，则该方法可能会失效。
+   另外请确保您的打包工具不转换此代码，不要将远程文件直接打包到您的代码中。
+   :::
+
+3. ESModule 提供了非常高的灵活性，您还可以在任何时候动态加载该资源，如使用下面的代码
+
+   ```js
+   async function loadDatadataComponents() {
+     await import('https://www.datadata.cn/web-components/embedded-editor/index.mjs')
+   }
+   ```
+
+   如果您使用 Webpack 打包，您可能需要添加 `/* webpackIgnore: true */` 注解确保从远程加载此文件，而不是打包到您的代码中，这非常重要。
+
+   ```js
+   async function loadDatadataComponents() {
+     await import(/* webpackIgnore: true */'https://www.datadata.cn/web-components/embedded-editor/index.mjs')
+   }
+   ```
+
+4. 如果上述方法对您来说均不适用，或者您的打包工具无法处理引用远程 URL ，我们还有一种不推荐，但是的确有效的方法。
+
+   ```js
+   async function loadDatadataComponents() {
+     await eval(`import("https://www.datadata.cn/web-components/embedded-editor/index.mjs");`);
+   }
+   ```
+
+## 示例
+
+现在我们来编写一个集成查看器的示例。
+
+首先，我们在平台上，使用下面的 SQL 语句查询出汽油和柴油的历史价格，并使用可视化选项，渲染为折线图。
+
+```sql
+select * from futures_data.oilprice order by time desc
+```
+
+接着，我们创建一个 `index.html` 文件，填入一下内容，注意替换 query-id 和 api-token 为您的值。
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart Viewer Demo</title>
+    <script src="https://www.datadata.cn/web-components/embedded-editor/index.mjs" type="module"></script>
+  </head>
+  <body>
+    <datadata-embedded-viewer
+      style="height: 500px; border: 1px solid lightgray; overflow: hidden; resize: both"
+      query-id="<query-id>"
+      api-token="<your-api-token>"
+    ></datadata-embedded-viewer>
+  </body>
+</html>
+```
+
+将此文件放到静态资源服务器上，并在浏览器中访问，您应该可以看到类似下面的内容：
+
+<DatadataEmbeddedViewer
+  style={{height: '500px', border : '1px solid lightgray', marginBottom: '16px'}}
+  queryId="e7a50f9a-04e6-4ad8-899d-59e524b06810"
+  region="cn"
+/>
+
+:::tip
+更多关于 datadata-embedded-viewer 组件的配置参数，请参考 [嵌入查看组件](./embedded-viewer) 章节。
+:::
