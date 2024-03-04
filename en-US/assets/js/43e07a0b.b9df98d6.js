@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdatadata_docs=self.webpackChunkdatadata_docs||[]).push([[1325],{3986:a=>{a.exports=JSON.parse('{"label":"fmz","permalink":"/datadata-docs/en-US/blog/tags/fmz","allTagsPath":"/datadata-docs/en-US/blog/tags","count":1,"unlisted":false}')}}]);

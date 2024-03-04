@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdatadata_docs=self.webpackChunkdatadata_docs||[]).push([[3314],{1755:a=>{a.exports=JSON.parse('{"permalink":"/datadata-docs/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

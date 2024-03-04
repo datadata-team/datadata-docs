@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdatadata_docs=self.webpackChunkdatadata_docs||[]).push([[8503],{337:a=>{a.exports=JSON.parse('{"permalink":"/datadata-docs/en-US/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
