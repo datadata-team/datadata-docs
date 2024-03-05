@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  svg {
+    display: inline;
+  }
+}
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -31,4 +41,18 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+.medium-zoom-overlay {
+  z-index: 500;
+  opacity: 0.8;
+}
+.medium-zoom-image {
+  z-index: 500;
+}
+[data-theme="light"] .medium-zoom-overlay {
+  background-color: #ffffff !important;
+}
+[data-theme="dark"] .medium-zoom-overlay {
+  background-color: #000000 !important;
 }

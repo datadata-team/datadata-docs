@@ -5,3 +5,7 @@ export const DATADATA_API_TOKEN_GLOBAL =
 
 export const DATADATA_WEB_COMPONENTS_URL = "https://www.datadata.cn/web-components/embedded-editor/index.mjs";
 export const DATADATA_WEB_COMPONENTS_URL_GLOBAL = "https://www.datadata.com/web-components/embedded-editor/index.mjs";
+
+export const DATADATA_BASE_URL_CN = "https://www.datadata.cn";
+export const DATADATA_BASE_URL_DEV = "http://127.0.0.1:6430";
+export const DATADATA_BASE_URL_GLOBAL = "https://www.datadata.com";

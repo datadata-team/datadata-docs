@@ -4,6 +4,7 @@ import type { Config } from "@docusaurus/types";
 import type { PluginOptions as SearchLocalPluginOptions } from "@easyops-cn/docusaurus-search-local";
 import { themes as prismThemes } from "prism-react-renderer";
 import { EnumChangefreq } from "sitemap";
+import webpack from "webpack";
 
 const config: Config = {
   title: "Datadata Docs",
@@ -28,20 +29,6 @@ const config: Config = {
         indexBlog: true,
         indexPages: true,
       } satisfies SearchLocalPluginOptions,
-    ],
-    [
-      "plugin-image-zoom",
-      {
-        selector: ".markdown img",
-        options: {
-          margin: 24,
-          background: "#0000009C",
-          // scrollOffset: 0,
-          // template: "#image-zoom-template",
-          container: "#image-zoom-container",
-          // template: "#zoom-template",
-        },
-      },
     ],
   ],
   presets: [
@@ -70,33 +57,45 @@ const config: Config = {
     ],
   ],
   plugins: [
-    async function myPlugin(context, options) {
+    async function webpackOverridePlugin(context, options) {
       return {
-        name: "my-plugin",
-        injectHtmlTags(args) {
+        name: "webpack-override",
+        configureWebpack() {
           return {
-            postBodyTags: [
-              // {
-              //   tagName: "template",
-              //   innerHTML: `<div><div id="image-zoom-container"></div></div>`,
-              //   attributes: {
-              //     id: "image-zoom-template",
-              //     // style: "position: fixed; insert: 0px;",
-              //   },
-              // },
-              {
-                tagName: "div",
-                innerHTML: ``,
-                attributes: {
-                  id: "image-zoom-container",
-                  // style: "position: fixed; insert: 0px;",
+            module: {
+              rules: [
+                {
+                  test: /\.m?js$/,
+                  resolve: {
+                    fullySpecified: false,
+                  },
                 },
-              },
+              ],
+            },
+            plugins: [
+              new webpack.ProvidePlugin({
+                process: "process/browser",
+              }),
             ],
+            resolve: {
+              fallback: {
+                querystring: require.resolve("querystring-es3"),
+              },
+            },
           };
         },
       };
     },
+    async function tailwindPlugin() {
+      return {
+        name: "tailwind",
+        configurePostCss(options) {
+          options.plugins = [require("postcss-import"), require("tailwindcss"), require("autoprefixer")];
+          return options;
+        },
+      };
+    },
+    "plugin-image-zoom",
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -173,12 +172,12 @@ const config: Config = {
           title: "More",
           items: [
             {
-              label: "Blog",
               to: "/blog",
+              label: "Blog",
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/hungtcs/datadata-docs",
             },
           ],
         },
@@ -188,22 +187,17 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["json", "bash"],
+      additionalLanguages: ["php", "json", "bash", "java", "http"],
     },
     colorMode: {
       respectPrefersColorScheme: true,
     },
-    // imageZoom: {
-    //   selector: ".markdown img",
-    //   options: {
-    //     margin: 24,
-    //     background: "#0000009C",
-    //     // scrollOffset: 0,
-    //     // template: "#image-zoom-template",
-    //     container: "#image-zoom-container",
-    //     // template: "#zoom-template",
-    //   },
-    // },
+    imageZoom: {
+      selector: ".markdown img",
+      options: {
+        margin: 24,
+      },
+    },
   } satisfies Preset.ThemeConfig,
 };
 

@@ -2,6 +2,8 @@
   "cSpell.words": [
     "changefreq",
     "easyops",
+    "flowbite",
+    "httpsnippet",
     "noreply",
     "peaceiris",
     "savechart",
@@ -24,5 +26,9 @@
   },
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/deploy.yml"
-  }
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "classed\\(.+\\)`(.*)`",
+    "classed\\.\\w+`(.*)`"
+  ]
 }
