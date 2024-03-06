@@ -44,11 +44,11 @@ html {
 }
 
 .medium-zoom-overlay {
-  z-index: 500;
-  opacity: 0.8;
+  z-index: 500 !important;
+  opacity: 0.8 !important;
 }
 .medium-zoom-image {
-  z-index: 500;
+  z-index: 501 !important;
 }
 [data-theme="light"] .medium-zoom-overlay {
   background-color: #ffffff !important;
