@@ -12,7 +12,7 @@ const config: Config = {
   favicon: "img/favicon.svg",
   url: "https://hungtcs.github.io",
   baseUrl: "/datadata-docs/",
-  // organizationName: "facebook",
+  organizationName: "datadata-team",
   projectName: "datadata-docs",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
