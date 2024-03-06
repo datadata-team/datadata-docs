@@ -1,0 +1,33 @@
+---
+tags: []
+draft: false
+title: Get Charts
+sidebar_label: Get Charts
+sidebar_position: 1
+last_update:
+  date: 2024-01-01
+  author: Author
+---
+
+import { APIEndpoint, APIForm, APIParams, HttpSnippets } from "@site/src/components";
+import endpoint from './_endpoint';
+
+<p>{endpoint.description}</p>
+
+<APIEndpoint url={endpoint.url} method={endpoint.method} />
+
+
+<APIForm define={endpoint} />
+
+<APIParams title="Headers" params={endpoint.headers} />
+<APIParams title="Path Parameters" params={endpoint.params} />
+<APIParams title="Query Parameters" params={endpoint.queryParams} />
+
+## 示例代码
+
+<HttpSnippets
+  request={{
+    url: endpoint.url,
+    method: endpoint.method,
+  }}
+/>

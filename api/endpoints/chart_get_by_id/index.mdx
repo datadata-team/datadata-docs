@@ -1,0 +1,30 @@
+---
+tags: []
+draft: false
+title: Get Chart By ID
+sidebar_label: Get Chart By ID
+sidebar_position: 3
+last_update:
+  date: 2024-03-06
+  author: Author
+---
+
+import { APIEndpoint, APIParams, HttpSnippets } from "@site/src/components";
+import endpoint from './_endpoint';
+
+<p>{endpoint.description}</p>
+
+<APIEndpoint url={endpoint.url} method={endpoint.method} />
+
+<APIParams title="Headers" params={endpoint.headers} />
+<APIParams title="Path Parameters" params={endpoint.params} />
+<APIParams title="Query Parameters" params={endpoint.queryParams} />
+
+## 示例代码
+
+<HttpSnippets
+  request={{
+    url: endpoint.url,
+    method: endpoint.method,
+  }}
+/>

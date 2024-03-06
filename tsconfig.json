@@ -3,6 +3,7 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "lib": [
+      "DOM",
       "es2020"
     ],
     "baseUrl": ".",
