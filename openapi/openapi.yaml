@@ -1,0 +1,486 @@
+openapi: 3.1.0
+
+info:
+  title: Datadata
+  version: v1.0.0
+  description: Datadata 拥有非常灵活的应用程序接口，可让您为数据分析以及机器学习应用建立完整的数据管道。
+
+servers:
+  - url: https://www.datadata.cn
+    description: 国内站
+  - url: https://www.datadata.com
+    description: 国际站
+  - url: http://127.0.0.1:6430
+    description: 内部测试
+
+tags:
+  - name: Charts
+    description: Chart 资源相关接口
+  - name: Query
+    description: 查询相关接口
+  - name: Resources
+    description: 通用资源接口
+
+paths:
+  /api/v1/charts:
+    get:
+      tags:
+        - Charts
+      summary: 分页获取当前用户的 Chart 资源
+      security:
+        - api_token: []
+      parameters:
+        - in: query
+          name: Sort
+          schema:
+            type: string
+            enum:
+              - name:asc
+              - name:desc
+              - create_at:asc
+              - create_at:desc
+              - updated_at:asc
+              - updated_at:desc
+            default: name:asc
+          description: 排序方式
+        - in: query
+          name: tag
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: 通过标签过滤，获取包含所有指定标签的资源
+        - in: query
+          name: archived
+          schema:
+            type: boolean
+            default: false
+          description: 是否包含已归档的资源
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 通过资源名称模糊过滤资源
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+          description: 用于分页
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: 用于分页
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Chart"
+    post:
+      tags:
+        - Charts
+      summary: 创建 Chart 资源
+      security:
+        - api_token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - datasetQuery
+              properties:
+                name:
+                  type: string
+                  description: Chart 名称
+                description:
+                  type: string
+                  description: Chart 描述
+                datasetQuery:
+                  $ref: "#/components/schemas/DatasetQuery"
+                visualizationSettings:
+                  type: object
+  /api/v1/charts/{id}:
+    get:
+      tags:
+        - Charts
+      summary: 获取指定 Chart 资源
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Chart ID
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Chart"
+    put:
+      tags:
+        - Charts
+      summary: 更新指定 Chart 资源
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Chart ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - datasetQuery
+              properties:
+                name:
+                  type: string
+                  description: Chart 名称
+                description:
+                  type: string
+                  description: Chart 描述
+                datasetQuery:
+                  $ref: "#/components/schemas/DatasetQuery"
+                visualizationSettings:
+                  type: object
+    delete:
+      tags:
+        - Charts
+      summary: 删除指定 Chart 资源
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Chart ID
+  /api/v1/charts/by-uid:
+    get:
+      tags:
+        - Charts
+      summary: 分页获取子用户的 Chart 资源
+      description: 子用户 UID 从 API-Token 中获取。
+      security:
+        - api_token: []
+      parameters:
+        - in: query
+          name: Sort
+          schema:
+            type: string
+            enum:
+              - name:asc
+              - name:desc
+              - create_at:asc
+              - create_at:desc
+              - updated_at:asc
+              - updated_at:desc
+            default: name:asc
+          description: 排序方式
+        - in: query
+          name: tag
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: 通过标签过滤，获取包含所有指定标签的资源
+        - in: query
+          name: archived
+          schema:
+            type: boolean
+            default: false
+          description: 是否包含已归档的资源
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 通过资源名称模糊过滤资源
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+          description: 用于分页
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: 用于分页
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Chart"
+  /api/v1/charts/uid/{uid}:
+    get:
+      tags:
+        - Charts
+      summary: 分页获取指定子用户的 Chart 资源
+      security:
+        - api_token: []
+      parameters:
+        - name: uid
+          in: path
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: Sort
+          schema:
+            type: string
+            enum:
+              - name:asc
+              - name:desc
+              - create_at:asc
+              - create_at:desc
+              - updated_at:asc
+              - updated_at:desc
+            default: name:asc
+          description: 排序方式
+        - in: query
+          name: tag
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: 通过标签过滤，获取包含所有指定标签的资源
+        - in: query
+          name: archived
+          schema:
+            type: boolean
+            default: false
+          description: 是否包含已归档的资源
+        - in: query
+          name: keyword
+          schema:
+            type: string
+          description: 通过资源名称模糊过滤资源
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+          description: 用于分页
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: 用于分页
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Chart"
+
+  /api/v1/resources/{id}/screenshot.png:
+    get:
+      tags:
+        - Resources
+      summary: 获取资源截图
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Resource ID
+      responses:
+        "200":
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: "string"
+                format: binary
+    put:
+      tags:
+        - Resources
+      summary: 设置资源截图
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Resource ID
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            encoding:
+              file:
+                contentType: image/png
+
+  /api/v1/query/{id}/result:
+    post:
+      tags:
+        - Query
+      summary: 获取 Query 的查询结果
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Chart ID
+  /api/v1/query/{id}/data:
+    get:
+      tags:
+        - Query
+      summary: 获取FMZ格式的查询结果
+      security:
+        - api_token: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Chart ID
+  /api/v1/query/execute:
+    post:
+      tags:
+        - Query
+      summary: 执行查询
+      security:
+        - api_token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - parameters
+                - dataSourceId
+                - datasetQuery
+              properties:
+                queryId:
+                  type: string
+                  format: uuid
+                parameters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                dataSourceId:
+                  type: string
+                  format: uuid
+                datasetQuery:
+                  $ref: "#/components/schemas/DatasetQuery"
+
+components:
+  schemas:
+    Chart:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        creatorId:
+          type: string
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        tags:
+          type: array
+          items:
+            type: string
+    DatasetQuery:
+      type: object
+      required:
+        - type
+        - native
+        - dataSourceId
+      properties:
+        type:
+          type: "string"
+          const: "native"
+        native:
+          type: object
+          required:
+            - query
+          properties:
+            query:
+              type: string
+        dataSourceId:
+          type: string
+
+  securitySchemes:
+    api_token:
+      in: header
+      type: apiKey
+      name: x-datadata-api-token
+      description: 文档参考 概览 / 身份认证
