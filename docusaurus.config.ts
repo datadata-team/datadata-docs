@@ -79,6 +79,7 @@ const config: Config = {
             ],
             resolve: {
               fallback: {
+                // path: require.resolve("path-browserify"),
                 querystring: require.resolve("querystring-es3"),
               },
             },
@@ -99,11 +100,11 @@ const config: Config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "api",
-        path: "api",
+        id: "development",
+        path: "development",
         editUrl: "https://github.com/hungtcs/datadata-docs/tree/master/",
-        sidebarPath: "./sidebars-api.ts",
-        routeBasePath: "api",
+        sidebarPath: "./sidebars-development.ts",
+        routeBasePath: "development",
         showLastUpdateTime: true,
         showLastUpdateAuthor: true,
       } satisfies DocsOptions,
@@ -125,12 +126,18 @@ const config: Config = {
           position: "left",
           sidebarId: "docs",
         },
+        // {
+        //   type: "docSidebar",
+        //   label: "Development",
+        //   position: "left",
+        //   sidebarId: "development",
+        //   docsPluginId: "development",
+        // },
         {
-          type: "docSidebar",
-          label: "API Reference",
+          to: "/development/overview/introduction",
+          label: "Development",
           position: "left",
-          sidebarId: "api",
-          docsPluginId: "api",
+          activeBasePath: "/development/",
         },
         {
           to: "/blog",

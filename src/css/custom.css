@@ -4,21 +4,7 @@
 
 @layer base {
   :root {
-    --color-primary: 46 133 85;
-
-    --color-text: 28 30 33;
-    --color-text-secondary: 96 103 112;
-
-    --color-border: 218 221 225;
-  }
-
-  html[data-theme="dark"] {
-    --color-border: 40 42 45;
-    --color-border-secondary: 40 42 45;
-  }
-
-  :root {
-    --ifm-color-primary: rgb(var(--color-primary));
+    --ifm-color-primary: #29784c;
     --ifm-code-font-size: 95%;
     --ifm-color-primary-dark: #29784c;
     --ifm-color-primary-darker: #277148;
@@ -43,13 +29,9 @@
   html {
     scroll-behavior: smooth;
   }
-
-  * {
-    border-color: rgb(var(--color-border));
-  }
 }
 
-.medium-zoom-overlay {
+.medium-zoom--opened .medium-zoom-overlay {
   z-index: 500 !important;
   opacity: 0.8 !important;
 }

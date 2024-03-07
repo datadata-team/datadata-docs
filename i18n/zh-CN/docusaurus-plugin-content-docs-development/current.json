@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.development.category.概览": {
+    "message": "概览",
+    "description": "The label for category 概览 in sidebar development"
+  },
+  "sidebar.development.category.SDK": {
+    "message": "SDK",
+    "description": "The label for category SDK in sidebar development"
+  },
+  "sidebar.development.category.可嵌入组件": {
+    "message": "可嵌入组件",
+    "description": "The label for category 可嵌入组件 in sidebar development"
+  },
+  "sidebar.development.link.Rest API": {
+    "message": "Rest API",
+    "description": "The label for link Rest API in sidebar development, linking to /development/rest-api"
+  }
+}

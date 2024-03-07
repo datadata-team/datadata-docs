@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased] - 2024-03-07
+
+1. 使用 stoplight elements 渲染 Rest API 部分的文档。
+
 ## [Unreleased] - 2024-03-05
 
 1. 添加 HTTP Snippet 组件，可以生成各个语言的 API 请求示例代码。

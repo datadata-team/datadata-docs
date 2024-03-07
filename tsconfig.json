@@ -6,8 +6,11 @@
       "DOM",
       "es2020"
     ],
+    "target": "ES2016",
     "baseUrl": ".",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
   "includes": [
     "./src/index.d.ts"
