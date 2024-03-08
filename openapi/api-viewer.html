@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/datadata-docs/lib/stoplight-elements/styles.min.css" />
+    <script src="/datadata-docs/lib/stoplight-elements/web-components.min.js" defer></script>
+    <style>
+      [data-theme="dark"] {
+        color-scheme: dark;
+        --color-canvas: #1b1b1d;
+        --color-canvas-100: #1b1b1d;
+      }
+      [data-theme="dark"] body {
+        background-color: #1b1b1d;
+      }
+      .sl-elements-api {
+        min-height: 100vh;
+      }
+      @media screen and (max-width: 998px) {
+        body {
+          padding: 1rem;
+        }
+      }
+      .sl-elements-api > div:first-child > div:first-child {
+        padding-top: 0px !important;
+      }
+      .sl-elements-api > div:first-child > div:first-child > div:first-child {
+        display: none;
+      }
+      .ParameterGrid,
+      .TextRequestBody {
+        color-scheme: dark;
+      }
+    </style>
+  </head>
+  <body>
+    <elements-api
+      id="api-element"
+      apiDescriptionUrl="/datadata-docs/openapi/openapi.yaml"
+      router="hash"
+      layout="sidebar"
+    />
+    <script>
+      const element = document.getElementById("api-element");
+
+      function updateLayout() {
+        const layout = window.innerWidth > 998 ? "sidebar" : "stacked";
+        element.setAttribute("layout", layout);
+      }
+      updateLayout();
+
+      const theme = window.top.window.document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", theme);
+
+      window.addEventListener("resize", () => {
+        updateLayout();
+      });
+      window.addEventListener("message", (event) => {
+        switch (event.data.type) {
+          case "color-mode": {
+            document.documentElement.setAttribute("data-theme", event.data.value);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
