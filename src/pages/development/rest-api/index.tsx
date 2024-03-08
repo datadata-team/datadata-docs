@@ -23,10 +23,9 @@ function Content() {
   return (
     <iframe
       ref={setIframe}
-      sandbox="allow-scripts allow-same-origin"
       src={useBaseUrl("api-viewer.html")}
-      className="flex-1 h-full w-full"
       onLoad={handleOnload}
+      className="flex-1 h-full w-full"
     ></iframe>
   );
 }
