@@ -6,5 +6,17 @@
   "sidebar.docs.category.get-started": {
     "message": "快速开始",
     "description": "The label for category get-started in sidebar docs"
+  },
+  "sidebar.docs.category.query": {
+    "message": "查询",
+    "description": "The label for category query in sidebar docs"
+  },
+  "sidebar.docs.category.dashboard": {
+    "message": "仪表盘面板",
+    "description": "The label for category dashboard in sidebar docs"
+  },
+  "sidebar.docs.category.collection": {
+    "message": "导航面板",
+    "description": "The label for category collection in sidebar docs"
   }
 }
