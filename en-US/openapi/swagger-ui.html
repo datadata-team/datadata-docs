@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swagger UI - Datadata Docs</title>
+    <link rel="stylesheet" href="/datadata-docs/lib/swagger-ui/swagger-ui.css" />
+    <script src="/datadata-docs/lib/swagger-ui/swagger-ui-bundle.js" defer></script>
+    <script src="/datadata-docs/lib/swagger-ui/swagger-ui-standalone-preset.js" defer></script>
+    <style>
+      body {
+        background-color: #ffffff;
+      }
+      .models button {
+        background-color: transparent;
+      }
+      html[data-theme="dark"] {
+        filter: invert(1) hue-rotate(180deg);
+        color-scheme: dark;
+      }
+      html[data-theme="dark"] body .swagger-ui .microlight {
+        filter: invert(100%) hue-rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script>
+      const theme = window.top.window.document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", theme);
+      window.addEventListener("message", (event) => {
+        switch (event.data.type) {
+          case "color-mode": {
+            document.documentElement.setAttribute("data-theme", event.data.value);
+          }
+        }
+      });
+    </script>
+    <script>
+      window.onload = function () {
+        window.ui = SwaggerUIBundle({
+          url: "/datadata-docs/openapi/openapi.yaml",
+          dom_id: "#swagger-ui",
+          deepLinking: true,
+          presets: [SwaggerUIBundle.presets.apis],
+          plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+        });
+      };
+    </script>
+  </body>
+</html>
