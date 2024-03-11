@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased] - 2024-03-11
+
+1. 集成 Swagger UI 视图。
+
 ## [Unreleased] - 2024-03-08
 
 1. 添加可视化部分文档，编写可视化概览页面组件。

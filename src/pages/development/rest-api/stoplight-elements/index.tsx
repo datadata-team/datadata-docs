@@ -29,7 +29,7 @@ function Content() {
     <div className="relative flex flex-col flex-1 h-full w-full">
       <iframe
         ref={setIframe}
-        src={useBaseUrl("/openapi/api-viewer.html")}
+        src={useBaseUrl("/openapi/stoplight-elements.html")}
         onLoad={handleOnload}
         className="flex-1 w-full"
       ></iframe>
