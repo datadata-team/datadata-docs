@@ -1,5 +1,6 @@
 ---
 title: 仪表盘
+sidebar_position: 2.7
 ---
 
 仪表盘图（Gauge Chart）是一种用于展示单一数值在预设范围内的相对位置的图表类型。

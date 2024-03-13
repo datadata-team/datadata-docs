@@ -1,0 +1,16 @@
+```ts showLineNumbers
+async encrypt(secretKey: string, payload: string) {
+  const iv = WordArray.random(16);
+  const key = MD5(secretKey);
+  const value = Utf8.parse(payload).clone().concat(MD5(payload));
+  const encrypted = AES.encrypt(value, key, { iv: iv, mode: CFB, padding: Pkcs7 });
+  return iv.clone().concat(encrypted.ciphertext).toString(Hex);
+}
+
+const token = await encrypt(
+  "500c33c5485e4d7eb5c89dd8f33084dc",
+  JSON.stringify({ "uid": "abc","host": "www.example.com", "expired": 1710313863 })
+);
+
+console.log(token);
+```

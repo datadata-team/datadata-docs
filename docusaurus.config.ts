@@ -1,4 +1,5 @@
 import type { Options as DocsOptions } from "@docusaurus/plugin-content-docs";
+import { type Options as PluginIdealImageOptions } from "@docusaurus/plugin-ideal-image";
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import type { PluginOptions as SearchLocalPluginOptions } from "@easyops-cn/docusaurus-search-local";
@@ -10,7 +11,7 @@ const config: Config = {
   title: "Datadata Docs",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.svg",
-  url: "https://hungtcs.github.io",
+  url: "https://datadata-team.github.io",
   baseUrl: "/datadata-docs/",
   organizationName: "datadata-team",
   projectName: "datadata-docs",
@@ -96,7 +97,14 @@ const config: Config = {
         },
       };
     },
-    "plugin-image-zoom",
+    "docusaurus-plugin-image-zoom",
+    [
+      "@docusaurus/plugin-ideal-image",
+      {
+        quality: 70,
+        disableInDev: true,
+      } satisfies PluginIdealImageOptions,
+    ],
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -121,20 +129,13 @@ const config: Config = {
       },
       items: [
         {
-          type: "docSidebar",
+          to: "/docs",
           label: "Docs",
           position: "left",
-          sidebarId: "docs",
+          activeBasePath: "/docs/",
         },
-        // {
-        //   type: "docSidebar",
-        //   label: "Development",
-        //   position: "left",
-        //   sidebarId: "development",
-        //   docsPluginId: "development",
-        // },
         {
-          to: "/development/overview/introduction",
+          to: "/development",
           label: "Development",
           position: "left",
           activeBasePath: "/development/",
@@ -199,9 +200,9 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
-    imageZoom: {
+    zoom: {
       selector: ".markdown img",
-      options: {
+      config: {
         margin: 24,
       },
     },

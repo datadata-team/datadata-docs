@@ -18,5 +18,9 @@
   "sidebar.docs.category.collection": {
     "message": "导航面板",
     "description": "The label for category collection in sidebar docs"
+  },
+  "sidebar.docs.category.visualizations": {
+    "message": "可视化",
+    "description": "The label for category visualizations in sidebar docs"
   }
 }

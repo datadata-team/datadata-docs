@@ -1,5 +1,6 @@
 ---
 title: 漏斗图
+sidebar_position: 2.12
 ---
 
 漏斗图（Funnel Chart）是一种数据可视化图表类型，用于展示数据在不同阶段之间的流动或转化过程。

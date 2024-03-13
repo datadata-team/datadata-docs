@@ -11,6 +11,8 @@ last_update:
 
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
+import GoCode from './_go.mdx';
+import NodeCode from './_node.mdx';
 
 Datadata API 依赖 API-Token 进行身份验证，API-Token 由 **AccessKey** 和通过 **SecretKey** 加密的 Payload 组成，
 本章将详细介绍 SecretKey 的获取方式和对 Payload 的加密步骤。
@@ -57,155 +59,17 @@ API-Token 由两部分组成，第一部分是 AccessKey ，第二部分是使�
 
 下面是加密算法的示例代码。
 
+:::tip
+我们强烈建议您使用我们的SDK，以便快速集成而不用编写太多代码，访问
+[https://github.com/orgs/datadata-team/repositories?q=sdk](https://github.com/orgs/datadata-team/repositories?q=sdk) 查找适合您语言的SDK。
+:::
+
 <Tabs groupId="programming-language" className="unique-tabs" queryString={true}>
   <TabItem value="go" label="Go" default>
-    点击此处在 [Go Better Playground](https://goplay.tools/snippet/NuHPy8AwF0S) 或 [Go Playground](https://go.dev/play/p/5SvNGV5C_ac) 上运行。
-
-    ```go showLineNumbers
-    package main
-
-    import (
-      "crypto/aes"
-      "crypto/cipher"
-      "crypto/rand"
-      "encoding/hex"
-      "encoding/json"
-      "fmt"
-      "io"
-      "strings"
-      "time"
-    )
-
-    type TokenPayload struct {
-      UID     string `json:"uid"`
-      Host    string `json:"host"`
-      Expired int64  `json:"int64"`
-    }
-
-    type APIKey struct {
-      AccessKey string
-      SecretKey string
-    }
-
-    func (apiKey *APIKey) generateAPIToken(payload TokenPayload) (token string, err error) {
-      var value []byte
-      value, err = json.Marshal(payload)
-      if err != nil {
-        return "", err
-      }
-
-      var ciphertext string
-      ciphertext, err = apiKey.encrypt(value)
-      if err != nil {
-        return "", err
-      }
-
-      return fmt.Sprintf("%s.%s", apiKey.AccessKey, ciphertext), nil
-    }
-
-    func (apiKey *APIKey) decryptAPIToken(token string) (payload *TokenPayload, err error) {
-      var tokenParts = strings.Split(token, ".")
-      if len(tokenParts) != 2 {
-        return nil, fmt.Errorf("invalid api token")
-      }
-      var ciphertext = tokenParts[1]
-
-      var value []byte
-      value, err = apiKey.decrypt(ciphertext)
-      if err != nil {
-        return nil, err
-      }
-
-      payload = new(TokenPayload)
-      err = json.Unmarshal(value, payload)
-      if err != nil {
-        return nil, err
-      }
-
-      return payload, nil
-    }
-
-    func (apiKey *APIKey) encrypt(value []byte) (string, error) {
-      block, err := aes.NewCipher([]byte(apiKey.SecretKey))
-      if err != nil {
-        return "", err
-      }
-
-      ciphertext := make([]byte, aes.BlockSize+len(value))
-
-      iv := ciphertext[:aes.BlockSize]
-      if _, err := io.ReadFull(rand.Reader, iv); err != nil {
-        return "", err
-      }
-
-      cipher.NewCFBEncrypter(block, iv).XORKeyStream(ciphertext[aes.BlockSize:], value)
-
-      return hex.EncodeToString(ciphertext), nil
-    }
-
-    func (apiKey *APIKey) decrypt(ciphertext string) ([]byte, error) {
-      block, err := aes.NewCipher([]byte(apiKey.SecretKey))
-      if err != nil {
-        return nil, err
-      }
-
-      cipherData, err := hex.DecodeString(ciphertext)
-      if err != nil {
-        return nil, err
-      }
-
-      iv := cipherData[:aes.BlockSize]
-      cipherData = cipherData[aes.BlockSize:]
-
-      cipher.NewCFBDecrypter(block, iv).XORKeyStream(cipherData, cipherData)
-
-      return cipherData, nil
-    }
-
-    func main() {
-      var err error = nil
-
-      var apiKey = &APIKey{
-        AccessKey: "xxxxxxxxxx",
-        SecretKey: "xxxxxxxxxx",
-      }
-
-      var payload = TokenPayload{
-        Expired: time.Now().AddDate(1, 0, 0).Unix(),
-      }
-
-      var token string
-      token, err = apiKey.generateAPIToken(payload)
-      if err != nil {
-        panic(err)
-      }
-
-      fmt.Printf("token: %v\n", token)
-
-      var decodedPayload *TokenPayload
-      decodedPayload, err = apiKey.decryptAPIToken(token)
-      if err != nil {
-        panic(err)
-      }
-
-      fmt.Printf("decodedPayload: %#v\n", decodedPayload)
-    }
-    ```
+    <GoCode />
   </TabItem>
   <TabItem value="node" label="Node">
-    ```ts
-    // TODO
-    ```
-  </TabItem>
-  <TabItem value="python" label="Python">
-    ```ts
-    // TODO
-    ```
-  </TabItem>
-  <TabItem value="java" label="Java">
-    ```ts
-    // TODO
-    ```
+    <NodeCode />
   </TabItem>
 </Tabs>
 

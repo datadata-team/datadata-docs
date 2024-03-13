@@ -1,5 +1,6 @@
 ---
 title: 关系图
+sidebar_position: 4.1
 ---
 
 关系图（Network Graph）是一种用于可视化网络结构的图表类型，通常用于展示节点（或顶点）之间的关系和连接。

@@ -1,5 +1,6 @@
 ---
 title: 饼图
+sidebar_position: 2.5
 ---
 
 饼图（Pie Chart）是一种常见的数据可视化图表类型，用于展示各个部分占总体的比例关系。

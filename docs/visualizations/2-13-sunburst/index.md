@@ -1,5 +1,6 @@
 ---
 title: 旭日图
+sidebar_position: 2.13
 ---
 
 旭日图（Sunburst Chart）是一种用于展示层次数据结构的环形图表类型。

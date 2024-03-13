@@ -1,5 +1,7 @@
 ---
-tags: ["fmz", "交流分享"]
+tags:
+  - fmz
+  - 交流分享
 draft: false
 title: 量化交易领域的必备工具--发明者量化数据探索模块
 image: ./image.png
@@ -8,18 +10,19 @@ description: FMZ 量化交易平台数据探索集成 Datadata，量化交易领
 ---
 
 import { DatadataEmbeddedViewer } from '@site/src/components/datadata-embedded-viewer';
+import Image from '@theme/IdealImage';
 
 
 :::tip
 原文链接：[https://www.fmz.com/bbs-topic/10370](https://www.fmz.com/bbs-topic/10370)
 :::
 
-![](./image.png)
+<Image img={require('./image.png')} />
 
 在当今金融市场的激烈竞争中，量化交易作为一种基于数据分析和算法模型的交易策略，正在成为投资者和交易员们越来越青睐的选择。而在量化交易的领域中，
 数据的价值愈发凸显，因此，一套高效、可靠的量化数据探索工具成为了实现成功交易的不可或缺的关键之一。
 
-{/* truncate */}
+{ /* truncate */}
 
 在这个日益重视数据驱动决策的时代，发明者量化数据探索模块应运而生。作为量化交易领域的必备工具之一，它不仅仅是一款普通的数据分析软件，
 更是一项革命性的创新，为投资者提供了独特的数据分析和挖掘功能，助力他们在复杂多变的金融市场中把握机会、降低风险。
@@ -126,7 +129,7 @@ days: 10 , rank: DESC , limit: 10 点击「执行」按钮，就可以执行SQL�
 请到[原文章处查看](https://www.fmz.com/bbs-topic/10370#%E6%B3%A2%E5%8A%A8%E6%8E%92%E8%A1%8C)。
 :::
 
-{/* <DatadataEmbeddedViewer region="global" queryId="9d828b52-539c-47fd-984a-816a38e3f2ef" /> */}
+{ /* <DatadataEmbeddedViewer region="global" queryId="9d828b52-539c-47fd-984a-816a38e3f2ef" /> */}
 
 ## 深度回放
 
@@ -154,6 +157,6 @@ select * from market.binance where symbol = lower('{{symbol}}') order by timesta
 
 这些分享的代码、链接，可以嵌入FMZ平台社区帖子、文章。可以嵌入网页，可以转载到其它社区、论坛等。也可以直接分享给任何人。
 
-{/* TODO */}
+{ /* TODO */}
 
 这个强大的量化交易工具，你还在等什么？赶紧来尝试挖掘数据、分析数据吧。

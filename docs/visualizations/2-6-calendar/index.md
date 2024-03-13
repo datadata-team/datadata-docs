@@ -1,5 +1,6 @@
 ---
 title: 日历热度图
+sidebar_position: 2.6
 ---
 
 日历图（Calendar Chart）是一种数据可视化图表类型，用于展示时间序列数据在日历形式上的分布情况。

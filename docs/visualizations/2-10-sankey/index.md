@@ -1,5 +1,6 @@
 ---
 title: 桑基图
+sidebar_position: 2.10
 ---
 
 桑基图（Sankey Diagram）是一种流程图，用于可视化复杂系统中的能量、资源或资金等流动的路径和量级。

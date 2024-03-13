@@ -1,5 +1,6 @@
 ---
 title: 散点图
+sidebar_position: 2.11
 ---
 
 散点图（Scatter Plot）是一种常用的数据可视化图表类型，用于展示两个变量之间的关系或趋势。

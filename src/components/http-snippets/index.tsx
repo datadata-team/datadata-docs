@@ -1,4 +1,4 @@
-import { DATADATA_BASE_URL_CN, DATADATA_BASE_URL_DEV } from "@site/src/constants";
+import { DATADATA_BASE_URL_CN, DATADATA_BASE_URL_DEV } from "@site/src/config";
 import { production } from "@site/src/utils";
 import CodeBlock from "@theme/CodeBlock";
 import TabItem from "@theme/TabItem";

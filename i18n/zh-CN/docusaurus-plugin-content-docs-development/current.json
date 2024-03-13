@@ -15,8 +15,16 @@
     "message": "可嵌入组件",
     "description": "The label for category 可嵌入组件 in sidebar development"
   },
-  "sidebar.development.link.Rest API": {
+  "sidebar.development.category.Rest API": {
     "message": "Rest API",
-    "description": "The label for link Rest API in sidebar development, linking to /development/rest-api"
+    "description": "The label for category Rest API in sidebar development"
+  },
+  "sidebar.development.link.Swagger UI": {
+    "message": "Swagger UI",
+    "description": "The label for link Swagger UI in sidebar development, linking to /development/rest-api/swagger-ui"
+  },
+  "sidebar.development.link.Stoplight Elements": {
+    "message": "Stoplight Elements",
+    "description": "The label for link Stoplight Elements in sidebar development, linking to /development/rest-api/stoplight-elements"
   }
 }
