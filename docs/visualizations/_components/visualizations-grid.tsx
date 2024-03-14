@@ -151,13 +151,13 @@ export default function VisualizationsGrid() {
           <Link
             to={`/docs/visualizations/${visualization.id}`}
             key={visualization.id}
-            className="border border-solid border-gray-300 p-4 rounded-md cursor-pointer hover:no-underline hover:bg-gray-50"
+            className="border border-solid border-gray-300 p-4 rounded-md cursor-pointer hover:no-underline hover:bg-gray-50 dark:border-gray-800 dark:hover:bg-gray-900"
           >
             <div className="flex gap-3 items-center">
               <visualization.icon className="h-[42px]" />
               <h3 className="m-0">{visualization.name}</h3>
             </div>
-            <div className="text-gray-600 mt-2">{visualization.description}</div>
+            <div className="text-gray-600 mt-2 dark:text-gray-300">{visualization.description}</div>
           </Link>
         );
       })}

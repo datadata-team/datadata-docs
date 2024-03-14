@@ -1,21 +1,18 @@
-点击此处在 [Go Better Playground](https://goplay.tools/snippet/0e0KVrYsGmi) 或 [Go Playground](https://go.dev/play/p/0e0KVrYsGmi) 上运行。
+点击此处在 [Go Better Playground](https://goplay.tools/snippet/8J8kAq6t16o) 或 [Go Playground](https://go.dev/play/p/8J8kAq6t16o) 上运行。
 
 ```go showLineNumbers
 package main
 
 import (
+	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
-	"crypto/hmac"
 	"crypto/md5"
 	"crypto/rand"
 	"encoding/hex"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
-	"strings"
-	"time"
 )
 
 type APITokenPayload struct {
@@ -24,62 +21,42 @@ type APITokenPayload struct {
 	Expired uint64 `json:"expired"`
 }
 
-type APIKey struct {
-	// ID         string     `json:"id"`
-	// Name       string     `json:"name"`
-	// UserID     string     `json:"userId"`
-	SecretKey  string     `json:"secretKey"`
-	AccessKey  string     `json:"accessKey"`
-	Expiration *time.Time `json:"expiration,omitempty"`
+func PadLength(slice_length, blocksize int) (padlen int) {
+	padlen = blocksize - slice_length%blocksize
+	if padlen == 0 {
+		padlen = blocksize
+	}
+	return padlen
 }
 
-// 通过 Payload 生成 Token
-func (apiKey *APIKey) DecryptAPIToken(token string) (payload *APITokenPayload, err error) {
-	var tokenParts = strings.Split(token, ".")
-	if len(tokenParts) != 2 {
-		return nil, fmt.Errorf("invalid api token")
+func PKCS7Pad(message []byte, blockSize int) (padded []byte, err error) {
+	if blockSize < 1<<1 {
+		err = errors.New("block size is too small (minimum is 2 bytes)")
+		return
 	}
-	var ciphertext = tokenParts[1]
+	if blockSize < 1<<8 {
+		padLen := PadLength(len(message), blockSize)
 
-	var value []byte
-	value, err = apiKey.decrypt(ciphertext)
-	if err != nil {
-		return nil, err
-	}
+		padding := bytes.Repeat([]byte{byte(padLen)}, padLen)
 
-	payload = new(APITokenPayload)
-	err = json.Unmarshal(value, payload)
-	if err != nil {
-		return nil, err
+		padded = append(message, padding...)
+		return padded, nil
 	}
 
-	return payload, nil
+	err = errors.New("unsupported block size")
+	return
 }
 
-// 解密 Token 并返回 Payload
-func (apiKey *APIKey) GenerateAPIToken(payload APITokenPayload) (token string, err error) {
-	var value []byte
-	value, err = json.Marshal(payload)
-	if err != nil {
-		return "", err
-	}
-
-	var ciphertext string
-	ciphertext, err = apiKey.encrypt(value)
-	if err != nil {
-		return "", err
-	}
-
-	return fmt.Sprintf("%s.%s", apiKey.AccessKey, ciphertext), nil
-}
-
-func (apiKey *APIKey) encrypt(value []byte) (result string, err error) {
+func Encrypt(key string, value []byte) (result string, err error) {
 	var hash = md5.New()
-	hash.Write([]byte(apiKey.SecretKey))
-	var key = hash.Sum(nil)
+
+	_, err = hash.Write([]byte(key))
+	if err != nil {
+		return "", err
+	}
 
 	var block cipher.Block
-	block, err = aes.NewCipher(key)
+	block, err = aes.NewCipher(hash.Sum(nil))
 	if err != nil {
 		return "", err
 	}
@@ -87,87 +64,37 @@ func (apiKey *APIKey) encrypt(value []byte) (result string, err error) {
 	hash.Reset()
 	hash.Write(value)
 	value = append(value, hash.Sum(nil)...)
+	value, err = PKCS7Pad(value, aes.BlockSize)
+	if err != nil {
+		return "", err
+	}
 
-	ciphertext := make([]byte, aes.BlockSize+len(value))
-	iv := ciphertext[:aes.BlockSize]
+	var iv = make([]byte, aes.BlockSize)
 	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
 		return "", err
 	}
 
-	stream := cipher.NewCFBEncrypter(block, iv)
-	stream.XORKeyStream(ciphertext[aes.BlockSize:], value)
+	var stream = cipher.NewCFBEncrypter(block, iv)
+	var ciphertext = make([]byte, len(value))
+	stream.XORKeyStream(ciphertext, value)
 
-	return hex.EncodeToString(ciphertext), nil
-}
-
-func (apiKey *APIKey) decrypt(ciphertext string) (result []byte, err error) {
-	var cipherData []byte
-	cipherData, err = hex.DecodeString(ciphertext)
-	if err != nil {
-		return nil, err
-	}
-
-	var hash = md5.New()
-	hash.Write([]byte(apiKey.SecretKey))
-	var key = hash.Sum(nil)
-
-	var block cipher.Block
-	block, err = aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
-
-	if len(cipherData) < aes.BlockSize {
-		return nil, errors.New("ciphertext too short")
-	}
-
-	var iv []byte
-	iv = cipherData[:aes.BlockSize]
-	cipherData = cipherData[aes.BlockSize:]
-
-	stream := cipher.NewCFBDecrypter(block, iv)
-	stream.XORKeyStream(cipherData, cipherData)
-
-	if len(cipherData) > 16 {
-		raw := cipherData[:len(cipherData)-16]
-		hash.Reset()
-		hash.Write(raw)
-		if hmac.Equal(cipherData[len(cipherData)-16:], hash.Sum(nil)) {
-			return raw, nil
-		}
-	}
-
-	return nil, errors.New("decrypt failed")
+	return hex.EncodeToString(append(iv, ciphertext...)), nil
 }
 
 func main() {
 	var err error = nil
+	var accessKey = "1c67be15cb6a3be5a9b86dffca7f348f"
+	var secretKey = "500c33c5485e4d7eb5c89dd8f33084dc"
 
-	var apiKey = &APIKey{
-		AccessKey: "1c67be15cb6a3be5a9b86dffca7f348f",
-		SecretKey: "500c33c5485e4d7eb5c89dd8f33084dc",
-	}
-
-	var payload = APITokenPayload{
-		UID:     "abc",
-		Host:    "www.example.com",
-		Expired: uint64(time.Now().AddDate(1, 0, 0).Unix()),
-	}
+	var payload = `{ "uid": "abc", "host": "www.example.com", expired:  }`
 
 	var token string
-	token, err = apiKey.GenerateAPIToken(payload)
+	token, err = Encrypt(secretKey, []byte(payload))
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("token: %v\n", token)
-
-	var decodedPayload *APITokenPayload
-	decodedPayload, err = apiKey.DecryptAPIToken(token)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("decodedPayload: %#v\n", decodedPayload)
+	fmt.Printf("token: %s.%s\n", accessKey, token)
 }
+
 ```

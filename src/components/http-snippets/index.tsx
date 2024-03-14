@@ -1,5 +1,4 @@
-import { DATADATA_BASE_URL_CN, DATADATA_BASE_URL_DEV } from "@site/src/config";
-import { production } from "@site/src/utils";
+import { DATADATA_BASE_URL } from "@site/src/config";
 import CodeBlock from "@theme/CodeBlock";
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
@@ -14,13 +13,9 @@ export type HttpSnippetsProps = {
 export function HttpSnippets(props: HttpSnippetsProps) {
   const { token, request } = props;
 
-  const baseURL = useMemo(() => {
-    return production ? DATADATA_BASE_URL_CN : DATADATA_BASE_URL_DEV;
-  }, []);
-
   const snippet = useMemo(() => {
     if (!/^https?:\/\//.test(request.url)) {
-      request.url = `${baseURL}${request.url}`;
+      request.url = `${DATADATA_BASE_URL}${request.url}`;
     }
     request.method = request.method.toUpperCase();
     request.headers = [
@@ -32,7 +27,7 @@ export function HttpSnippets(props: HttpSnippetsProps) {
       },
     ];
     return new HTTPSnippet(request as any);
-  }, [token, request, baseURL]);
+  }, [token, request]);
 
   return (
     <Tabs groupId="http-snippet" queryString={true}>

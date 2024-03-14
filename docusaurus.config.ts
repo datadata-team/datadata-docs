@@ -160,6 +160,19 @@ const config: Config = {
       style: "dark",
       links: [
         {
+          title: "Sites",
+          items: [
+            {
+              label: "发明者量化",
+              href: "https://www.fmz.cn/",
+            },
+            {
+              label: "Datadata Platform",
+              href: "https://www.datadata.cn",
+            },
+          ],
+        },
+        {
           title: "Community",
           items: [
             {
@@ -185,7 +198,7 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/hungtcs/datadata-docs",
+              href: "https://github.com/datadata-team",
             },
           ],
         },

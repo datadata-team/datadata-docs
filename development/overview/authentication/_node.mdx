@@ -1,16 +1,36 @@
+点击此处在 [Stackblitz](https://stackblitz.com/edit/vitejs-vite-gwahff?file=src%2Fmain.ts) 上运行。
+
 ```ts showLineNumbers
-async encrypt(secretKey: string, payload: string) {
+import AES from 'crypto-js/aes';
+import Hex from 'crypto-js/enc-hex';
+import Utf8 from 'crypto-js/enc-utf8';
+import WordArray from 'crypto-js/lib-typedarrays';
+import MD5 from 'crypto-js/md5';
+import CFB from 'crypto-js/mode-cfb';
+import Pkcs7 from 'crypto-js/pad-pkcs7';
+
+const accessKey = '1c67be15cb6a3be5a9b86dffca7f348f';
+const secretKey = '500c33c5485e4d7eb5c89dd8f33084dc';
+
+async function encrypt(secretKey: string, payload: string) {
   const iv = WordArray.random(16);
   const key = MD5(secretKey);
   const value = Utf8.parse(payload).clone().concat(MD5(payload));
-  const encrypted = AES.encrypt(value, key, { iv: iv, mode: CFB, padding: Pkcs7 });
+  const encrypted = AES.encrypt(value, key, {
+    iv: iv,
+    mode: CFB,
+    padding: Pkcs7,
+  });
   return iv.clone().concat(encrypted.ciphertext).toString(Hex);
 }
 
-const token = await encrypt(
-  "500c33c5485e4d7eb5c89dd8f33084dc",
-  JSON.stringify({ "uid": "abc","host": "www.example.com", "expired": 1710313863 })
-);
+async function main() {
+  const token = await encrypt(
+    secretKey,
+    JSON.stringify({ uid: 'abc', host: 'www.example.com', expired: 1710313863 })
+  );
+  console.log(`api-token: ${accessKey}.${token}`);
+}
 
-console.log(token);
+main().catch((err) => console.error(err));
 ```

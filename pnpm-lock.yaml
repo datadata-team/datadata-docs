@@ -32,6 +32,9 @@ dependencies:
   '@mdx-js/react':
     specifier: ^3.0.0
     version: 3.0.1(@types/react@18.2.60)(react@18.2.0)
+  '@stackblitz/sdk':
+    specifier: ^1.9.0
+    version: 1.9.0
   '@stoplight/elements':
     specifier: ^8.1.0
     version: 8.1.0(@babel/core@7.24.0)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
@@ -3303,6 +3306,10 @@ packages:
       eval: 0.1.8
       p-map: 4.0.0
       webpack-sources: 3.2.3
+    dev: false
+
+  /@stackblitz/sdk@1.9.0:
+    resolution: {integrity: sha512-3m6C7f8pnR5KXys/Hqx2x6ylnpqOak6HtnZI6T5keEO0yT+E4Spkw37VEbdwuC+2oxmjdgq6YZEgiKX7hM1GmQ==}
     dev: false
 
   /@stoplight/elements-core@8.1.0(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0):
