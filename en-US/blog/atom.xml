@@ -2,19 +2,91 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://datadata-team.github.io/datadata-docs/en-US/blog</id>
     <title>Datadata Docs Blog</title>
-    <updated>2024-03-04T00:00:00.000Z</updated>
+    <updated>2024-03-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://datadata-team.github.io/datadata-docs/en-US/blog"/>
     <subtitle>Datadata Docs Blog</subtitle>
     <icon>https://datadata-team.github.io/datadata-docs/en-US/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[浅谈中国贵金属商品期货（沪金、沪银）与美国宏观因素分析]]></title>
+        <id>https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/浅谈中国贵金属商品期货（沪金、沪银）与美国宏观因素分析</id>
+        <link href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/浅谈中国贵金属商品期货（沪金、沪银）与美国宏观因素分析"/>
+        <updated>2024-03-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[中国的贵金属市场，特别是黄金（金）和白银（银），是受到多重因素影响的复杂市场。除了自身的供需关系外，美国作为全球经济的重要的引导因素，其宏观经济状况对中国贵金属市场产生了深远的影响]]></summary>
+        <content type="html"><![CDATA[<p>中国的贵金属市场，特别是黄金（金）和白银（银），是受到多重因素影响的复杂市场。除了自身的供需关系外，美国作为全球经济的重要的引导因素，其宏观经济状况对中国贵金属市场产生了深远的影响。本文将结合美国的宏观经济指标，对中国贵金属商品与美国宏观因素的关联进行深入分析。</p>
+<!-- -->
+<p>首先我们来了解一下黄金（沪金）和白银（沪银）品种的一些重要的属性。</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_APZs" id="工业属性的影响">工业属性的影响<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#%E5%B7%A5%E4%B8%9A%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BD%B1%E5%93%8D" class="hash-link" aria-label="Direct link to 工业属性的影响" title="Direct link to 工业属性的影响">​</a></h2>
+<p>白银在工业中有着广泛的应用，尤其是在电子、太阳能电池、摄影和医疗设备等领域。其导电性和导热性使其成为许多电子产品和技术的重要组成部分。因此，全球经济增长或衰退对白银市场有直接影响。相对于白银，黄金在工业应用中相对较少，但在一些高科技和医疗设备中仍有一定需求。</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_APZs" id="金融属性的影响">金融属性的影响<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#%E9%87%91%E8%9E%8D%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BD%B1%E5%93%8D" class="hash-link" aria-label="Direct link to 金融属性的影响" title="Direct link to 金融属性的影响">​</a></h2>
+<p>黄金被广泛视为避险资产，用于对冲金融市场的不确定性和通货膨胀风险。在经济不稳定或政治动荡时，投资者可能寻求持有黄金。此外，中央银行的黄金储备也影响着市场对黄金的需求。而作为贵金属投资，白银具有较高的波动性，投资者可通过购买白银期货、白银ETF等工具参与市场。同时，一些投资者将白银看作实物资产，用于分散投资组合和对冲通货膨胀。</p>
+<p>同样作为贵金属，两者的走势呈现高度的一致性，经过统计分析，在沪银期货发行后至今（2012.05~2024.3），两者主力合约价格的相关性达到0.93。</p>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="cd925a4c-f282-460e-82fe-ebcf0b8aee2d" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<h2 class="anchor anchorWithHideOnScrollNavbar_APZs" id="宏观经济指标理论框架">宏观经济指标理论框架<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E6%8C%87%E6%A0%87%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6" class="hash-link" aria-label="Direct link to 宏观经济指标理论框架" title="Direct link to 宏观经济指标理论框架">​</a></h2>
+<p>下面我们重点介绍下美国宏观经济指标理论框架下的各类指标及其对贵金属品种的影响作用。除了经典理论框架中的各种指标，美国还有一项重要的指标：非农就业数据我们不能忽略。</p>
+<p>美国宏观经济指标介绍</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_APZs" id="1-美国实际gdp年化季率">1. 美国实际GDP年化季率<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#1-%E7%BE%8E%E5%9B%BD%E5%AE%9E%E9%99%85gdp%E5%B9%B4%E5%8C%96%E5%AD%A3%E7%8E%87" class="hash-link" aria-label="Direct link to 1. 美国实际GDP年化季率" title="Direct link to 1. 美国实际GDP年化季率">​</a></h3>
+<p>美国的GDP报告是衡量国家经济状况的重要指标之一。实际GDP年化季率的增长表明经济活力，可能导致美联储提高利率，从而提升美元的吸引力。这对黄金和白银价格形成负相关关系，因为投资者更倾向于持有利息产生的资产，而非黄金等无息资产。因此，投资者在关注GDP报告时要注意其对美元和贵金属市场的潜在影响。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_APZs" id="2-美国cpi月率报告">2. 美国CPI月率报告<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#2-%E7%BE%8E%E5%9B%BDcpi%E6%9C%88%E7%8E%87%E6%8A%A5%E5%91%8A" class="hash-link" aria-label="Direct link to 2. 美国CPI月率报告" title="Direct link to 2. 美国CPI月率报告">​</a></h3>
+<p>美国的消费物价指数（CPI）是通货膨胀水平的关键指标。如果CPI月率上升，可能表明通货膨胀加剧，进而影响美联储的货币政策决定。高通胀可能导致美联储采取紧缩政策，提高利率，从而对黄金和白银价格形成利空。投资者需密切关注CPI报告，了解其对贵金属市场的潜在影响。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_APZs" id="3-美国生产者物价指数ppi报告">3. 美国生产者物价指数(PPI)报告<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#3-%E7%BE%8E%E5%9B%BD%E7%94%9F%E4%BA%A7%E8%80%85%E7%89%A9%E4%BB%B7%E6%8C%87%E6%95%B0ppi%E6%8A%A5%E5%91%8A" class="hash-link" aria-label="Direct link to 3. 美国生产者物价指数(PPI)报告" title="Direct link to 3. 美国生产者物价指数(PPI)报告">​</a></h3>
+<p>生产者物价指数是衡量生产阶段价格变化的重要指标。当生产者面临较高的成本时，通常会传导给消费者，影响最终产品的价格。因此，PPI报告的变化对贵金属市场具有重要影响。高于预期的PPI可能对美元利好，对黄金形成利空，反之亦然。投资者需要密切关注PPI数据，以了解生产环节对贵金属价格的潜在影响。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_APZs" id="4-美国ism制造业pmi报告">4. 美国ISM制造业PMI报告<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#4-%E7%BE%8E%E5%9B%BDism%E5%88%B6%E9%80%A0%E4%B8%9Apmi%E6%8A%A5%E5%91%8A" class="hash-link" aria-label="Direct link to 4. 美国ISM制造业PMI报告" title="Direct link to 4. 美国ISM制造业PMI报告">​</a></h3>
+<p>ISM制造业指数是通过调查制造业企业执行者对未来生产、订单、库存等方面的评估来评估美国经济状态的数据。制造业的发展往往先于整体经济，因此ISM制造业数据成为经济反转的领先指标。投资者可以通过关注ISM制造业数据了解美国经济的动向，从而预测贵金属市场可能的变化趋势。</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_APZs" id="5-美国非农就业人数报告">5. 美国非农就业人数报告<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#5-%E7%BE%8E%E5%9B%BD%E9%9D%9E%E5%86%9C%E5%B0%B1%E4%B8%9A%E4%BA%BA%E6%95%B0%E6%8A%A5%E5%91%8A" class="hash-link" aria-label="Direct link to 5. 美国非农就业人数报告" title="Direct link to 5. 美国非农就业人数报告">​</a></h3>
+<p>非农就业人数是美联储关注的重要就业状况指标，对美元和贵金属市场产生显著影响。增加的非农就业人数通常被视为对美国经济的正面信号，可能支持美联储加息。这可能对黄金和白银形成利空，因为高利率可能减弱对无息资产的需求。投资者需密切关注非农就业人数报告，了解其对贵金属市场的潜在影响。</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_APZs" id="美国宏观经济指标与沪金沪银走势分析">美国宏观经济指标与沪金沪银走势分析<a href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/18/%E6%B5%85%E8%B0%88%E4%B8%AD%E5%9B%BD%E8%B4%B5%E9%87%91%E5%B1%9E%E5%95%86%E5%93%81%E6%9C%9F%E8%B4%A7%EF%BC%88%E6%B2%AA%E9%87%91%E3%80%81%E6%B2%AA%E9%93%B6%EF%BC%89%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E5%9B%A0%E7%B4%A0%E5%88%86%E6%9E%90#%E7%BE%8E%E5%9B%BD%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E6%8C%87%E6%A0%87%E4%B8%8E%E6%B2%AA%E9%87%91%E6%B2%AA%E9%93%B6%E8%B5%B0%E5%8A%BF%E5%88%86%E6%9E%90" class="hash-link" aria-label="Direct link to 美国宏观经济指标与沪金沪银走势分析" title="Direct link to 美国宏观经济指标与沪金沪银走势分析">​</a></h2>
+<p>除了使用指标的绝对值（今值），我们还采用了5个指标的预测偏差（今值减去预测值）和环比偏差（今值减去先前值）来分析疫情后时代2020年9月至2024年3月的沪金和沪银商品期货品种和宏观因子的相关性。我们选择2020年9月开始是因为在数据分析中，我们注意到2020年1月至2020年9月出现了异常值，例如非农就业人口下降2500万的情况，所以分析开始的时间定义为2020年9月。</p>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="b4f76eb9-4109-42fe-85fc-dff03182dcb2" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<p>根据理论分析和实证结果，可以得出以下结论：</p>
+<ol>
+<li>美国宏观经济指标对贵金属市场具有显著影响：美国的实际GDP、CPI、PPI、ISM制造业PMI以及非农就业人数等宏观经济指标对黄金和白银价格产生着重要影响。这些指标反映了经济活力、通货膨胀水平以及制造业和就业市场的情况，直接影响到投资者对贵金属的需求和市场预期。</li>
+<li>贵金属价格与宏观经济指标呈现出一定的负相关性：在大多数情况下，实际GDP、CPI、PPI、ISM制造业PMI等指标的增长与黄金和白银价格呈现负相关关系。这是因为经济活力增强、通货膨胀加剧以及制造业生产增长等因素可能导致投资者对避险无息资产的需求减少，从而影响贵金属市场的表现。</li>
+<li>预期偏差对市场影响也很重要：除了指标本身的数值变化外，市场对指标发布前后的预期偏差也会对贵金属市场产生影响。特别是对于黄金市场，市场预期与实际数据之间的差异可能会引发市场波动，从而影响到贵金属价格的走势。</li>
+</ol>
+<p>因此我们在进行贵金属市场分析和交易决策时，可以参考关注美国宏观经济指标的变化情况，并结合市场预期偏差进行综合分析，以更准确地把握市场走势和风险。</p>
+<p>下面我们从整体的角度深入分析2020年9月至2024年1月期间，美国宏观经济因素对贵金属期货的影响时，这时候我们不得不提到的是疫情期间美国减息和加息政策的实施以及其对通胀前后期的转变。在疫情前期，为鼓舞经济，美国减息至0.25水平。然而，至2022年3月，通胀指标（CPI和PPI）的高度崛起不得不导致美联储实施加息遏制通胀，加息政策的实施通常是为了抑制通货膨胀，提高利率水平，从而影响货币供应和经济活动。在2022年3月这一时间节点，美联储采取了加息措施，标志着宏观经济政策的重大调整。我们可以根据五个指标的趋势背后确定周期的趋势，从而理解贵金属品种趋势变化的整体原因.</p>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="11bc7a6a-f229-47c8-92a8-06e2d1b63dae" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="7b799a03-55b4-4280-be4d-03b85e573f2a" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="8c795122-55bd-4aa8-92db-b41fa8757235" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="80c3cfae-ef77-462b-8228-5e26289877a3" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="3fbbca6e-9f35-4b0c-b7b5-8e7ea7ed5932" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<p><strong>通胀前期（2020年9月至2022年3月：贵金属市场下行）：</strong></p>
+<p>在此阶段，宽松的货币政策和大规模的财政刺激措施推动了美国经济的复苏。这一时期，通货膨胀压力逐渐上升，主要体现在CPI和PPI的上升趋势。非农就业人口数据表现良好，GDP增长稳健，而制造业PMI等经济指标也维持相对高位。这一时期的经济活动导致了贵金属市场的下行趋势，反映出投资者更倾向于投资资产，减少避险资产，所以沪金沪银走势倾向于下行。</p>
+<p><strong>加息和通胀后期（2022年3月至2024年1月：贵金属市场上行）：</strong></p>
+<p>随着加息政策的实施，美国经济进入通胀后期。利率上升对经济活动产生一定制约，但同时通货膨胀的压力并未得到彻底的缓解。CPI和PPI指数也处于较高的水平，非农就业数据也比较火爆，代表通胀的压力仍然较为剧烈。为避免经济的不确定性，这一时期贵金属市场呈现出明显的上行趋势，投资者逐渐转向风险资产。</p>
+<datadata-embedded-viewer classname="h-[400px]" class="mb-4 h-[400px] border border-solid border-gray-200 dark:border-gray-800" theme="light" query-id="298d1589-7cf1-4f84-a5f4-2a464f5569db" language="en-US" api-token="4eca924e75873b3aa27905f681db108a.0a43e525f70c337f8ba8efc5beaddd1511f99805f6eb05a09b74a65bc9fd212deb786a43ff685c2ee2b259e025fcba9d27ed95d8d0a1b755963f24ec274db817fc3c0361a46b0b8b79faf22ada84d161"></datadata-embedded-viewer>
+<p>所以总结来说，在通胀前期，市场可能看好经济复苏，偏好风险投资，导致金银价格下跌。而在加息和通胀后期，投资者逐渐转向风险资产，推动金银价格上涨。这一传导机制使得贵金属在不同经济阶段呈现出相反的趋势。</p>
+<p><strong>理论性解释：</strong></p>
+<p>这一时期的贵金属价格波动反映了投资者对经济周期的敏感性。
+宽松政策下，市场更愿意承担风险，而加息和通胀阶段则引发避险情绪。
+这表明贵金属在投资组合中的角色不仅仅是一种避险资产，更是受到宏观经济因素和货币政策的影响。
+投资者需要时刻关注宏观经济数据和政策变化，以更好地把握贵金属市场的投资机会。</p>
+<p><strong>温馨提醒：</strong></p>
+<p>本文仅是从数据角度出发，在FMZ的DATADATA平台浅显的探讨了2022年以后沪金和沪银商品期货品种与美国宏观因子的关系分析，所得结论不具有明显的投资建议，请大家谨慎参考。</p>
+<hr>
+<blockquote>
+<p>本系列课程旨在为大家介绍宏观分析在商品期货量化交易中的应用，其他相关文章请点击下面链接：</p>
+<ul>
+<li><a href="https://www.fmz.cn/digest-topic/9504" target="_blank" rel="noopener noreferrer">基于宏观数据商品期货的研究框架（一）：国债收益率</a></li>
+<li><a href="https://www.fmz.cn/digest-topic/9514" target="_blank" rel="noopener noreferrer">基于宏观数据商品期货的研究框架（二）：美联储加息对中国商品期货的影响</a></li>
+<li><a href="https://www.fmz.cn/digest-topic/9515" target="_blank" rel="noopener noreferrer">基于宏观数据商品期货的研究框架（三）：浅谈货币供应量指标与商品期货关系的分析框架</a></li>
+</ul>
+</blockquote>]]></content>
+        <author>
+            <name>发明者量化</name>
+            <uri>https://www.fmz.com/user/3b1cb13f2d25352b3ccc85f5157c6afc</uri>
+        </author>
+        <category label="fmz" term="fmz"/>
+        <category label="交流分享" term="交流分享"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[量化交易领域的必备工具--发明者量化数据探索模块]]></title>
         <id>https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/04/FMZ平台集成Datadata</id>
         <link href="https://datadata-team.github.io/datadata-docs/en-US/blog/2024/03/04/FMZ平台集成Datadata"/>
         <updated>2024-03-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[FMZ 量化交易平台数据探索集成 Datadata，量化交易领域的必备工具--发明者量化数据探索模块]]></summary>
-        <content type="html"><![CDATA[<div class="theme-admonition theme-admonition-tip admonition_Tj2R alert alert--success"><div class="admonitionHeading_yykt"><span class="admonitionIcon_nwo2"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_y6kM"><p>原文链接：<a href="https://www.fmz.com/bbs-topic/10370" target="_blank" rel="noopener noreferrer">https://www.fmz.com/bbs-topic/10370</a></p></div></div>
-<div style="background-size:cover;background-repeat:no-repeat;position:relative;background-image:url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAIAAADzBuo/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nAGbAGT/AOrv+uXs+Nvj8szY6b7L3bDA1KO2z5quypWsypWtywDo7fjByNWlsL+bqLqRqMWPrdCPr9OGqM6Vr82Uq8kA6e74tb7MjZuskJ2vgKLJcKDWbpzScKXei7XjjajJAOrv+tTb58DI1LbC1Km0xZ6uxq7C25267nGf4qC5zwDq8PrU3OjAyteyv9GissiYrsuctNevw+Opvt+ftNIf+W/TCGK0XwAAAABJRU5ErkJggg==&quot;)"><svg style="width:100%;height:auto;max-width:100%;margin-bottom:-4px" width="1304" height="717"></svg><noscript><img style="width:100%;height:auto;max-width:100%;margin-bottom:-4px;position:absolute;top:0;left:0" src="/datadata-docs/en-US/assets/ideal-img/image.4f059d9.1304.png" srcset="/datadata-docs/en-US/assets/ideal-img/image.4f059d9.1304.png 1304w" width="1304" height="717"></noscript></div>
+        <content type="html"><![CDATA[<div style="background-size:cover;background-repeat:no-repeat;position:relative;background-image:url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAIAAADzBuo/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nAGbAGT/AOrv+uXs+Nvj8szY6b7L3bDA1KO2z5quypWsypWtywDo7fjByNWlsL+bqLqRqMWPrdCPr9OGqM6Vr82Uq8kA6e74tb7MjZuskJ2vgKLJcKDWbpzScKXei7XjjajJAOrv+tTb58DI1LbC1Km0xZ6uxq7C25267nGf4qC5zwDq8PrU3OjAyteyv9GissiYrsuctNevw+Opvt+ftNIf+W/TCGK0XwAAAABJRU5ErkJggg==&quot;)"><svg style="width:100%;height:auto;max-width:100%;margin-bottom:-4px" width="1304" height="717"></svg><noscript><img style="width:100%;height:auto;max-width:100%;margin-bottom:-4px;position:absolute;top:0;left:0" src="/datadata-docs/en-US/assets/ideal-img/image.4f059d9.1304.png" srcset="/datadata-docs/en-US/assets/ideal-img/image.4f059d9.1304.png 1304w" width="1304" height="717"></noscript></div>
 <p>在当今金融市场的激烈竞争中，量化交易作为一种基于数据分析和算法模型的交易策略，正在成为投资者和交易员们越来越青睐的选择。而在量化交易的领域中，
 数据的价值愈发凸显，因此，一套高效、可靠的量化数据探索工具成为了实现成功交易的不可或缺的关键之一。</p>
 <!-- -->
@@ -90,7 +162,8 @@
 <p><img decoding="async" loading="lazy" src="https://datadata-team.github.io/datadata-docs/en-US/assets/images/11-c9a5ae10f60557163641388522348c79.png" width="1754" height="340" class="img_aIzD"></p>
 <p>这些分享的代码、链接，可以嵌入FMZ平台社区帖子、文章。可以嵌入网页，可以转载到其它社区、论坛等。也可以直接分享给任何人。</p>
 <!-- -->
-<p>这个强大的量化交易工具，你还在等什么？赶紧来尝试挖掘数据、分析数据吧。</p>]]></content>
+<p>这个强大的量化交易工具，你还在等什么？赶紧来尝试挖掘数据、分析数据吧。</p>
+<div class="theme-admonition theme-admonition-tip admonition_Tj2R alert alert--success"><div class="admonitionHeading_yykt"><span class="admonitionIcon_nwo2"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_y6kM"><p>原文链接：<a href="https://www.fmz.com/bbs-topic/10370" target="_blank" rel="noopener noreferrer">https://www.fmz.com/bbs-topic/10370</a></p></div></div>]]></content>
         <author>
             <name>发明者量化</name>
             <uri>https://www.fmz.com/user/3b1cb13f2d25352b3ccc85f5157c6afc</uri>
