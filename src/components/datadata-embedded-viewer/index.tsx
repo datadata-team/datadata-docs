@@ -1,16 +1,19 @@
+import { useColorMode } from "@docusaurus/theme-common";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { DATADATA_API_TOKEN, DATADATA_WEB_COMPONENTS_URL } from "@site/src/config";
+import clsx from "clsx";
 import { forwardRef, useEffect, useLayoutEffect, useState, type HTMLAttributes, type PropsWithChildren } from "react";
 
 export type DatadataEmbeddedViewerProps = HTMLAttributes<HTMLElement> &
   PropsWithChildren<{
-    region: "cn" | "global";
     queryId: string;
+    bordered?: boolean;
   }>;
 
 export const DatadataEmbeddedViewer = forwardRef<HTMLElement, DatadataEmbeddedViewerProps>((props, ref) => {
-  const { region, queryId, children, ...htmlProps } = props;
+  const { queryId, children, bordered, ...htmlProps } = props;
 
+  const { colorMode } = useColorMode();
   const {
     i18n: { currentLocale },
   } = useDocusaurusContext();
@@ -33,9 +36,14 @@ export const DatadataEmbeddedViewer = forwardRef<HTMLElement, DatadataEmbeddedVi
     <datadata-embedded-viewer
       {...htmlProps}
       ref={setHostElement}
+      class={clsx("mb-4", htmlProps.className, {
+        "border-none": !bordered,
+        "border border-solid border-gray-200 dark:border-gray-800": bordered,
+      })}
+      theme={colorMode}
+      query-id={queryId}
       language={currentLocale}
       api-token={DATADATA_API_TOKEN}
-      query-id={queryId}
     >
       {children}
     </datadata-embedded-viewer>
