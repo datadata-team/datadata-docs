@@ -1,4 +1,3 @@
-
 ---
 title: DataFrame
 sidebar_position: 3
