@@ -279,7 +279,7 @@ return d1.mean(numeric_only=True)   #返回13.5
 
 ### diff
 
-返回每一列的差分阶数。
+返回每一列的设定阶数差分值。
 
 ```py
 df.diff(period=n) #返回每一列的`n`级差分阶数，默认为1；当包含非数值列时，返回错误。
