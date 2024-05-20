@@ -1,4 +1,3 @@
-
 ---
 title: DataFrameGroupBy
 sidebar_position: 8
