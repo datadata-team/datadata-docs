@@ -1,4 +1,3 @@
-
 ---
 title: SeriesGroupBy
 sidebar_position: 7
