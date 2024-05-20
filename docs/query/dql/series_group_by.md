@@ -68,7 +68,7 @@ return s1.std()  #返回分组后各组标准差：[1, 0.7071067811865476]
 返回分组后的方差。
 
 ```python
-SeriesGroupBy.var(skipna=True, numeric_only=False, ddof=n) #参数ddof表示用于标准差计算的自由度调整（Delta Degrees of Freedom）。n代表自由度调整数值，具体指从样本数量中减去的数值。默认情况下，ddof=1，表示计算样本标准差。如果需要计算总体标准差，可以将ddof设置为0。
+SeriesGroupBy.var(skipna=True, numeric_only=False, ddof=n) 
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 1, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
