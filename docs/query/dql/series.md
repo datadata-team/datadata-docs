@@ -1,4 +1,3 @@
-
 ---
 title: Series
 sidebar_position: 2
