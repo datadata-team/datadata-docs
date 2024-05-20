@@ -230,7 +230,7 @@ return s1.mean(skipna=True, numeric_only=False) #返回Series均值: 1.75
 
 ### diff
 
-返回 Series 中的设定级数差分。
+返回 Series 中的设定阶数差分值。
 
 ```py
 Series.diff(period=n) #"n"代表差分级数，默认为1
