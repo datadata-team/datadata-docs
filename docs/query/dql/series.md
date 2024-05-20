@@ -322,7 +322,7 @@ return s1.reduce(lambda acc, x: acc + x, 0) #返回累加值10
 
 ### rolling
 
-根据设定参数，返回滚动窗口对象`dataframe.Rolling`。滚动窗口对象包含方法请查阅[]()。
+根据设定参数，返回滚动窗口对象`dataframe.Rolling`。
 
 ```py
 Series.rolling(window=n1, min_periods=n2) # "windows"代表滑动窗口大小，“min_period”代表最小计算范围
@@ -362,7 +362,7 @@ return r1# 返回"dataframe.Rolling"属性对象
 
 ### resample
 
-根据设定频率，重新采样 Series，返回重采样对象`dataframe.Resampler`。滚动窗口对象包含方法请查阅[]()。
+根据设定频率，重新采样 Series，返回重采样对象`dataframe.Resampler`。
 
 ```py
 Series.resample(period, timeline) #包含两个参数，第一个代表采样间隔，第二个代表时间索引
