@@ -93,10 +93,10 @@ return s1.mean()  #返回分组后各组均值：[2, 4.5]
 
 ### diff
 
-返回分组后各组差分值。
+返回分组后各组设定阶数差分值。
 
 ```python
-SeriesGroupBy.diff(periods = n) # "n"代表差分级数，默认为1
+SeriesGroupBy.diff(periods = n) # "n"代表差分阶数，默认为1
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 1, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
