@@ -96,6 +96,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.median()
 ```
 
+
 ### apply
 
 将函数应用到各个滚动窗口中的数据。
