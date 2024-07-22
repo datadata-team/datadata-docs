@@ -130,7 +130,7 @@ SeriesGroupBy.pct_change(periods=1) #包含参数"periods"，代表偏移周期�
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 1, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
 g1 = d1.groupby(["name", "age"])
 s1 = g1["count"]
-return s1.cumprod()  #返回分组后百分比变化：[-, 1, 0.5, -, 0.25]
+return s1.pct_change()  #返回分组后百分比变化：[-, 1, 0.5, -, 0.25]
 ```
 
 ### apply
