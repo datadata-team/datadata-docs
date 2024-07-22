@@ -228,6 +228,30 @@ s1 = d1["age"]
 return s1.mean(skipna=True, numeric_only=False) #返回Series均值: 1.75
 ```
 
+### abs
+
+返回 Series 中的绝对值。
+
+```py
+Series.abs(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
+
+# 示范
+d1 = DataFrame({"count": [12, 13, -13, 15] })
+return d1['count'].abs(numeric_only=True)   #返回[12, 13, 13, 15]
+```
+
+### round
+
+返回 Series 中的指定保留小数点位的值。
+
+```py
+Series.round(decimals=0) #decimals代表保留小数，默认为0
+
+# 示范
+d1 = DataFrame({"count": [12, 13.6, 13.1, 15] })
+return d1['count'].round() #返回[12, 13, 13, 15]
+```
+
 ### diff
 
 返回 Series 中的设定阶数差分值。
@@ -400,4 +424,163 @@ Series.sort_values(ascending=False, na_position="First") #包含"ascending"参�
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [2, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
 s1 = d1["age"]
 return s1.sort_values(ascending=False) #降序排列，返回[3, 2, 1, 1, 1]
+```
+
+### concat
+
+用于将多个 Series 数据对象合并在一起。
+
+```py
+concat([Series1, Series2]) 
+
+# 示范
+s1 = Series([1, 2, 3], name="s1")
+s2 = Series(["a", "b", "c"], name="s2")
+s3 = concat([s1, s2])
+assert.eq(list(s3), [1, 2, 3, "a", "b", "c"])
+```
+
+### count
+
+返回 Series 中非空值(None)的个数。
+
+```py
+Series.count()
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, None, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data['month'].count() # 返回3
+```
+
+### unique
+
+返回 Series 中的唯一值。
+
+```py
+Series.unique()
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, 4, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data['month'].unique() # 返回 [2, 4]
+```
+
+### value_counts
+
+返回 Series 中每个唯一值出现的次数。
+
+```py
+Series.value_counts()
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, 2, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data['price'].value_counts() 
+# 返回
+# 3 2
+# 2 2
+```
+
+### nlargest
+
+返回 Series 中前 n 个最大的值。
+
+```py
+Series.nlargest(n = N) # N 代表返回个数
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, 2, 2],
+  "price": [1, 2, 3, 4],
+})
+
+return data['price'].nlargest(2) # 返回 [4, 3]
+```
+
+### nsmallest
+
+返回 Series 中前 n 个最小的值。
+
+```py
+Series.nsmallest(n = N)
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, 2, 2],
+  "price": [1, 2, 3, 4],
+})
+
+return data['price'].nsmallest(2)  # 返回 [1, 2]
+```
+
+### isin
+
+返回一个布尔值 Series，表示每个元素是否在指定的值列表中。
+
+```py
+Series.isin(values)
+
+# 示范
+data = DataFrame({
+  "type": ['future', 'option', 'future', 'option']
+})
+
+return data['type'].isin(['option']) 
+# 返回 type
+# False
+# True
+# False
+# True
+```
+
+### drop_duplicates
+
+返回 Series 中的唯一值，去除重复值。
+
+```py
+DataFrame.drop_duplicates()
+
+# 示范
+data = DataFrame({
+  "year": [2022, 2022, 2023, 2024],
+  "month": [2, 2, 2, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data['year'].drop_duplicates() # 返回 [2022, 2023, 2024]
+```
+
+### replace
+
+替换 Series 中的指定值。
+
+```py
+Series.replace(to_replace, value) # `to_replace`，表示要被替换的值，`value`，表示新的值
+
+# 示范
+df = DataFrame({'A': [0, 1, 2, 3, 4],
+                'B': [5, 6, 7, 8, 9],
+                'C': ['a', 'b', 'c', 'd', 'e']})
+return df['A'].replace([0, 1], -99)
+# 返回
+# 0   -99
+# 1   -99
+# 2     2
+# 3     3
+# 4     4
 ```
