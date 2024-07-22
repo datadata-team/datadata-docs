@@ -83,6 +83,19 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.mean()
 ```
 
+### median
+
+返回各个滚动窗口中的中位数。
+
+```py
+dataframe.Rolling.median(skipna=True, numeric_only=False)
+
+# 示范
+d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
+r1 = d1["age"].rolling(window=3, min_periods=1) 
+return r1.median()
+```
+
 ### apply
 
 将函数应用到各个滚动窗口中的数据。
