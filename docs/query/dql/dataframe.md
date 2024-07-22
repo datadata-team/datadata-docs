@@ -205,114 +205,6 @@ d1 = DataFrame({ "name": ["js", "go", None, "python"], "count": [12, None, 14, 1
 return d1.fillna(0) #填充缺失值为0
 ```
 
-### min
-
-返回每一列的最小值。
-
-```py
-df.min(skipna=True，numeric_only=False) #包含参数"skipna"，代表是否忽略缺失值，默认为"True"；参数"numeric_only"，代表是否只计算数值列，默认为"False"。
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.min(numeric_only=True) #返回 count 列最小值：12
-```
-
-### max
-
-返回每一列的最大值。
-
-```py
-df.max(skipna=True，numeric_only=False) 
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.max(numeric_only=True) #返回 count 列最大值：15
-```
-
-### std
-
-返回每一列的标准差。
-
-```py
-df.std(skipna=True, numeric_only=False, ddof=n) #参数"ddof"，表示用于标准差计算的自由度调整（Delta Degrees of Freedom）。n代表自由度调整数值，具体指从样本数量中减去的数值。默认情况下，ddof=1，表示计算样本标准差。如果需要计算总体标准差，可以将ddof设置为0。
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.std(numeric_only=True) #返回 count 列标准差：1.2909944487358056
-```
-
-### var
-
-返回每一列的方差。
-
-```py
-df.var(skipna=True, numeric_only=False, ddof=n) 
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.var(numeric_only=True) #返回 count 列方差：1.6666666666666667
-```
-
-### sum
-
-返回每一列的总和。
-
-```py
-df.sum(skipna=True，numeric_only=False) 
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.sum(numeric_only=True)  #返回"count"列总和54
-```
-
-### mean
-
-返回每一列的平均值。
-
-```py
-df.mean(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
-
-# 示范
-d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
-return d1.mean(numeric_only=True)   #返回13.5
-```
-
-### diff
-
-返回每一列的设定阶数差分值。
-
-```py
-df.diff(period=n) #返回每一列的`n`级差分阶数，默认为1；当包含非数值列时，返回错误。
-
-# 示范
-d1 = DataFrame({"count": [12, 13, 14, 15] })
-return d1.diff(1)  #返回count列一阶差分：[-, 1, 1, 1]
-```
-
-### cumprod
-
-返回每一列的累积乘积。
-
-```py
-df.cumprod(skipna=True) #当包含非数值列时，返回错误。
-
-# 示范
-d1 = DataFrame({ "count": [12, 13, 14, 15] })
-return d1.cumprod() #返回count列累积乘积：[12, 156, 2184, 32760]
-```
-
-### pct_change
-
-返回每一列的百分比变化。
-
-```py
-df.pct_change(periods=1) #包含参数"periods"，代表偏移周期，默认值为1；当包含非数值列时，返回错误。
-
-# 示范
-d1 = DataFrame({"count": [12, 13, 14, 15] })
-return d1.pct_change()  #返回count列偏移周期为1的百分比变化：[-, 0.08333333333333333, 0.07692307692307693, 0.07142857142857142]
-```
-
 ### apply
 
 对DataFrame的每一列应用函数。
@@ -415,4 +307,277 @@ df.sort_values(['col1'...],  ascending=False na_position="First") # "第一个�
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "count": [1, 2, 3, 4, 5], "age": [1, 1, 2, 3, 3] })
 d1 = d1.sort_values(by=['name', 'count'])
 return d1 #返回按照'name'和'count'列排序后的结果
+```
+
+### pivot
+
+通过重塑数据表，将指定列的值旋转至新的索引列和列中，具体包括以下三个参数：
+
+- `index`：用于指定新 DataFrame 的行索引的列。可以是一个列名的字符串。
+- `columns`：用于指定新 DataFrame 的列索引的列。可以是一个列名的字符串。
+- `values`：用于指定填充新 DataFrame 的值的列。可以是一个列名的字符串。
+
+**注**: 当数据中存在重复项时，直接使用 pivot 方法会报错，需要先使用 groupby 方法对数据进行分组并进行聚合操作（如求平均值、总和等），然后再使用 pivot 进行数据重塑。
+
+```py
+df.pivot(index='...', columns='...', values='...')
+
+# 示范
+data = {
+  'date': ['2024-05-01', '2024-05-01', '2024-05-01', '2024-05-01'],
+  'city': ['Beijing', 'Shanghai', 'Beijing', 'Shanghai'],
+  'temperature': [25, 20, 26, 21]
+}
+d1 = DataFrame(data)
+
+# 直接调用 pivot 方法会报错，因为数据中存在重复项
+assert.fails(lambda: d1.pivot(index='date', columns='city', values='temperature'), 'there are duplicates in the data, please groupby first')
+
+# 需要先使用 groupby 方法对数据进行分组
+d2 = d1.groupby(['date', 'city']).mean()
+
+# 然后再进行 pivot 操作
+d3 = d2.pivot(index='date', columns='city', values='temperature')
+
+# 检查列名是否符合预期
+assert.eq(d3.columns, ["temperature_Beijing", "temperature_Shanghai"])
+```
+
+### concat
+
+用于将多个数据对象沿指定轴合并在一起。具体包括以下参数：
+
+- `objs`：用于指定需要合并的对象，可以是 Series 或 DataFrame 的列表或字典。
+- `axis`：用于指定合并的轴。默认为 `0`（按行合并）。如果设置为 `1`，则按列合并。
+- `join`：用于指定合并的方式。可以是 `"outer"`（默认）表示并集，即合并所有列或行；或者 `"inner"` 表示交集，即只合并那些在所有数据中都存在的列或行。
+
+```py
+concat([d1, d2], axis = 0/1, join = "outer"/"inner")
+
+# 示范
+d1 = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [1, 2, 3, 4],
+  "price": [1, 2, 3, 4],
+})
+d2 = DataFrame({
+  "year": [2024, 2021, 2022, 2023],
+  "month": [5, 1, 2, 3],
+  "count": [4, 3, 2, 1],
+  "price": [1, 2, 3, 4],
+})
+# 默认 outer
+d3 = concat([d1, d2])
+assert.eq(d3.shape, (8, 4))
+assert.eq(list(d3["count"]), [None, None, None, None, 4, 3, 2, 1])
+# inner
+d3 = concat([d1, d2], join="inner")
+assert.eq(d3.shape, (8, 3))
+assert.eq(d3.columns, ["year", "month", "price"])
+
+# 合并 DataFrame 和 Series
+s1 = Series(["a", "b", "c"], name="s1")
+d3 = concat([d1, d2, s1])
+assert.eq(d3.shape, (11, 5))
+assert.eq(d3.columns, ["year", "month", "price", "count", "s1"])
+assert.eq(list(d3['s1']), [None, None, None, None, None, None, None, None, "a", "b", "c"])
+
+d3 = concat([d1, d2, s1], join="inner")
+assert.eq(d3.shape, (0, 0))
+assert.eq(d3.empty, True)
+```
+
+### drop_duplicates
+
+返回 DataFrame 中的唯一行，去除重复行。
+
+```py
+DataFrame.drop_duplicates()
+
+# 示范
+data = DataFrame({
+  "year": [2022, 2022, 2023, 2024],
+  "month": [2, 2, 2, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data.drop_duplicates() 
+# 返回
+#    year  month  price
+# 0  2022      2      2
+# 2  2023      2      3
+# 3  2024      2      3
+```
+
+### min
+
+返回每一列的最小值。
+
+```py
+df.min(skipna=True，numeric_only=False) #包含参数"skipna"，代表是否忽略缺失值，默认为"True"；参数"numeric_only"，代表是否只计算数值列，默认为"False"。
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.min(numeric_only=True) #返回 count 列最小值：12
+```
+
+### max
+
+返回每一列的最大值。
+
+```py
+df.max(skipna=True，numeric_only=False) 
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.max(numeric_only=True) #返回 count 列最大值：15
+```
+
+### std
+
+返回每一列的标准差。
+
+```py
+df.std(skipna=True, numeric_only=False, ddof=n) #参数"ddof"，表示用于标准差计算的自由度调整（Delta Degrees of Freedom）。n代表自由度调整数值，具体指从样本数量中减去的数值。默认情况下，ddof=1，表示计算样本标准差。如果需要计算总体标准差，可以将ddof设置为0。
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.std(numeric_only=True) #返回 count 列标准差：1.2909944487358056
+```
+
+### var
+
+返回每一列的方差。
+
+```py
+df.var(skipna=True, numeric_only=False, ddof=n) 
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.var(numeric_only=True) #返回 count 列方差：1.6666666666666667
+```
+
+### sum
+
+返回每一列的总和。
+
+```py
+df.sum(skipna=True，numeric_only=False) 
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.sum(numeric_only=True)  #返回"count"列总和54
+```
+
+### mean
+
+返回每一列的平均值。
+
+```py
+df.mean(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.mean(numeric_only=True)   #返回13.5
+```
+
+### median
+
+返回每一列的中位数。
+
+```py
+df.median(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
+return d1.median(numeric_only=True)   #返回13.5
+```
+
+### mode
+
+返回每一列的众数。
+
+```py
+df.mode(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
+
+# 示范
+d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 13, 15] })
+return d1.mode(numeric_only=True)   #返回13
+```
+
+### abs
+
+返回每一列的绝对值。
+
+```py
+df.abs(skipna=True，numeric_only=False) #当存在非数值列，进行计算会返回错误
+
+# 示范
+d1 = DataFrame({"count": [12, 13, -13, 15] })
+return d1.abs(numeric_only=True)   #返回[12, 13, 13, 15]
+```
+
+### round
+
+返回每一列的指定保留小数点位的值。
+
+```py
+Series.round(decimals=0) #decimals代表保留小数，默认为0
+
+# 示范
+d1 = DataFrame({"count": [12, 13.6, 13.1, 15] })
+return d1.round() #返回[12, 13, 13, 15]
+```
+
+### diff
+
+返回每一列的设定阶数差分值。
+
+```py
+df.diff(period=n) #返回每一列的`n`级差分阶数，默认为1；当包含非数值列时，返回错误。
+
+# 示范
+d1 = DataFrame({"count": [12, 13, 14, 15] })
+return d1.diff(1)  #返回count列一阶差分：[-, 1, 1, 1]
+```
+
+### cumprod
+
+返回每一列的累积乘积。
+
+```py
+df.cumprod(skipna=True) #当包含非数值列时，返回错误。
+
+# 示范
+d1 = DataFrame({ "count": [12, 13, 14, 15] })
+return d1.cumprod() #返回count列累积乘积：[12, 156, 2184, 32760]
+```
+
+### pct_change
+
+返回每一列的百分比变化。
+
+```py
+df.pct_change(periods=1) #包含参数"periods"，代表偏移周期，默认值为1；当包含非数值列时，返回错误。
+
+# 示范
+d1 = DataFrame({"count": [12, 13, 14, 15] })
+return d1.pct_change()  #返回count列偏移周期为1的百分比变化：[-, 0.08333333333333333, 0.07692307692307693, 0.07142857142857142]
+```
+
+### count
+
+返回 DataFrame 各自列中非空值(None)的个数。
+
+```py
+df.count()
+
+# 示范
+data = DataFrame({
+  "year": [2021, 2022, 2023, 2024],
+  "month": [2, 2, None, 2],
+  "price": [2, 2, 3, 3],
+})
+
+return data.count() # 返回各自列有效值的个数：4，3，4
 ```
