@@ -58,3 +58,7 @@ article:is([itemprop="blogPost"]) > header > h1 {
 [data-theme="dark"] .medium-zoom-overlay {
   background-color: #000000 !important;
 }
+
+.katex > .katex-mathml {
+  user-select: none;
+}

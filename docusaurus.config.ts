@@ -4,6 +4,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import type { PluginOptions as SearchLocalPluginOptions } from "@easyops-cn/docusaurus-search-local";
 import { themes as prismThemes } from "prism-react-renderer";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 import { EnumChangefreq } from "sitemap";
 import webpack from "webpack";
 
@@ -42,6 +44,8 @@ const config: Config = {
           routeBasePath: "docs",
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: {
           showReadingTime: true,
@@ -220,6 +224,18 @@ const config: Config = {
       },
     },
   } satisfies Preset.ThemeConfig,
+  stylesheets: [
+    // {
+    //   href: "https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css",
+    //   type: "text/css",
+    //   integrity: "sha256-hLTCMFlKxdNgPXyWlSSxYN0ykJmxxq9Yt3MNfdRGWeA=",
+    //   crossorigin: "anonymous",
+    // },
+    {
+      href: "/datadata-docs/lib/katex-v0.16.11/katex.min.css",
+      type: "text/css",
+    },
+  ],
 };
 
 export default config;

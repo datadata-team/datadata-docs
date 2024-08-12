@@ -1,6 +1,10 @@
 {
   "cSpell.words": [
+    "altzone",
+    "asctime",
     "changefreq",
+    "copysign",
+    "crossorigin",
     "dataframe",
     "ddof",
     "dtype",
@@ -8,11 +12,14 @@
     "flowbite",
     "httpsnippet",
     "iterrows",
+    "katex",
+    "localtime",
     "noreply",
     "peaceiris",
     "Resampler",
     "savechart",
-    "sharechart"
+    "sharechart",
+    "tzname"
   ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"

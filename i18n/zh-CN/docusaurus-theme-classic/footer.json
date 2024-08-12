@@ -25,10 +25,22 @@
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/hungtcs/datadata-docs"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/datadata-team"
   },
   "copyright": {
     "message": "Copyright © 2024 Datadata, Inc. Built with Docusaurus.",
     "description": "The footer copyright"
+  },
+  "link.title.Sites": {
+    "message": "Sites",
+    "description": "The title of the footer links column with title=Sites in the footer"
+  },
+  "link.item.label.发明者量化": {
+    "message": "发明者量化",
+    "description": "The label of footer link with label=发明者量化 linking to https://www.fmz.cn/"
+  },
+  "link.item.label.Datadata Platform": {
+    "message": "Datadata Platform",
+    "description": "The label of footer link with label=Datadata Platform linking to https://www.datadata.cn"
   }
 }
