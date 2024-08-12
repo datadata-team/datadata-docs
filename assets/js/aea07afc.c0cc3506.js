@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdatadata_docs=self.webpackChunkdatadata_docs||[]).push([[4199],{2598:a=>{a.exports=JSON.parse('{"label":"\u4ea4\u6d41\u5206\u4eab","permalink":"/datadata-docs/blog/tags/\u4ea4\u6d41\u5206\u4eab","allTagsPath":"/datadata-docs/blog/tags","count":2,"unlisted":false}')}}]);
