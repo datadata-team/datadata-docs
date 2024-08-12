@@ -21,7 +21,7 @@ jobs:
           version: 8.11.0
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: pnpm
       - run: pnpm install
       - run: pnpm run build

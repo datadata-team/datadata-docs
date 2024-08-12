@@ -1,10 +1,13 @@
 {
   "cSpell.words": [
     "changefreq",
+    "dataframe",
+    "ddof",
     "dtype",
     "easyops",
     "flowbite",
     "httpsnippet",
+    "iterrows",
     "noreply",
     "peaceiris",
     "Resampler",

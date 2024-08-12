@@ -23,7 +23,7 @@ return d1
 ```py
 dict = {"name": ["js", "go"], "count": [1, 2]}
 d = DataFrame(dict)
-return d 
+return d
 ```
 
 ### 通过字典列表创建
@@ -31,7 +31,7 @@ return d
 ```py
 dictList = [{ "name": "js", "count": 1 }, { "name": "go", "count": 2 }]
 d = DataFrame(dictList)
-return d 
+return d
 ```
 
 ### 通过列表创建
@@ -52,7 +52,6 @@ d = DataFrame([["js", 1],["go",2]], columns=["name","count"])
 return d.columns #返回列名列表：["name","count"]
 ```
 
-
 ### shape
 
 返回 DataFrame 形状（长度乘以宽度）：`Type (int, int)`
@@ -71,10 +70,9 @@ d = DataFrame(columns=["name","count"])
 return d.empty #空的 DataFrame ，返回"True"
 ```
 
-
 ### has_more
 
-`query` 返回的数据并非都是完整的数据（最多支持10000行），可使用该属性进行判断指示是否还有更多的内容可供处理或迭代：`Type bool`
+`query` 返回的数据并非都是完整的数据（最多支持 10000 行），可使用该属性进行判断指示是否还有更多的内容可供处理或迭代：`Type bool`
 
 ```py
 data = query("select * from shfe.f_position_ranking")
@@ -85,7 +83,7 @@ return data.has_more #存在更多内容，返回"True"
 
 ### head
 
-返回DataFrame的前几行。
+返回 DataFrame 的前几行。
 
 ```py
 df.head(n) # "n"代表返回行数，默认值为5
@@ -97,7 +95,7 @@ return d.head() #返回前五行数据
 
 ### tail
 
-返回DataFrame的后几行。
+返回 DataFrame 的后几行。
 
 ```py
 df.tail(n) # "n"代表返回行数，默认值为5
@@ -109,7 +107,7 @@ return d.tail() #返回后五行数据
 
 ### rename
 
-重命名DataFrame的列。
+重命名 DataFrame 的列。
 
 ```py
 df.rename()
@@ -122,7 +120,7 @@ return d2.columns #返回重命名后列名：["language", "count"]
 
 ### items
 
-返回items列对象，包括具体列名和列数据。
+返回 items 列对象，包括具体列名和列数据。
 
 ```py
 df.items()
@@ -134,7 +132,7 @@ return d.items() #返回对象"dataframe.DataFrameItems"
 
 ### iterrows
 
-返回items行对象，包括具体行和行数据。
+返回 items 行对象，包括具体行和行数据。
 
 ```py
 df.iterrows()
@@ -146,7 +144,7 @@ return d.iterrows() #返回对象"dataframe.DataFrameRows"
 
 ### to_list
 
-将DataFrame转换为列表。
+将 DataFrame 转换为列表。
 
 ```py
 df.to_list()
@@ -158,7 +156,7 @@ return d.to_list() #返回列List
 
 ### append
 
-增加一行数据附加到原始DataFrame。
+增加一行数据附加到原始 DataFrame。
 
 ```py
 df.append()
@@ -207,10 +205,10 @@ return d1.fillna(0) #填充缺失值为0
 
 ### apply
 
-对DataFrame的每一列应用函数。
+对 DataFrame 的每一列应用函数。
 
 ```py
-df.apply() 
+df.apply()
 
 # 示范
 d1 = DataFrame({"count": [12, 13, 14, 15]})
@@ -226,7 +224,7 @@ df.rolling(window=n1, min_periods=n2) # "windows"代表滑动窗口大小，“m
 
 # 示范
 d1 = DataFrame({"count": [12, 13, 14, 15]})
-return d1.rolling(window=3, min_periods=1) 
+return d1.rolling(window=3, min_periods=1)
 ```
 
 当包含时间序列时，可以使用 `rolling` 方法来进行滑动窗口计算。可以指定具体的滑动周期，例如秒 (`s`)、分钟 (`m`)、小时 (`h`)，并添加 `timeline` 参数作为时间序列的索引。
@@ -257,7 +255,7 @@ return r1# 返回"dataframe.Rolling"属性对象
 
 ### groupby
 
-按照指定条件分组DataFrame，返回`dataframe.DataFrameGroupBy`对象。
+按照指定条件分组 DataFrame，返回`dataframe.DataFrameGroupBy`对象。
 
 ```py
 df.groupby()
@@ -298,7 +296,7 @@ return r1
 
 ### sort_values
 
-按照指定列的值排序DataFrame。
+按照指定列的值排序 DataFrame。
 
 ```py
 df.sort_values(['col1'...],  ascending=False na_position="First") # "第一个参数用于指定 DataFrame 按照哪些列进行排序。您可以传递一个列名的字符串或一个列名的列表作为参数。如果传递了多个列名，DataFrame 将按照这些列的顺序进行排序，即首先按照第一个列名排序，然后在第一个列名相同时按照第二个列名排序，以此类推；"ascending"代表是否上升排序，默认为"True"；"na_position"表示缺失值位置，可选择"First"或者"Last"
@@ -401,7 +399,7 @@ data = DataFrame({
   "price": [2, 2, 3, 3],
 })
 
-return data.drop_duplicates() 
+return data.drop_duplicates()
 # 返回
 #    year  month  price
 # 0  2022      2      2
@@ -426,7 +424,7 @@ return d1.min(numeric_only=True) #返回 count 列最小值：12
 返回每一列的最大值。
 
 ```py
-df.max(skipna=True，numeric_only=False) 
+df.max(skipna=True，numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
@@ -450,7 +448,7 @@ return d1.std(numeric_only=True) #返回 count 列标准差：1.2909944487358056
 返回每一列的方差。
 
 ```py
-df.var(skipna=True, numeric_only=False, ddof=n) 
+df.var(skipna=True, numeric_only=False, ddof=n)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })
@@ -462,7 +460,7 @@ return d1.var(numeric_only=True) #返回 count 列方差：1.6666666666666667
 返回每一列的总和。
 
 ```py
-df.sum(skipna=True，numeric_only=False) 
+df.sum(skipna=True，numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "go", "rust", "python"], "count": [12, 13, 14, 15] })

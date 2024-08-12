@@ -38,7 +38,7 @@ DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, suffix
 
 #### 校验参数格式
 
-首先，演示了不同情况下的参数校验。在下面的代码示例中，我们创建了两个数据框 `d1` 和 `d2`，并使用 `assert.fails` 测试了 `merge` 函数在各种无效参数组合下是否抛出预期的错误。每个 `assert.fails `语句后面都附有注释，解释了该测试的具体情况和期望的错误信息。
+首先，演示了不同情况下的参数校验。在下面的代码示例中，我们创建了两个数据框 `d1` 和 `d2`，并使用 `assert.fails` 测试了 `merge` 函数在各种无效参数组合下是否抛出预期的错误。每个 `assert.fails` 语句后面都附有注释，解释了该测试的具体情况和期望的错误信息。
 
 ```py
 # 示例数据框
@@ -76,7 +76,7 @@ assert.fails(lambda: d1.merge(d2, how="cross", left_on=["year"], right_on=["year
 ```py
 # inner 合并示例
 d3 = d1.merge(d2, on=["year", "month"])
-return d3 
+return d3
 
 # 验证结果
 assert.eq(d3.shape, (3, 5))
@@ -103,7 +103,7 @@ d2 = DataFrame({
 
 # left 合并示例
 d3 = d1.merge(d2, how="left", on=["year", "month"])
-return d3 
+return d3
 
 # 验证结果
 assert.eq(d3.shape, (5, 5))
@@ -118,10 +118,11 @@ assert.eq(list(d3["price_y"]), [2.0, 3.0, 4.0, 4.0, None])
 #### right 合并
 
 `right` 合并保留右侧数据框中的所有行。
+
 ```py
 # right 合并示例
 d3 = d1.merge(d2, how="right", on=["year", "month"])
-return d3 
+return d3
 
 # 验证结果
 assert.eq(d3.shape, (5, 5))
@@ -140,7 +141,7 @@ assert.eq(list(d3["price_y"]), [1, 2, 3, 4, 4])
 ```py
 # outer 合并示例
 d3 = d1.merge(d2, how="outer", on=["year", "month"])
-return d3 
+return d3
 
 # 验证结果
 assert.eq(d3.shape, (6, 5))
@@ -159,7 +160,7 @@ assert.eq(list(d3["price_y"]), [2.0, 3.0, 4.0, 4.0, None, 1.0])
 ```py
 # cross 合并示例
 d3 = d1.merge(d2, how="cross")
-return d3 
+return d3
 
 # 验证结果
 assert.eq(d3.shape, (20, 7))
@@ -172,8 +173,3 @@ assert.eq(list(d3["month_y"]), [5, 5, 5, 5, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 
 assert.eq(list(d3["count"]), [4, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1])
 assert.eq(list(d3["price_y"]), [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4])
 ```
-
-
-
-
-

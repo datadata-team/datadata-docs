@@ -60,7 +60,7 @@ d1 = DataFrame({
   ]
 })
 r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
-return r1.max() 
+return r1.max()
 ```
 
 ### sum
@@ -89,7 +89,7 @@ d1 = DataFrame({
   ]
 })
 r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
-return r1.sum() 
+return r1.sum()
 ```
 
 ### std
@@ -118,7 +118,7 @@ d1 = DataFrame({
   ]
 })
 r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
-return r1.std() 
+return r1.std()
 ```
 
 ### var
@@ -147,7 +147,7 @@ d1 = DataFrame({
   ]
 })
 r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
-return r1.var() 
+return r1.var()
 ```
 
 ### mean
@@ -176,7 +176,7 @@ d1 = DataFrame({
   ]
 })
 r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
-return r1.mean() 
+return r1.mean()
 ```
 
 ### apply

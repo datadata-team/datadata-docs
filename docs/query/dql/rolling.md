@@ -14,7 +14,7 @@ dataframe.Rolling.min(skipna=True, numeric_only=False) #包含参数"skipna"，�
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.min() #以3为滑动周期，返回各个滑动周期内的最小值；设置最小周期为1，当不满足周期数目，返回当前周期数目内的最小值
 ```
 
@@ -27,7 +27,7 @@ dataframe.Rolling.max(skipna=True, numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.max()
 ```
 
@@ -40,7 +40,7 @@ dataframe.Rolling.sum(skipna=True, numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.sum()
 ```
 
@@ -53,7 +53,7 @@ dataframe.Rolling.std(skipna=True, numeric_only=False, ddof=n) #参数"ddof"，�
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.std()
 ```
 
@@ -66,7 +66,7 @@ dataframe.Rolling.var(skipna=True, numeric_only=False, ddof=n)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.var()
 ```
 
@@ -79,7 +79,7 @@ dataframe.Rolling.mean(skipna=True, numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.mean()
 ```
 
@@ -92,10 +92,9 @@ dataframe.Rolling.median(skipna=True, numeric_only=False)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.median()
 ```
-
 
 ### apply
 
@@ -106,7 +105,7 @@ dataframe.Rolling.apply()
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
-r1 = d1["age"].rolling(window=3, min_periods=1) 
+r1 = d1["age"].rolling(window=3, min_periods=1)
 def cal_mean(x):
   d = DataFrame(x)
   return d["column_0"].mean()

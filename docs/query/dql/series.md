@@ -3,7 +3,6 @@ title: Series
 sidebar_position: 2
 ---
 
-
 在 DQL（Data Query Language）中，Series 是一个一维的、带有标签的数据结构，它是 DataFrame 的基本组成部分之一。
 
 在 DQL 中，Series 可以从 DataFrame 中选择单列进行创建。一旦创建了 Series，您可以像处理 DataFrame 一样对其进行各种操作，例如索引、切片、过滤等。
@@ -22,7 +21,7 @@ return type(s1) # 返回'dataframe.Series'
 
 ### name
 
-返回Series名称：`Type string`
+返回 Series 名称：`Type string`
 
 ```py
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500]})
@@ -30,10 +29,9 @@ s1 = d1["age"]
 return s1.name #返回Series名称：'age'
 ```
 
-
 ### size
 
-返回Series大小：`Type int`
+返回 Series 大小：`Type int`
 
 ```py
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
@@ -41,10 +39,9 @@ s1 = d1["age"]
 return s1.size #返回Series大小：5
 ```
 
-
 ### dtype
 
-返回Series数据类型
+返回 Series 数据类型
 
 ```py
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
@@ -335,7 +332,7 @@ return s1.filter(lambda x: x == 1)# 返回数值为1的行
 对 Series 中的元素进行累积计算。
 
 ```py
-Series.reduce() 
+Series.reduce()
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 2, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
@@ -431,7 +428,7 @@ return s1.sort_values(ascending=False) #降序排列，返回[3, 2, 1, 1, 1]
 用于将多个 Series 数据对象合并在一起。
 
 ```py
-concat([Series1, Series2]) 
+concat([Series1, Series2])
 
 # 示范
 s1 = Series([1, 2, 3], name="s1")
@@ -488,7 +485,7 @@ data = DataFrame({
   "price": [2, 2, 3, 3],
 })
 
-return data['price'].value_counts() 
+return data['price'].value_counts()
 # 返回
 # 3 2
 # 2 2
@@ -540,7 +537,7 @@ data = DataFrame({
   "type": ['future', 'option', 'future', 'option']
 })
 
-return data['type'].isin(['option']) 
+return data['type'].isin(['option'])
 # 返回 type
 # False
 # True

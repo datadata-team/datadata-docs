@@ -3,8 +3,6 @@ title: SeriesGroupBy
 sidebar_position: 7
 ---
 
-
-
 ## 方法
 
 ### min
@@ -68,7 +66,7 @@ return s1.std()  #返回分组后各组标准差：[1, 0.7071067811865476]
 返回分组后的方差。
 
 ```python
-SeriesGroupBy.var(skipna=True, numeric_only=False, ddof=n) 
+SeriesGroupBy.var(skipna=True, numeric_only=False, ddof=n)
 
 # 示范
 d1 = DataFrame({ "name": ["js", "js", "js", "go", "go"], "age": [1, 1, 1, 3, 3], "count": [1, 2, 3, 4, 5], "price": [100, 200, 300, 400, 500] })
