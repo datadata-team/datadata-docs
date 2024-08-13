@@ -225,12 +225,6 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   stylesheets: [
-    // {
-    //   href: "https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css",
-    //   type: "text/css",
-    //   integrity: "sha256-hLTCMFlKxdNgPXyWlSSxYN0ykJmxxq9Yt3MNfdRGWeA=",
-    //   crossorigin: "anonymous",
-    // },
     {
       href: "/datadata-docs/lib/katex-v0.16.11/katex.min.css",
       type: "text/css",

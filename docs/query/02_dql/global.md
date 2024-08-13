@@ -1,5 +1,5 @@
 ---
-title: Global
+title: 全局函数
 sidebar_position: 1
 ---
 
