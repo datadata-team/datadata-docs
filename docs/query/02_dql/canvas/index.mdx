@@ -1,0 +1,179 @@
+---
+title: Canvas 模块
+sidebar_position: 400
+---
+
+import Image00 from './00.png';
+import Image01 from './01.png';
+
+Canvas 模块提供了一组简洁的 API 用于在 DQL 脚本中实现绘图功能。
+
+下面是一个简单的例子，绘制一个圆形图案。
+
+```python
+dc = canvas.Context(1000, 1000)
+dc.draw_circle(500, 500, 400)
+dc.set_hex_color("#FF0000")
+dc.fill()
+return dc.get_data_uri()
+```
+
+图片效果为：
+
+<img src={Image00.src} height={120} />
+
+:::tip
+Canvas API 基于 [https://github.com/fogleman/gg](https://github.com/fogleman/gg) 实现，更多详细信息请参考 [https://github.com/fogleman/gg](https://github.com/fogleman/gg)。
+:::
+
+
+## API
+
+```python
+# 创建一个 Context 对象，需要指定画布的大小
+canvas.NewContext(width: int, height: int)
+
+# 角度转为弧度
+canvas.radians(degrees float64) float64
+
+# 弧度转为角度
+canvas.degrees(radians float64) float64
+```
+
+## Context
+
+context 类似 HTML Canvas API 的 Context2D，用于提供绘制相关的函数。
+
+### Drawing Functions
+
+```python
+draw_point(x, y, r float64)
+draw_line(x1, y1, x2, y2 float64)
+draw_rectangle(x, y, w, h float64)
+draw_rounded_rectangle(x, y, w, h, r float64)
+draw_circle(x, y, r float64)
+draw_arc(x, y, r, angle1, angle2 float64)
+draw_ellipse(x, y, rx, ry float64)
+draw_elliptical_arc(x, y, rx, ry, angle1, angle2 float64)
+draw_regular_polygon(n int, x, y, r, rotation float64)
+set_pixel(x, y int)
+
+move_to(x, y float64)
+line_to(x, y float64)
+quadratic_to(x1, y1, x2, y2 float64)
+cubic_to(x1, y1, x2, y2, x3, y3 float64)
+close_path()
+clear_path()
+new_sub_path()
+
+clear()
+stroke()
+fill()
+stroke_preserve()
+fill_preserve()
+```
+
+通常希望将图像居中于一点。
+使用 `draw_image_anchored` 并将 `ax` 和 `ay` 设置为 `0.5` 来执行此操作。
+使用 `0` 左对齐或上对齐。
+使用 `1` 右对齐或下对齐。
+`draw_string_anchored` 对文本执行相同的操作，因此您无需自己调用 `measure_string`。
+
+### Text Functions
+
+```python
+draw_string(s string, x, y float64)
+draw_string_anchored(s string, x, y, ax, ay float64)
+draw_string_wrapped(s string, x, y, ax, ay, width, lineSpacing float64, align Align) # Align: left=0, center = 1, right = 2
+measure_string(s string) (w, h float64)
+measure_multiline_string(s string, lineSpacing float64) (w, h float64)
+word_wrap(s string, w float64) []string
+```
+
+### Color Functions
+
+```python
+set_rgb(r, g, b float64)
+set_rgba(r, g, b, a float64)
+set_rgb255(r, g, b int)
+set_rgba255(r, g, b, a int)
+set_hex_color(x string)
+```
+
+### Stroke & Fill Options
+
+```python
+set_line_width(lineWidth float64)
+set_line_cap(lineCap LineCap) # LineCap: Round = 0, Butt = 1, Square = 2
+set_line_join(lineJoin LineJoin) # LineJoin: Round = 0, Bevel = 1
+set_dash(dashes ...float64)
+set_dash_offset(offset float64)
+set_fill_rule(fillRule FillRule) # Winding = 0, EvenOdd = 1
+```
+
+### Gradients & Patterns
+
+```python
+new_linear_gradient(x0, y0, x1, y1 float64)
+new_radial_gradient(x0, y0, r0, x1, y1, r1 float64)
+new_conic_gradient(cx, cy, deg float64)
+```
+
+### Transformation Functions
+
+```python
+identity()
+translate(x, y float64)
+scale(x, y float64)
+rotate(angle float64)
+shear(x, y float64)
+scale_about(sx, sy, x, y float64)
+rotate_about(angle, x, y float64)
+shear_about(sx, sy, x, y float64)
+transform_point(x, y float64) (tx, ty float64)
+invert_y()
+```
+
+经常需要围绕一个非原点的点进行旋转或缩放。为了方便起见，我们提供了旋转（RotateAbout）、缩放（ScaleAbout）和剪切（ShearAbout）函数。
+
+InvertY 是为了防止 Y 应从下到上增加而不是默认的从上到下增加。
+
+### Stack Functions
+
+保存和恢复上下文的状态。这些可以嵌套。
+
+```python
+push()
+pop()
+```
+
+### Clipping Functions
+
+使用裁剪区域可将绘图操作限制在使用路径定义的区域内。
+
+```python
+clip()
+clip_preserve()
+reset_clip()
+invert_mask()
+```
+
+## 例子
+
+这是另外一个例子
+
+```python
+S = 1024
+dc = canvas.Context(S, S)
+dc.set_rgba(0, 0, 0, 0.1)
+for i in range(0, 360, 15):
+    dc.push()
+    dc.rotate_about(canvas.radians(i), S/2, S/2)
+    dc.draw_ellipse(S/2, S/2, S*7/16, S/8)
+    dc.fill()
+    dc.pop()
+
+return dc.get_data_uri()
+```
+
+<img src={Image01.src} height={320} />

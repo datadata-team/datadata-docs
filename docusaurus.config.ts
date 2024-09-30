@@ -106,7 +106,7 @@ const config: Config = {
       "@docusaurus/plugin-ideal-image",
       {
         quality: 70,
-        disableInDev: true,
+        disableInDev: false,
       } satisfies PluginIdealImageOptions,
     ],
     [
