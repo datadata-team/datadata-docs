@@ -5,7 +5,7 @@ sidebar_position: 5
 
 ## 方法
 
-### min
+### `min`
 
 返回各个滚动窗口内的最小值。
 
@@ -18,7 +18,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.min() #以3为滑动周期，返回各个滑动周期内的最小值；设置最小周期为1，当不满足周期数目，返回当前周期数目内的最小值
 ```
 
-### max
+### `max`
 
 返回各个滚动窗口中的最大值。
 
@@ -31,7 +31,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.max()
 ```
 
-### sum
+### `sum`
 
 返回各个滚动窗口中的总和。
 
@@ -44,7 +44,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.sum()
 ```
 
-### std
+### `std`
 
 返回各个滚动窗口中的标准差。
 
@@ -57,7 +57,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.std()
 ```
 
-### var
+### `var`
 
 返回各个滚动窗口中的方差。
 
@@ -70,7 +70,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.var()
 ```
 
-### mean
+### `mean`
 
 返回各个滚动窗口中的平均值。
 
@@ -83,7 +83,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.mean()
 ```
 
-### median
+### `median`
 
 返回各个滚动窗口中的中位数。
 
@@ -96,7 +96,7 @@ r1 = d1["age"].rolling(window=3, min_periods=1)
 return r1.median()
 ```
 
-### apply
+### `apply`
 
 将函数应用到各个滚动窗口中的数据。
 
