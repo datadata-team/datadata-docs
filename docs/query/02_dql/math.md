@@ -11,59 +11,61 @@ b = math.floor(a)
 print(b) # 3
 ```
 
-## `ceil(x): int`
+## 方法
+
+### `ceil(x): int`
 
 返回大于或等于 $x$ 的最小整数。
 
-## `copysign(x, y)`
+### `copysign(x, y)`
 
 返回一个具有 $x$ 的大小和 $y$ 的符号的值。
 
-## `fabs(x)`
+### `fabs(x)`
 
 以浮点形式返回 x 的绝对值。
 
-## `floor(x)`
+### `floor(x)`
 
 返回 x 的下取整，即小于或等于 x 的最大整数。
 
-## `mod(x, y)`
+### `mod(x, y)`
 
 返回 `x/y` 的浮点余数。结果的大小小于 y，符号与 x 一致。
 
-## `pow(x, y)`
+### `pow(x, y)`
 
 返回 `x**y`，即 y 以 x 为底的指数。
 
-## `remainder(x, y)`
+### `remainder(x, y)`
 
 返回 `x/y` 的 IEEE 754 浮点余数。
 
-## `round(x)`
+### `round(x)`
 
 返回最接近 x 的整数，四舍五入。
 
-## `exp(x)`
+### `exp(x)`
 
 返回 e 的 x 次方，其中 `e = 2.718281…` 是自然对数的底数。
 
-## `sqrt(x)`
+### `sqrt(x)`
 
 返回 x 的平方根。
 
-## `acos(x)`
+### `acos(x)`
 
 返回 x 的弧余弦值，单位为弧度。
 
-## `asin(x)`
+### `asin(x)`
 
 返回 x 的反正弦值，单位为弧度。
 
-## `atan(x)`
+### `atan(x)`
 
 返回 x 的反正切值，单位为弧度。
 
-## `atan2(y, x)`
+### `atan2(y, x)`
 
 返回 $atan(y / x)$，单位为弧度。
 
@@ -72,58 +74,58 @@ print(b) # 3
 `atan2()` 的关键在于它知道两个输入的符号，因此可以计算出角度的正确象限。
 例如，`atan(1)` 和 `atan2(1, 1)` 都是 $\pi/4$，但 `atan2(-1, -1)` 是 $-3*\pi/4$。
 
-## `cos(x)`
+### `cos(x)`
 
 返回 x 的余弦值，单位为弧度。
 
-## `hypot(x, y)`
+### `hypot(x, y)`
 
 返回欧几里得范数 $\sqrt{x*x + y*y}$。这是从原点到点 $(x, y)$ 的向量长度。
 
-## `sin(x)`
+### `sin(x)`
 
 返回 $x$ 的正弦值，单位为弧度。
 
-## `tan(x)`
+### `tan(x)`
 
 返回 $x$ 的正切值，单位为弧度。
 
-## `degrees(x)`
+### `degrees(x)`
 
 将角度 $x$ 从弧度转换为度。
 
-## `radians(x)`
+### `radians(x)`
 
 将角度 $x$ 从度转换为弧度。
 
-## `acosh(x)`
+### `acosh(x)`
 
 返回 $x$ 的反双曲余弦值。
 
-## `asinh(x)`
+### `asinh(x)`
 
 返回 $x$ 的反双曲正弦值。
 
-## `atanh(x)`
+### `atanh(x)`
 
 返回 $x$ 的反双曲正切值。
 
-## `cosh(x)`
+### `cosh(x)`
 
 返回 $x$ 的双曲余弦值。
 
-## `sinh(x)`
+### `sinh(x)`
 
 返回 $x$ 的双曲正弦值。
 
-## `tanh(x)`
+### `tanh(x)`
 
 返回 $x$ 的双曲正切值。
 
-## `log(x, base)`
+### `log(x, base)`
 
 以给定基数返回 $x$ 的对数，默认为自然对数。
 
-## `gamma(x)`
+### `gamma(x)`
 
 返回 $x$ 的伽马函数。
