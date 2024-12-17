@@ -18,7 +18,8 @@ json.dumps(data, indent=4)
 json.loads('{"name": "John"}')
 ```
 
-## `json.dumps(x, *, indent)`
+## 方法
+### `json.dumps(x, *, indent)`
 
 用于将对象序列化（即转换）为 JSON 格式的字符串。
 
@@ -45,7 +46,7 @@ print(formatted_json)
 }
 ```
 
-## `json.loads(x, default)`
+### `json.loads(x, default)`
 
 用于将 JSON 格式的字符串解析为对应的数据结构（如字典、列表等），并在解析失败时返回一个默认值。
 
@@ -63,7 +64,7 @@ result = json.loads(invalid_json_string, default={"name": "Unknown", "age": 0})
 print(result)  # 输出: {'name': 'Unknown', 'age': 0}
 ```
 
-## `json.indent(str, *, prefix="", indent="\t")`
+### `json.indent(str, *, prefix="", indent="\t")`
 
 用于格式化 JSON 字符串，并在每行前添加一个前缀和指定的缩进方式。
 这种方法可用于美化或调整 JSON 输出格式，使其更具可读性，特别是在需要对齐不同层级的数据时。
