@@ -61,8 +61,6 @@ Timestamp 用于表示时间、日期、时间戳等类型。
 Timestamp('11:12:13')
 ```
 
-
-
 ### `fetch`
 
 `fetch` 函数用于执行 HTTP 请求，通过不同的 HTTP 方法（如 `GET`、`POST`、`PUT`、`PATCH`、`DELETE` 等）访问指定的 URL。用户可以通过参数传入请求头、请求体和超时时间，并获取响应的状态码、响应头和响应体。
