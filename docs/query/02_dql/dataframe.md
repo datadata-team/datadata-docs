@@ -605,11 +605,3 @@ condition = '数据缺失'
 if condition == '数据缺失':
     throw('数据缺失错误')
 ```
-
-### `Error`
-
-抛出错误结果。
-
-```py
-
-```
