@@ -142,7 +142,7 @@ d = DataFrame([["js", 1],["go",2],["c",3],["c++",4],["c#",5],["py",6]], columns=
 return d.iterrows() #返回对象"dataframe.DataFrameRows"
 ```
 
-### to_list
+### `to_list`
 
 将 DataFrame 转换为列表。
 
@@ -385,7 +385,7 @@ assert.eq(d3.shape, (0, 0))
 assert.eq(d3.empty, True)
 ```
 
-### drop_duplicates
+### `drop_duplicates`
 
 返回 DataFrame 中的唯一行，去除重复行。
 
