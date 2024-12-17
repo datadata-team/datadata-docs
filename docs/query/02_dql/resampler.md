@@ -5,7 +5,7 @@ sidebar_position: 6
 
 ## 方法
 
-### min
+### `min`
 
 返回重新采样后的最小值。
 
@@ -34,7 +34,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.min() #以5秒为采样周期，返回各个采样周期内的最小值
 ```
 
-### max
+### `max`
 
 返回重新采样后的最大值。
 
@@ -63,7 +63,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.max()
 ```
 
-### sum
+### `sum`
 
 返回重新采样后的总和。
 
@@ -92,7 +92,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.sum()
 ```
 
-### std
+### `std`
 
 返回重新采样后的标准差。
 
@@ -121,7 +121,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.std()
 ```
 
-### var
+### `var`
 
 返回重新采样后的方差。
 
@@ -150,7 +150,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.var()
 ```
 
-### mean
+### `mean`
 
 返回重新采样后的平均值。
 
@@ -179,7 +179,7 @@ r1 = d1[["price"]].resample('5s', timeline=d1["timeline"])
 return r1.mean()
 ```
 
-### apply
+### `apply`
 
 将函数应用到重新采样后的数据。
 
