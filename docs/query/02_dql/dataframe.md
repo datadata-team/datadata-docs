@@ -579,3 +579,37 @@ data = DataFrame({
 
 return data.count() # 返回各自列有效值的个数：4，3，4
 ```
+
+### `throw`
+
+返回主动提出错误结果。
+
+```py
+throw()
+
+# 示范
+condition = '数据缺失'
+if condition == '数据缺失':
+    throw('数据缺失错误')
+```
+
+### `throw`
+
+抛出错误结果。
+
+```py
+throw()
+
+# 示范
+condition = '数据缺失'
+if condition == '数据缺失':
+    throw('数据缺失错误')
+```
+
+### `Error`
+
+抛出错误结果。
+
+```py
+
+```
