@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/80c7e8e5-25f5-483a-bc50-bf6f621219b9)---
+---
 title: 全局函数
 sidebar_position: 1
 ---
