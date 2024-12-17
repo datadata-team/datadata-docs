@@ -5,7 +5,7 @@ sidebar_position: 8
 
 ### 方法
 
-### min
+### `min`
 
 根据分组计算每个分组的最小值，返回 DataFrame 格式。
 
@@ -18,7 +18,7 @@ g1 = d1.groupby(["name"])
 return g1.min() #返回根据"name"分组后，其他各组最小值组成的 DataFrame
 ```
 
-### max
+### `max`
 
 根据分组计算每个分组的最小值，返回 DataFrame 格式。
 
@@ -31,7 +31,7 @@ g1 = d1.groupby(["name"])
 return g1.max() #返回根据"name"分组后，其他各组最大值组成的 DataFrame
 ```
 
-### sum
+### `sum`
 
 根据分组计算每个分组值的总和，返回 DataFrame 格式。
 
@@ -44,7 +44,7 @@ g1 = d1.groupby(["name"])
 return g1.sum() #返回根据"name"分组后，其他各组总和组成的 DataFrame
 ```
 
-### std
+### `std`
 
 根据分组计算每个分组值的标准差，返回 DataFrame 格式。
 
@@ -57,7 +57,7 @@ g1 = d1.groupby(["name"])
 return g1.std() #返回根据"name"分组后，其他各组标准差组成的 DataFrame
 ```
 
-### var
+### `var`
 
 用于计算每个分组的方差，返回 DataFrame 格式。
 
@@ -70,7 +70,7 @@ g1 = d1.groupby(["name"])
 return g1.var() #返回根据"name"分组后，其他各组方差组成的 DataFrame
 ```
 
-### mean
+### `mean`
 
 用于计算每个分组的均值，返回 DataFrame 格式。
 
@@ -83,7 +83,7 @@ g1 = d1.groupby(["name"])
 return g1.mean() #返回根据"name"分组后，其他各组均值组成的 DataFrame
 ```
 
-### diff
+### `diff`
 
 用于计算每个分组设定阶数差分值，返回 DataFrame 格式。
 
@@ -96,7 +96,7 @@ g1 = d1.groupby(["name"])
 return g1.diff(1) #返回根据"name"分组后，其他各组二阶差分后组成的 DataFrame
 ```
 
-### cumprod
+### `cumprod`
 
 用于计算每个分组的累积乘积，返回 DataFrame 格式。
 
@@ -109,7 +109,7 @@ g1 = d1.groupby(["name"])
 return g1.cumprod(skipna=True) #返回根据"name"分组后，其他各组累积乘积后组成的 DataFrame
 ```
 
-### pct_change
+### `pct_change`
 
 用于计算每个分组的百分比变化，返回 DataFrame 格式。
 
@@ -122,7 +122,7 @@ g1 = d1.groupby(["name"])
 return g1.pct_change(1) #返回根据"name"分组后，其他各组百分比变化组成的 DataFrame
 ```
 
-### agg
+### `agg`
 
 用于对每个分组应用多个聚合函数，返回 DataFrame 格式。
 
@@ -138,7 +138,7 @@ d2 = g1.agg(my_sum)
 return d2  #返回根据"name"分组后，其他各组汇总计算后的 DataFrame
 ```
 
-### apply
+### `apply`
 
 用于对每个分组应用自定义函数，返回 DataFrame 格式。
 
@@ -157,7 +157,7 @@ d2 = g1.apply(my_mean)
 return d2 #返回分组后设定函数（"my_mean"）转换后的 DataFrame
 ```
 
-### transform
+### `transform`
 
 对分组后的数据进行设定函数转换，返回 DataFrame 大小和原始一致。
 
