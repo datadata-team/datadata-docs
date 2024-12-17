@@ -19,7 +19,7 @@ return type(s1) # 返回'dataframe.Series'
 
 ## 属性
 
-### name
+### `name`
 
 返回 Series 名称：`Type string`
 
@@ -29,7 +29,7 @@ s1 = d1["age"]
 return s1.name #返回Series名称：'age'
 ```
 
-### size
+### `size`
 
 返回 Series 大小：`Type int`
 
@@ -39,7 +39,7 @@ s1 = d1["age"]
 return s1.size #返回Series大小：5
 ```
 
-### dtype
+### `dtype`
 
 返回 Series 数据类型
 
@@ -51,7 +51,7 @@ return s1.dtype #返回Series数据类型：'int'
 
 ## 方法
 
-### rename
+### `rename`
 
 重命名 Series。
 
@@ -65,7 +65,7 @@ s2 = s1.rename("newage")
 return s2.name #返回Series重命名名称：'newage'
 ```
 
-### items
+### `items`
 
 返回 Series 的键值对迭代器。
 
@@ -78,7 +78,7 @@ s1 = d1["age"]
 return s1.items() #返回'dataframe.SeriesItems'
 ```
 
-### to_list
+### `to_list`
 
 将 Series 转换为列表。
 
@@ -91,7 +91,7 @@ s1 = d1["age"]
 return type(s1.to_list()) #返回'list'
 ```
 
-### append
+### `append`
 
 向 Series 添加一个值。
 
@@ -105,7 +105,7 @@ s1.append(6)
 return s1.size #返回增添后Series大小：6
 ```
 
-### ffill
+### `ffill`
 
 向前填充缺失值。
 
@@ -119,7 +119,7 @@ s1.ffill(inplace = True) #更新原始Series
 return s1 #返回向前替换后的Series: [1, 1, 2, 3, 5]
 ```
 
-### bfill
+### `bfill`
 
 向后填充缺失值。
 
@@ -133,7 +133,7 @@ s1.bfill(inplace = True) #更新原始Series
 return s1 #返回向后替换后的Series: [1, 2, 2, 3, None]
 ```
 
-### fillna
+### `fillna`
 
 使用设定值填充缺失值。
 
@@ -147,7 +147,7 @@ s1.fillna(0, inplace = True) #使用0替换空值
 return s1 #返回0值替换后的Series: [1, 0, 2, 3, 0]
 ```
 
-### max
+### `max`
 
 返回 Series 中的最大值。
 
@@ -160,7 +160,7 @@ s1 = d1["age"]
 return s1.max(skipna=True) #返回去除缺失值后的最大值
 ```
 
-### min
+### `min`
 
 返回 Series 中的最小值。
 
@@ -173,7 +173,7 @@ s1 = d1["age"]
 return s1.min(skipna=True，numeric_only=False) #返回Series最小值: 1
 ```
 
-### sum
+### `sum`
 
 返回 Series 中的总和。
 
@@ -186,7 +186,7 @@ s1 = d1["age"]
 return s1.sum() #返回Series总和: 7
 ```
 
-### std
+### `std`
 
 返回 Series 中的标准差。
 
@@ -199,7 +199,7 @@ s1 = d1["age"]
 return s1.std() #返回Series标准差: 0.9574271077563381
 ```
 
-### var
+### `var`
 
 返回 Series 中的方差。
 
@@ -212,7 +212,7 @@ s1 = d1["age"]
 return s1.var() #返回Series方差: 0.9166666666666666
 ```
 
-### mean
+### `mean`
 
 返回 Series 中的平均值。
 
@@ -225,7 +225,7 @@ s1 = d1["age"]
 return s1.mean(skipna=True, numeric_only=False) #返回Series均值: 1.75
 ```
 
-### abs
+### `abs`
 
 返回 Series 中的绝对值。
 
@@ -237,7 +237,7 @@ d1 = DataFrame({"count": [12, 13, -13, 15] })
 return d1['count'].abs(numeric_only=True)   #返回[12, 13, 13, 15]
 ```
 
-### round
+### `round`
 
 返回 Series 中的指定保留小数点位的值。
 
@@ -249,7 +249,7 @@ d1 = DataFrame({"count": [12, 13.6, 13.1, 15] })
 return d1['count'].round() #返回[12, 13, 13, 15]
 ```
 
-### diff
+### `diff`
 
 返回 Series 中的设定阶数差分值。
 
@@ -262,7 +262,7 @@ s1 = d1["age"]
 return s1.diff(1) # 返回[-, 0, 1, 1, 0]
 ```
 
-### cumprod
+### `cumprod`
 
 返回 Series 中的累积乘积。
 
@@ -275,7 +275,7 @@ s1 = d1["age"]
 return s1.cumprod() # 返回[1, 1, 2, 6, -]
 ```
 
-### pct_change
+### `pct_change`
 
 返回 Series 中的百分比变化。
 
@@ -288,7 +288,7 @@ s1 = d1["age"]
 return s1.pct_change(1)# 返回[-, 0, 1, 0.5, 0]
 ```
 
-### map
+### `map`
 
 将 Series 中的值映射到另一个函数。
 
@@ -301,7 +301,7 @@ s1 = d1["age"]
 return s1.map(lambda x: x * 2)# 返回[2, 2, 4, 6, 6]
 ```
 
-### apply
+### `apply`
 
 将函数应用到 Series 中的每个元素。
 
@@ -314,7 +314,7 @@ s1 = d1["age"]
 return s1.apply(lambda x: x * 2)# 返回[2, 2, 4, 6, 6]
 ```
 
-### filter
+### `filter`
 
 根据给定的函数过滤 Series 中的元素。
 
@@ -327,7 +327,7 @@ s1 = d1["age"]
 return s1.filter(lambda x: x == 1)# 返回数值为1的行
 ```
 
-### reduce
+### `reduce`
 
 对 Series 中的元素进行累积计算。
 
@@ -340,7 +340,7 @@ s1 = d1["age"]
 return s1.reduce(lambda acc, x: acc + x, 0) #返回累加值10
 ```
 
-### rolling
+### `rolling`
 
 根据设定参数，返回滚动窗口对象`dataframe.Rolling`。
 
@@ -380,7 +380,7 @@ r1 = s1.rolling('3s', timeline=d1["timeline"])
 return r1# 返回"dataframe.Rolling"属性对象
 ```
 
-### resample
+### `resample`
 
 根据设定频率，重新采样 Series，返回重采样对象`dataframe.Resampler`。
 
@@ -410,7 +410,7 @@ r1 = s1.resample('5s', timeline=d1["timeline"])
 return r1 # 返回"dataframe.Resampler"属性对象
 ```
 
-### sort_values
+### `sort_values`
 
 对 Series 进行排序。
 
@@ -423,7 +423,7 @@ s1 = d1["age"]
 return s1.sort_values(ascending=False) #降序排列，返回[3, 2, 1, 1, 1]
 ```
 
-### concat
+### `concat`
 
 用于将多个 Series 数据对象合并在一起。
 
@@ -437,7 +437,7 @@ s3 = concat([s1, s2])
 assert.eq(list(s3), [1, 2, 3, "a", "b", "c"])
 ```
 
-### count
+### `count`
 
 返回 Series 中非空值(None)的个数。
 
@@ -454,7 +454,7 @@ data = DataFrame({
 return data['month'].count() # 返回3
 ```
 
-### unique
+### `unique`
 
 返回 Series 中的唯一值。
 
@@ -471,7 +471,7 @@ data = DataFrame({
 return data['month'].unique() # 返回 [2, 4]
 ```
 
-### value_counts
+### `value_counts`
 
 返回 Series 中每个唯一值出现的次数。
 
@@ -491,7 +491,7 @@ return data['price'].value_counts()
 # 2 2
 ```
 
-### nlargest
+### `nlargest`
 
 返回 Series 中前 n 个最大的值。
 
@@ -508,7 +508,7 @@ data = DataFrame({
 return data['price'].nlargest(2) # 返回 [4, 3]
 ```
 
-### nsmallest
+### `nsmallest`
 
 返回 Series 中前 n 个最小的值。
 
@@ -525,7 +525,7 @@ data = DataFrame({
 return data['price'].nsmallest(2)  # 返回 [1, 2]
 ```
 
-### isin
+### `isin`
 
 返回一个布尔值 Series，表示每个元素是否在指定的值列表中。
 
@@ -545,7 +545,7 @@ return data['type'].isin(['option'])
 # True
 ```
 
-### drop_duplicates
+### `drop_duplicates`
 
 返回 Series 中的唯一值，去除重复值。
 
@@ -562,7 +562,7 @@ data = DataFrame({
 return data['year'].drop_duplicates() # 返回 [2022, 2023, 2024]
 ```
 
-### replace
+### `replace`
 
 替换 Series 中的指定值。
 
