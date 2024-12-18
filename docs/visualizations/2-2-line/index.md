@@ -35,6 +35,7 @@ df = DataFrame(data)
 
 df = df.pivot(index="day", columns="name", values="value")
 
+return df
 ```
 
 
@@ -44,7 +45,7 @@ df = df.pivot(index="day", columns="name", values="value")
 
 1. **数据**：设置数据各类显示效果。
 1. **轴线**：设置轴线各个属性显示效果。  
-2. **显示**：进行堆叠和图例各个属性设置。
+2. **显示**：进行堆叠，图例和数据缩放各个属性设置。
 
 
 
