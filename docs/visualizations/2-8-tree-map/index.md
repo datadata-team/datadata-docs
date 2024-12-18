@@ -15,3 +15,42 @@ sidebar_position: 2.8
 
 树图适用于呈现层级数据结构的相对大小和层级关系，特别适用于展示复杂数据的分层结构，例如文件目录结构、组织机构、产品销售数据等。
 它能够直观地显示数据的相对大小和层级关系，帮助观察者更好地理解数据的结构和组织。
+
+## 使用方式
+
+
+1. **标题字段**：包含一级/二级/三级标题字段选择，用于树状图区块划分。
+2. **数值字段**：表示不同区块需求属性数值大小。 
+
+
+
+### 数据示例
+
+```py
+info = query("select product_name, contract_size from public.product_info where futures_type = '期货'")
+data = query("select * from derive.f_daily_quotes where day = '2024-12-16'")
+
+product_list = list(info['product_name'])
+seldata = data[data['product_name'].apply(lambda x : x in product_list)]
+
+mergedata = data.merge(info, 'inner', 'product_name')
+
+mergedata['market_value'] = mergedata['settlement_price'] * mergedata['open_interest'] * mergedata['contract_size']/100000000
+
+groupdata = mergedata.groupby('product_name').sum(numeric_only = True)
+
+return groupdata
+```
+
+
+## 树状图设置
+
+### 显示设置
+
+1. **矩形树图设置**：设置展示等级，最小可见数量，和父级标签显示。
+2. **面包屑设置**：进行面包屑相关属性设置。  
+
+
+### 图例
+
+![树状图](./tree.png)
