@@ -53,4 +53,4 @@ return groupdata
 
 ### 图例
 
-![树状图](./tree.png)
+![树状图](./treemap.png)
