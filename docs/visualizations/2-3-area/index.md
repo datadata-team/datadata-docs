@@ -35,6 +35,8 @@ data = query('select * from yearly.a0806')
 df = DataFrame(data)
 
 df = df.pivot(index="day", columns="name", values="value")
+
+return df
 ```
 
 
