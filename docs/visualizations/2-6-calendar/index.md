@@ -30,12 +30,12 @@ select day, closing_price from derive.f_daily_quotes where contract = 'RB2505' o
 ```
 
 
-## 折线图设置
+## 日历热度图设置
 
 ### 显示设置
 
 1. **最小/最大热度**：设置最小/最大颜色等级。
-2. **颜色**：设置图像热力等级颜色设置。  
+2. **颜色**：进行图像热力等级颜色设置。  
 
 
 
