@@ -42,4 +42,4 @@ select day, closing_price from derive.f_daily_quotes where contract = 'RB2505' o
 
 ### 图例
 
-![日历热力图](./calenderheat.png)
+![日历热力图](./calendarheat.png)
