@@ -14,3 +14,39 @@ sidebar_position: 2.5
 
 饼图适用于展示部分与整体的比例关系，特别适用于展示数据的相对分布或比例情况。
 它能够直观地呈现数据的占比情况，帮助观察者快速理解各个部分的重要性或贡献程度。
+
+## 使用方式
+
+
+1. **维度字段**：用于表示饼图中各个分类字段。
+2. **衡量标准字段**：表示饼图中各个维度的数值大小。 
+
+
+
+### 数据示例
+
+```py
+data = query("select * from derive.f_daily_quotes where day = '2024-12-17' ")
+info = query("select product_name, contract_size from public.product_info where futures_type = '期货'")
+
+mergeda = data.merge(info,'left','product_name')
+mergeda['volume_value'] = mergeda['settlement_price'] * mergeda['contract_size'] * mergeda['volume']
+groupda = mergeda.groupby('product_name').sum(numeric_only=True)
+groupda = groupda.sort_values('volume_value')
+return groupda
+```
+
+
+## 折线图设置
+
+### 显示设置
+
+1. **标签**：设置标签位置。
+1. **扇形**：设置扇形水平和垂直位置角度。  
+2. **图例**：设置图例各个属性设置。
+
+
+
+### 图例
+
+![扇形图](./pie.png)
