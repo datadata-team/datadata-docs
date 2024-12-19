@@ -2,16 +2,21 @@ import Link from "@docusaurus/Link";
 import AreaIcon from "../_assets/icons/area.svg";
 import BarIcon from "../_assets/icons/bar.svg";
 import CalendarIcon from "../_assets/icons/calendar.svg";
+import DonutsIcon from "../_assets/icons/donuts.svg";
+import EChartsMapIcon from "../_assets/icons/echarts-map.svg";
 import FunnelIcon from "../_assets/icons/funnel.svg";
 import GaugeIcon from "../_assets/icons/gauge.svg";
 import HeatmapIcon from "../_assets/icons/heatmap.svg";
 import KlinechartsIcon from "../_assets/icons/klinecharts.svg";
 import LineIcon from "../_assets/icons/line.svg";
+import LiveTradingReplayIcon from "../_assets/icons/live-trading-replay.svg";
 import MapIcon from "../_assets/icons/map.svg";
 import MarkdownIcon from "../_assets/icons/markdown.svg";
 import NumberIcon from "../_assets/icons/number.svg";
 import PieIcon from "../_assets/icons/pie.svg";
+import RadarIcon from "../_assets/icons/radar.svg";
 import RelationIcon from "../_assets/icons/relation.svg";
+import RoseIcon from "../_assets/icons/rose.svg";
 import RowIcon from "../_assets/icons/row.svg";
 import SankeyIcon from "../_assets/icons/sankey.svg";
 import ScatterIcon from "../_assets/icons/scatter.svg";
@@ -67,6 +72,20 @@ const visualizations = [
     description: "饼图（Pie Chart）是一种常见的数据可视化图表类型，用于展示各个部分占总体的比例关系。",
   },
   {
+    id: "3-3-donuts",
+    name: "甜甜圈",
+    icon: DonutsIcon,
+    description:
+      "甜甜圈图的结构与扇形图相似，但空心中心使得它更加美观且适合显示多个层次的信息，常用于展示组成部分的占比。",
+  },
+  {
+    id: "2-5-1-rose",
+    name: "玫瑰图",
+    icon: RoseIcon,
+    description:
+      "玫瑰图用于显示一组数据中各个方向的频率或强度，广泛应用于气象、航海、地质学等领域，特别是在显示风速和风向的分布情况时。",
+  },
+  {
     id: "2-6-calendar",
     name: "日历图",
     icon: CalendarIcon,
@@ -116,6 +135,12 @@ const visualizations = [
     description: "旭日图（Sunburst Chart）是一种用于展示层次数据结构的环形图表类型。",
   },
   {
+    id: "3-2-radar",
+    name: "雷达图",
+    icon: RadarIcon,
+    description: "雷达图（Radar Chart）是一种用于展示多维数据的图表类型，通常用于比较不同维度的数据差异。",
+  },
+  {
     id: "3-1-klinecharts",
     name: "K 线图",
     icon: KlinechartsIcon,
@@ -130,16 +155,29 @@ const visualizations = [
       "关系图（Network Graph）是一种用于可视化网络结构的图表类型，通常用于展示节点（或顶点）之间的关系和连接。",
   },
   {
-    id: "5-1-map",
-    name: "地理位置坐标",
+    id: "5-1-marker-map",
+    name: "图钉地图",
     icon: MapIcon,
     description: "地理位置坐标图是一种用于显示地理位置坐标的图表类型，通常用于标记地球表面上特定地点的经纬度坐标。",
+  },
+  {
+    id: "5-2-choropleth-map",
+    name: "区域地图",
+    icon: EChartsMapIcon,
+    description:
+      "区域地图是通过不同的颜色或阴影来表示特定区域的数值数据。它通常用于展示地理区域（如国家、省份、城市等）内的某些数据分布，比如人口密度、收入水平、污染指数等。",
   },
   {
     id: "6-1-markdown",
     name: "Markdown",
     icon: MarkdownIcon,
     description: "Markdown 是一种轻量级标记语言，通常用于撰写文档、笔记、博客文章等。",
+  },
+  {
+    id: "6-2-tick",
+    name: "实盘回放",
+    icon: LiveTradingReplayIcon,
+    description: "实盘回放是一种用于展示交易数据和市场动态的图表类型，通常用于分析和研究历史交易数据。",
   },
 ];
 
