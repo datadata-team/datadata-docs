@@ -1,6 +1,6 @@
 ---
 title: 欢迎使用Datadata
-sidebar_label: 欢迎
+sidebar_label: 介绍
 sidebar_position: 1
 ---
 
