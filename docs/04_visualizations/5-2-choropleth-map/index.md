@@ -1,5 +1,5 @@
 ---
-title: 地理位置图
+title: 区域地图
 sidebar_position: 5.2
 ---
 
@@ -19,7 +19,7 @@ sidebar_position: 5.2
 select * from "upload_yanshi_population"
 ```
 
-## 地理位置图设置
+## 区域地图设置
 
 ### 显示设置
 
