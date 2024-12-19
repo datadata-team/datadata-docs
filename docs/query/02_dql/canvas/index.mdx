@@ -1,3 +1,4 @@
+
 ---
 title: Canvas 模块
 sidebar_position: 400
@@ -6,16 +7,16 @@ sidebar_position: 400
 import Image00 from './00.png';
 import Image01 from './01.png';
 
-Canvas 模块提供了一组简洁的 API 用于在 DQL 脚本中实现绘图功能。
+Canvas 模块提供了一组简洁的 API，用于在 DQL 脚本中实现绘图功能。
 
 下面是一个简单的例子，绘制一个圆形图案。
 
 ```python
-dc = canvas.Context(1000, 1000)
-dc.draw_circle(500, 500, 400)
-dc.set_hex_color("#FF0000")
-dc.fill()
-return dc.get_data_uri()
+dc = canvas.Context(1000, 1000)  # 创建画布对象，指定大小为1000x1000
+dc.draw_circle(500, 500, 400)  # 在画布上绘制一个圆形，圆心为(500, 500)，半径为400
+dc.set_hex_color("#FF0000")  # 设置颜色为红色
+dc.fill()  # 填充圆形
+return dc.get_data_uri()  # 返回图像的 Data URI
 ```
 
 图片效果为：
@@ -25,7 +26,6 @@ return dc.get_data_uri()
 :::tip
 Canvas API 基于 [https://github.com/fogleman/gg](https://github.com/fogleman/gg) 实现，更多详细信息请参考 [https://github.com/fogleman/gg](https://github.com/fogleman/gg)。
 :::
-
 
 ## API
 
@@ -42,109 +42,109 @@ canvas.degrees(radians float64) float64
 
 ## Context
 
-context 类似 HTML Canvas API 的 Context2D，用于提供绘制相关的函数。
+`context` 类似 HTML Canvas API 的 `Context2D`，用于提供绘制相关的函数。
 
 ### 画图
 
 ```python
-draw_point(x, y, r float64)
-draw_line(x1, y1, x2, y2 float64)
-draw_rectangle(x, y, w, h float64)
-draw_rounded_rectangle(x, y, w, h, r float64)
-draw_circle(x, y, r float64)
-draw_arc(x, y, r, angle1, angle2 float64)
-draw_ellipse(x, y, rx, ry float64)
-draw_elliptical_arc(x, y, rx, ry, angle1, angle2 float64)
-draw_regular_polygon(n int, x, y, r, rotation float64)
-set_pixel(x, y int)
+draw_point(x, y, r float64)  # 绘制一个点
+draw_line(x1, y1, x2, y2 float64)  # 绘制一条线段
+draw_rectangle(x, y, w, h float64)  # 绘制矩形
+draw_rounded_rectangle(x, y, w, h, r float64)  # 绘制圆角矩形
+draw_circle(x, y, r float64)  # 绘制圆形
+draw_arc(x, y, r, angle1, angle2 float64)  # 绘制圆弧
+draw_ellipse(x, y, rx, ry float64)  # 绘制椭圆
+draw_elliptical_arc(x, y, rx, ry, angle1, angle2 float64)  # 绘制椭圆弧
+draw_regular_polygon(n int, x, y, r, rotation float64)  # 绘制正多边形
+set_pixel(x, y int)  # 设置像素点
 
-move_to(x, y float64)
-line_to(x, y float64)
-quadratic_to(x1, y1, x2, y2 float64)
-cubic_to(x1, y1, x2, y2, x3, y3 float64)
-close_path()
-clear_path()
-new_sub_path()
+move_to(x, y float64)  # 移动到指定坐标
+line_to(x, y float64)  # 绘制一条线到指定坐标
+quadratic_to(x1, y1, x2, y2 float64)  # 绘制二次贝塞尔曲线
+cubic_to(x1, y1, x2, y2, x3, y3 float64)  # 绘制三次贝塞尔曲线
+close_path()  # 关闭路径
+clear_path()  # 清除路径
+new_sub_path()  # 新建子路径
 
-clear()
-stroke()
-fill()
-stroke_preserve()
-fill_preserve()
+clear()  # 清除画布
+stroke()  # 描边
+fill()  # 填充
+stroke_preserve()  # 描边并保持路径
+fill_preserve()  # 填充并保持路径
 ```
 
-通常希望将图像居中于一点。
-使用 `draw_image_anchored` 并将 `ax` 和 `ay` 设置为 `0.5` 来执行此操作。
-使用 `0` 左对齐或上对齐。
-使用 `1` 右对齐或下对齐。
+通常希望将图像居中于一点。  
+使用 `draw_image_anchored` 并将 `ax` 和 `ay` 设置为 `0.5` 来执行此操作。  
+使用 `0` 左对齐或上对齐。  
+使用 `1` 右对齐或下对齐。  
 `draw_string_anchored` 对文本执行相同的操作，因此您无需自己调用 `measure_string`。
 
 ### 文本
 
 ```python
-draw_string(s string, x, y float64)
-draw_string_anchored(s string, x, y, ax, ay float64)
-draw_string_wrapped(s string, x, y, ax, ay, width, lineSpacing float64, align Align) # Align: left=0, center = 1, right = 2
-measure_string(s string) (w, h float64)
-measure_multiline_string(s string, lineSpacing float64) (w, h float64)
-word_wrap(s string, w float64) []string
+draw_string(s string, x, y float64)  # 绘制文本
+draw_string_anchored(s string, x, y, ax, ay float64)  # 绘制锚定位置的文本
+draw_string_wrapped(s string, x, y, ax, ay, width, lineSpacing float64, align Align)  # 换行文本
+measure_string(s string) (w, h float64)  # 测量字符串的宽度和高度
+measure_multiline_string(s string, lineSpacing float64) (w, h float64)  # 测量多行字符串的宽度和高度
+word_wrap(s string, w float64) []string  # 将文本按宽度换行
 ```
 
 ### 颜色
 
 ```python
-set_rgb(r, g, b float64)
-set_rgba(r, g, b, a float64)
-set_rgb255(r, g, b int)
-set_rgba255(r, g, b, a int)
-set_hex_color(x string)
+set_rgb(r, g, b float64)  # 设置RGB颜色
+set_rgba(r, g, b, a float64)  # 设置RGBA颜色
+set_rgb255(r, g, b int)  # 设置RGB颜色（255范围）
+set_rgba255(r, g, b, a int)  # 设置RGBA颜色（255范围）
+set_hex_color(x string)  # 设置十六进制颜色
 ```
 
 ### 描边和填充
 
 ```python
-set_line_width(lineWidth float64)
-set_line_cap(lineCap LineCap) # LineCap: Round = 0, Butt = 1, Square = 2
-set_line_join(lineJoin LineJoin) # LineJoin: Round = 0, Bevel = 1
-set_dash(dashes ...float64)
-set_dash_offset(offset float64)
-set_fill_rule(fillRule FillRule) # Winding = 0, EvenOdd = 1
+set_line_width(lineWidth float64)  # 设置线条宽度
+set_line_cap(lineCap LineCap)  # 设置线条端点样式
+set_line_join(lineJoin LineJoin)  # 设置线条连接样式
+set_dash(dashes ...float64)  # 设置虚线样式
+set_dash_offset(offset float64)  # 设置虚线的偏移
+set_fill_rule(fillRule FillRule)  # 设置填充规则
 ```
 
 ### 渐变和图案
 
 ```python
-new_linear_gradient(x0, y0, x1, y1 float64)
-new_radial_gradient(x0, y0, r0, x1, y1, r1 float64)
-new_conic_gradient(cx, cy, deg float64)
+new_linear_gradient(x0, y0, x1, y1 float64)  # 创建线性渐变
+new_radial_gradient(x0, y0, r0, x1, y1, r1 float64)  # 创建径向渐变
+new_conic_gradient(cx, cy, deg float64)  # 创建圆锥渐变
 ```
 
 ### 变形
 
 ```python
-identity()
-translate(x, y float64)
-scale(x, y float64)
-rotate(angle float64)
-shear(x, y float64)
-scale_about(sx, sy, x, y float64)
-rotate_about(angle, x, y float64)
-shear_about(sx, sy, x, y float64)
-transform_point(x, y float64) (tx, ty float64)
-invert_y()
+identity()  # 恢复默认变换
+translate(x, y float64)  # 平移变换
+scale(x, y float64)  # 缩放变换
+rotate(angle float64)  # 旋转变换
+shear(x, y float64)  # 剪切变换
+scale_about(sx, sy, x, y float64)  # 绕点缩放
+rotate_about(angle, x, y float64)  # 绕点旋转
+shear_about(sx, sy, x, y float64)  # 绕点剪切
+transform_point(x, y float64) (tx, ty float64)  # 变换点坐标
+invert_y()  # 反转Y轴方向
 ```
 
-经常需要围绕一个非原点的点进行旋转或缩放。为了方便起见，我们提供了旋转（RotateAbout）、缩放（ScaleAbout）和剪切（ShearAbout）函数。
+经常需要围绕一个非原点的点进行旋转或缩放。为了方便起见，我们提供了旋转（`RotateAbout`）、缩放（`ScaleAbout`）和剪切（`ShearAbout`）函数。
 
-InvertY 是为了防止 Y 应从下到上增加而不是默认的从上到下增加。
+`InvertY` 是为了防止 Y 应从下到上增加而不是默认的从上到下增加。
 
-### 堆栈
+### 状态保存/恢复
 
 保存和恢复上下文的状态。这些可以嵌套。
 
 ```python
-push()
-pop()
+push()  # 保存当前状态
+pop()  # 恢复上一个状态
 ```
 
 ### 裁剪
@@ -152,28 +152,28 @@ pop()
 使用裁剪区域可将绘图操作限制在使用路径定义的区域内。
 
 ```python
-clip()
-clip_preserve()
-reset_clip()
-invert_mask()
+clip()  # 启用裁剪
+clip_preserve()  # 启用裁剪并保持当前路径
+reset_clip()  # 重置裁剪区域
+invert_mask()  # 反转掩码
 ```
 
 ## 例子
 
-这是另外一个例子
+这是另外一个例子，绘制旋转的椭圆：
 
 ```python
-S = 1024
-dc = canvas.Context(S, S)
-dc.set_rgba(0, 0, 0, 0.1)
-for i in range(0, 360, 15):
-    dc.push()
-    dc.rotate_about(canvas.radians(i), S/2, S/2)
-    dc.draw_ellipse(S/2, S/2, S*7/16, S/8)
-    dc.fill()
-    dc.pop()
+S = 1024  # 设置画布大小
+dc = canvas.Context(S, S)  # 创建画布对象
+dc.set_rgba(0, 0, 0, 0.1)  # 设置颜色为半透明黑色
+for i in range(0, 360, 15):  # 循环绘制多个旋转的椭圆
+    dc.push()  # 保存当前状态
+    dc.rotate_about(canvas.radians(i), S/2, S/2)  # 绕画布中心旋转
+    dc.draw_ellipse(S/2, S/2, S*7/16, S/8)  # 绘制椭圆
+    dc.fill()  # 填充颜色
+    dc.pop()  # 恢复到之前的状态
 
-return dc.get_data_uri()
+return dc.get_data_uri()  # 返回图像的 Data URI
 ```
 
 <img src={Image01.src} height={320} />
