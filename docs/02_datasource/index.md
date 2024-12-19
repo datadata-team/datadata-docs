@@ -1,6 +1,6 @@
 ---
 title: 用户数据源
-sidebar_label: 数据源
+sidebar_label: 用户数据源
 sidebar_position: 3
 ---
 
