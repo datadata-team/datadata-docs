@@ -3,8 +3,24 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.docs.category.get-started": {
-    "message": "Get Started",
-    "description": "The label for category get-started in sidebar docs"
+  "sidebar.docs.category.query": {
+    "message": "query",
+    "description": "The label for category query in sidebar docs"
+  },
+  "sidebar.docs.category.DQL 查询脚本": {
+    "message": "DQL 查询脚本",
+    "description": "The label for category DQL 查询脚本 in sidebar docs"
+  },
+  "sidebar.docs.category.visualizations": {
+    "message": "visualizations",
+    "description": "The label for category visualizations in sidebar docs"
+  },
+  "sidebar.docs.category.dashboard": {
+    "message": "dashboard",
+    "description": "The label for category dashboard in sidebar docs"
+  },
+  "sidebar.docs.category.collection": {
+    "message": "collection",
+    "description": "The label for category collection in sidebar docs"
   }
 }

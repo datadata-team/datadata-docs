@@ -3,10 +3,6 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.docs.category.get-started": {
-    "message": "快速开始",
-    "description": "The label for category get-started in sidebar docs"
-  },
   "sidebar.docs.category.query": {
     "message": "查询",
     "description": "The label for category query in sidebar docs"

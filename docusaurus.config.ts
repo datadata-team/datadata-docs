@@ -164,32 +164,24 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "Sites",
+          title: "合作伙伴",
           items: [
             {
-              label: "发明者量化",
-              href: "https://www.fmz.cn/",
-            },
-            {
-              label: "Datadata Platform",
-              href: "https://www.datadata.cn",
+              label: "优宽量化",
+              href: "https://www.youquant.com",
             },
           ],
         },
         {
-          title: "Community",
+          title: "SDK",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "Go SDK",
+              href: "https://github.com/datadata-team/datadata-sdk-go",
             },
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              label: "JavaScript SDK",
+              href: "https://github.com/datadata-team/datadata-sdk-javascript",
             },
           ],
         },
@@ -204,10 +196,14 @@ const config: Config = {
               label: "GitHub",
               href: "https://github.com/datadata-team",
             },
+            {
+              label: "Datadata Platform",
+              href: "https://www.datadata.cn",
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Datadata, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © 2023-${new Date().getFullYear()} Datadata. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

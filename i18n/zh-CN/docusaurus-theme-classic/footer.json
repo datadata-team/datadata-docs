@@ -1,26 +1,10 @@
 {
-  "link.title.Community": {
-    "message": "Community",
-    "description": "The title of the footer links column with title=Community in the footer"
-  },
   "link.title.More": {
-    "message": "More",
+    "message": "更多",
     "description": "The title of the footer links column with title=More in the footer"
   },
-  "link.item.label.Stack Overflow": {
-    "message": "Stack Overflow",
-    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/docusaurus"
-  },
-  "link.item.label.Discord": {
-    "message": "Discord",
-    "description": "The label of footer link with label=Discord linking to https://discordapp.com/invite/docusaurus"
-  },
-  "link.item.label.Twitter": {
-    "message": "Twitter",
-    "description": "The label of footer link with label=Twitter linking to https://twitter.com/docusaurus"
-  },
   "link.item.label.Blog": {
-    "message": "Blog",
+    "message": "博客",
     "description": "The label of footer link with label=Blog linking to /blog"
   },
   "link.item.label.GitHub": {
@@ -28,19 +12,31 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/datadata-team"
   },
   "copyright": {
-    "message": "Copyright © 2024 Datadata, Inc. Built with Docusaurus.",
+    "message": "Copyright © 2023-2024 Datadata. 基于 Docusaurus 构建",
     "description": "The footer copyright"
   },
-  "link.title.Sites": {
-    "message": "Sites",
-    "description": "The title of the footer links column with title=Sites in the footer"
+  "link.title.合作伙伴": {
+    "message": "合作伙伴",
+    "description": "The title of the footer links column with title=合作伙伴 in the footer"
   },
-  "link.item.label.发明者量化": {
-    "message": "发明者量化",
-    "description": "The label of footer link with label=发明者量化 linking to https://www.fmz.cn/"
+  "link.title.SDK": {
+    "message": "SDK",
+    "description": "The title of the footer links column with title=SDK in the footer"
+  },
+  "link.item.label.优宽量化": {
+    "message": "优宽量化",
+    "description": "The label of footer link with label=优宽量化 linking to https://www.youquant.com"
+  },
+  "link.item.label.Go SDK": {
+    "message": "Go SDK",
+    "description": "The label of footer link with label=Go SDK linking to https://github.com/datadata-team/datadata-sdk-go"
+  },
+  "link.item.label.JavaScript SDK": {
+    "message": "JavaScript SDK",
+    "description": "The label of footer link with label=JavaScript SDK linking to https://github.com/datadata-team/datadata-sdk-javascript"
   },
   "link.item.label.Datadata Platform": {
-    "message": "Datadata Platform",
+    "message": "Datadata",
     "description": "The label of footer link with label=Datadata Platform linking to https://www.datadata.cn"
   }
 }

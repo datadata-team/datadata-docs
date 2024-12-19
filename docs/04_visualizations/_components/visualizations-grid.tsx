@@ -79,7 +79,7 @@ const visualizations = [
       "甜甜圈图的结构与扇形图相似，但空心中心使得它更加美观且适合显示多个层次的信息，常用于展示组成部分的占比。",
   },
   {
-    id: "2-5-1-rose",
+    id: "3-4-rose",
     name: "玫瑰图",
     icon: RoseIcon,
     description:
