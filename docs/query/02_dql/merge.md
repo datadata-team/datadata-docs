@@ -5,7 +5,7 @@ sidebar_position: 9
 
 ## 方法
 
-### merge
+### `merge`
 
 类似于 SQL 的 JOIN 操作，将两个数据框合并。
 
@@ -58,7 +58,7 @@ d2 = DataFrame({
 
 
 
-#### inner 合并
+#### `inner` 合并
 
 `inner` 合并只保留两个数据框中共有的行。
 
@@ -79,7 +79,7 @@ print(d3)
 
 
 
-#### left 合并
+#### `left` 合并
 
 `left` 合并保留左侧数据框中的所有行。
 
@@ -110,7 +110,7 @@ print(d3)
 
 
 
-#### right 合并
+#### `right` 合并
 
 `right` 合并保留右侧数据框中的所有行。
 
@@ -132,7 +132,7 @@ print(d3)
 ```
 
 
-#### outer 合并
+#### `outer` 合并
 
 `outer` 合并返回两个数据框的并集。
 
@@ -155,7 +155,7 @@ print(d3)
 ```
 
 
-#### cross 合并
+#### `cross` 合并
 
 `cross` 合并返回两个数据框的笛卡尔积。
 
