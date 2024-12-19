@@ -6,3 +6,5 @@ title: 数据下钻
 
 
 ![image](./drilling.png)
+
+![image](./drilling2.png)
