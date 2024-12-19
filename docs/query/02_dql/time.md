@@ -189,7 +189,7 @@ print(t)
 返回当前时间的时间戳。  
 
 ```py
-  timestamp = time.time()
-  print(timestamp)
+timestamp = time.time()
+print(timestamp)
 # 输出示例: 1693205707.0
 ```
