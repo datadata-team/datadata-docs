@@ -164,7 +164,7 @@ invert_mask()  # 反转掩码
 ```python
 S = 1024  # 设置画布大小
 dc = canvas.Context(S, S)  # 创建画布对象
-dc.set_rgba(0, 0, 0, 0.1)  # 设置颜色为半透明黑色
+dc.set_rgba(10, 250, 10, 0.1)  # 设置颜色
 for i in range(0, 360, 15):  # 循环绘制多个旋转的椭圆
     dc.push()  # 保存当前状态
     dc.rotate_about(canvas.radians(i), S/2, S/2)  # 绕画布中心旋转
