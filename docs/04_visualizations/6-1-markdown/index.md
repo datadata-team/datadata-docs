@@ -13,3 +13,9 @@ sidebar_position: 6.1
 
 [Markdown]: https://markdown.com.cn
 [Handlebars]: https://handlebarsjs.com/
+
+## 使用方法
+
+Markdown 组件无需进行数据查询，只需进入面板界面，选择文本组件并编写 Markdown 代码，即可完成组件构建。
+
+![Image](./md.png)
