@@ -25,7 +25,7 @@ query(sql, *args)
 
 
 ```python
-fetch(url: str, method=Literal["GET", "PUT", "POST", "HEAD", "DELETE"], headers: Dict[str, str]=None, body: Any=None, timeout: int=3000)
+fetch(url: str, method=Literal["GET", "PUT", "POST", "HEAD", "DELETE"], headers: Dict[str, str]=None, body: Any=None, timeout: int=3)
 ```
 
 ### 参数说明：
@@ -49,7 +49,7 @@ fetch(url: str, method=Literal["GET", "PUT", "POST", "HEAD", "DELETE"], headers:
      - 普通文本: `"Hello World"`
 
 5. **`timeout` (int, 可选)**  
-   - 请求的超时时间（单位：毫秒），默认为 3000（即 3 秒）。
+   - 请求的超时时间（单位：毫秒），默认为 3（即 3 秒）。
 
 
 
