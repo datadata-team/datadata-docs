@@ -1,0 +1,37 @@
+---
+sidebar_position: 3
+title: 数据查询
+description: 了解如何在 Datadata 中进行数据查询与分析。
+---
+
+# 数据查询
+
+Datadata 支持两种查询方式：**标准 SQL** 和 **DQL 脚本**。
+
+## 工作流程
+
+```
+选择数据源 → 编写查询脚本 → 运行 → 查看结果 → 可视化
+```
+
+## 查询模式
+
+| 模式 | 适用场景 | 特点 |
+| --- | --- | --- |
+| **SQL** | 日常数据探索与分析 | 标准 SQL 语法，支持 WHERE、JOIN、GROUP BY 等子句 |
+| **DQL** | 复杂数据处理流水线 | 基于 Starlark 的扩展脚本，DataFrame 操作、HTTP 请求等 |
+
+DQL 是 Datadata 的特色能力，支持丰富的数据处理函数，详见 [DQL 查询脚本](/docs/guides/dql/) 章节。
+
+## 查询引擎
+
+- **DuckDB** — 默认引擎，支持跨数据源关联查询
+- **ClickHouse** — 高性能时序引擎，适合大数据量分析
+
+## 相关文档
+
+- [查询编辑器](/docs/guides/querying/query-editor) — 编辑器布局、数据源绑定、AI Copilot
+- [SQL 查询基础](/docs/guides/querying/sql-basics) — 常用 SQL 语法与示例
+- [数据可视化](/docs/guides/querying/visualizations) — 将查询结果转换为图表
+- [结果查看与导出](/docs/guides/querying/viewing-and-exporting) — 表格、图表、NDJSON/CSV 导出
+- [DQL 查询脚本](/docs/guides/dql/) — 完整 DQL 语言参考

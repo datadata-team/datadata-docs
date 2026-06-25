@@ -1,0 +1,69 @@
+---
+sidebar_position: 2
+title: SQL 查询基础
+description: 在 Datadata 中使用标准 SQL 进行数据查询。
+---
+
+# SQL 查询基础
+
+Datadata 支持标准 SQL 语法，兼容 DuckDB 和 ClickHouse 两种引擎。
+
+## 基本查询
+
+```sql
+SELECT column1, column2
+FROM table_name
+LIMIT 100;
+```
+
+## 条件过滤
+
+```sql
+SELECT *
+FROM futures_daily
+WHERE trade_date >= CURRENT_DATE - 30
+  AND symbol LIKE '%gold%'
+ORDER BY trade_date DESC;
+```
+
+## 聚合查询
+
+```sql
+SELECT symbol,
+  COUNT(*) AS trade_days,
+  AVG(close) AS avg_price,
+  MAX(high) AS max_price,
+  MIN(low) AS min_price
+FROM futures_daily
+GROUP BY symbol
+HAVING COUNT(*) > 10
+ORDER BY avg_price DESC;
+```
+
+## 多表关联
+
+```sql
+SELECT a.symbol, a.trade_date, a.close, b.name
+FROM futures_daily a
+JOIN futures_info b ON a.symbol = b.symbol
+WHERE a.trade_date = CURRENT_DATE - 1;
+```
+
+## 跨数据源查询
+
+当查询绑定了多个数据源时，DuckDB 引擎允许跨数据源关联查询：
+
+```sql
+SELECT a.*, b.category
+FROM my_datasource.orders a
+JOIN public_datasource.products b ON a.product_id = b.id;
+```
+
+## 引擎差异说明
+
+| 特性 | DuckDB | ClickHouse |
+| --- | --- | --- |
+| 跨数据源 JOIN | 支持 | 不支持 |
+| 子查询 | 完整支持 | 有限支持 |
+| 窗口函数 | 支持 | 支持 |
+| 适用场景 | 通用分析、跨源关联 | 高吞吐时序数据 |

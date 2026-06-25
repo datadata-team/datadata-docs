@@ -1,0 +1,145 @@
+---
+sidebar_position: 1
+title: MCP Server
+description: datadata-mcp skill 和 Datadata MCP Server 的完整说明。
+---
+
+# MCP Server
+
+Datadata 提供标准的 **MCP（Model Context Protocol）** 服务端点，AI Agent 可以像调用本地工具一样直接操作 Datadata 平台。
+
+`datadata-mcp` 是指导 Agent 如何使用 MCP Server 的 skill。
+
+## 安装 datadata-mcp skill
+
+```bash
+npx skills add datadata-team/datadata-skills
+```
+
+安装后 Agent 就能通过下列 MCP 工具与 Datadata 交互。
+
+## MCP 端点
+
+```
+https://www.datadata.com/api/mcp/v1
+```
+
+## 认证方式
+
+### OAuth 2.0（推荐）
+
+配置 MCP 客户端时选择 OAuth 方式，浏览器自动跳转至 Datadata 完成授权。这是最规范、最便捷的方式，支持 Claude Desktop、VS Code、Cursor、Windsurf、Claude Code 等 MCP 客户端。
+
+### API Key 认证
+
+也可通过 API Key 进行认证：
+
+1. 登录 [datadata.com](https://www.datadata.com) → 设置 → API Keys
+2. 创建新 Key，勾选所需权限
+3. 配置到 MCP 客户端
+
+**推荐权限**：
+
+| 权限 | 用途 |
+| --- | --- |
+| `queries:execute-adhoc` | 运行 SQL 查询 |
+| `executions:get` | 获取查询结果 |
+| `datasources:read` | 读取数据源信息 |
+| `datasources:scan` | 扫描数据源结构 |
+| `datasources:replace-file` | 替换数据源文件 |
+| `data-spaces:write` | 创建表和插入数据 |
+
+## MCP 工具
+
+### 数据源查找与元数据
+
+| 工具 | 用途 | 关键参数 |
+| --- | --- | --- |
+| `search-datasource` | 搜索数据源 | `search` — 用户名或关键词 |
+| `get-datasource-info` | 获取数据源元信息 | `datasourceId` |
+| `list-tables` | 列出表和视图 | `datasourceId`, `schemaName`（可选） |
+| `describe-table` | 获取表列结构（缓存元数据，含注释） | `datasourceId`, `schemaName`, `tableName` |
+| `scan-datasource` | 触发异步 Schema 扫描 | `datasourceId` |
+| `set-table-comment` | 设置表/列注释 | `datasourceId`, `schemaName`, `tableName` |
+
+### 数据查询
+
+| 工具 | 用途 |
+| --- | --- |
+| `execute-adhoc` | 执行 SQL/DQL 查询，返回执行 ID 和结果下载链接 |
+
+### Data Spaces 管理
+
+| 工具 | 用途 | 关键参数 |
+| --- | --- | --- |
+| `create-table` | 定义列名和类型创建表 | `datasourceId`, `tableName`, `columns` |
+| `describe-data-space-table` | 实时查看表结构 | `datasourceId`, `tableName` |
+| `insert-rows` | 批量插入数据（事务性） | `datasourceId`, `tableName`, `columns`, `rows` |
+| `drop-table` | 删除表 | `datasourceId`, `tableName` |
+
+## 查询引擎与 SQL 编写
+
+### 引擎选择
+
+- 默认使用 `duckdb` 引擎
+- 仅针对 ClickHouse 数据源时切换为 `clickhouse`
+- DuckDB 支持跨数据源关联；ClickHouse 不支持
+
+### 数据源绑定
+
+通过 `datasources` 参数绑定数据源，格式：
+
+```
+["DATASOURCE_ID:ATTACH_ALIAS"]
+```
+
+SQL 中通过**别名**而非 datasource ID 引用表。
+
+### 表命名约定
+
+**Ducklake（数据空间）**：
+```
+ducklake.{datasourceName}.{tableName}
+```
+
+**数据库数据源（MySQL、PostgreSQL 等）**：
+```
+attachAlias.schemaName.tableName
+```
+
+**文件数据源（CSV、JSON、Parquet 等）**：
+```
+memory.main.attachAlias
+```
+
+## Data Spaces（数据空间）
+
+Data Spaces 是 `ducklake` 类型 datasource 独有的表管理能力。
+
+### 完整工作流
+
+```
+create-table → describe-data-space-table → insert-rows → execute-adhoc → drop-table
+```
+
+## 结果处理
+
+`execute-adhoc` 返回执行 ID 和结果下载链接（NDJSON/CSV）。Agent 用 `curl` 下载到本地预览。
+
+**不要直接将完整的大数据集读入上下文。**
+
+## 配置示例
+
+```json
+{
+  "mcpServers": {
+    "datadata": {
+      "command": "npx",
+      "args": ["-y", "@datadata/mcp-server"],
+      "env": {
+        "DATADATA_API_KEY": "ak_xxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}
+```

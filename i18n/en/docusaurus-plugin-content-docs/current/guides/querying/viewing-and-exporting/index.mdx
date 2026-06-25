@@ -1,0 +1,55 @@
+---
+sidebar_position: 4
+title: Viewing and Exporting Results
+description: How to view and export query results in Datadata.
+---
+
+# Viewing and Exporting Results
+
+After executing a query, Datadata provides multiple ways to view and export results.
+
+## Result Views
+
+### Table View
+
+Query results display in a table by default, with support for:
+
+- Column sorting (click headers)
+- Column width adjustment
+- Pagination
+
+### Chart View
+
+Click the chart button in the toolbar to switch to visualization:
+
+- Line chart, bar chart, K-line chart
+- Heatmap, scatter plot
+- Pie chart, area chart
+
+## Exporting Data
+
+### Download as NDJSON
+
+Each record as a JSON line:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://www.datadata.com/api/v1/queries/{id}/results?format=ndjson"
+```
+
+### Download as CSV
+
+Suitable for Excel or other spreadsheet tools:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://www.datadata.com/api/v1/queries/{id}/results?format=csv"
+```
+
+### Export from UI
+
+In the query results page, click the **Export** button and select NDJSON or CSV format.
+
+## Scheduled Queries
+
+You can set up scheduled execution for queries. Results are automatically saved. Configure schedules in the **Query Schedules** page in the Studio sidebar.

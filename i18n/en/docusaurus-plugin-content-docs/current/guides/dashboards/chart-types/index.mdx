@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+title: Chart Types
+description: All chart types supported by Datadata.
+---
+
+# Chart Types Reference
+
+Datadata provides a rich set of chart types covering statistical analysis, data exploration, and quantitative finance.
+
+## Statistical Analysis
+
+| Chart Type | Category | Use Case |
+| --- | --- | --- |
+| **Line** | Cartesian | Trend analysis, time-series data |
+| **Bar** | Cartesian | Category comparison |
+| **Area** | Cartesian | Value trends with proportions |
+| **Row** (Horizontal Bar) | Cartesian | Horizontal comparison, long labels |
+| **Pie** | Proportion | Part-to-whole relationships |
+| **Doughnut** | Proportion | Similar to pie, with hollow center |
+| **Rose** (Nightingale) | Proportion | Multi-dimensional data visualization |
+| **Scatter** | Cartesian | Two-variable correlation |
+| **Table** | Basic | Raw data display, sortable columns |
+| **Number** (Indicator Card) | Basic | Single KPI highlight |
+
+## Data Exploration
+
+| Chart Type | Category | Use Case |
+| --- | --- | --- |
+| **Heatmap** | Matrix | Data density and 2D distribution |
+| **Treemap** | Hierarchical | Recursive hierarchy and proportions |
+| **Calendar Heatmap** | Time | Date-based data distribution |
+| **Sankey** | Flow | Conversion paths, flow visualization |
+| **Sunburst** | Hierarchical | Multi-level ring proportions |
+| **Funnel** | Flow | Conversion funnel visualization |
+| **Map** | Geographic | Leaflet-based geographic data |
+
+## Quantitative Finance
+
+| Chart Type | Description |
+| --- | --- |
+| **Candlestick** (K-line) | Financial OHLC chart with indicators and sub-panels |
+| **Live Replay** | Trading strategy backtesting simulation |
+
+## Cartesian Chart Configuration
+
+Line, Bar, Area, Row, and Scatter share cartesian configuration:
+
+- **Dimension** — X-axis field
+- **Series** — Each series configurable with field, color, labels
+- **Data Zoom** — X/Y axis zoom with slider support
+- **Dual Y-Axis** — Independent left and right value axes
+- **Stacking** — Value stacking support
+- **Legend** — Position, orientation, and selection mode
+
+## Chart Events
+
+Charts support drill-down and linked interaction events between dashboard widgets.

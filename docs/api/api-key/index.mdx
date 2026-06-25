@@ -1,5 +1,68 @@
 ---
-description: Create a doc page with rich content.
+sidebar_position: 0
+title: API Key
+description: 了解如何创建、管理和使用 API Key 进行认证。
 ---
 
 # API Key
+
+API Key 是访问 Datadata API 的主要认证方式。每个 Key 关联一组权限，控制对数据源、查询、Data Spaces 等资源的访问范围。
+
+## 创建 API Key
+
+1. 登录 [datadata.com](https://www.datadata.com)
+2. 进入 **设置 → API Keys**
+3. 点击 **创建 Key**
+4. 为 Key 设置一个可识别的名称（如"本地开发"、"CI 环境"）
+5. 勾选所需权限
+6. 点击确认创建
+7. **立即复制并保存生成的 Key** — 关闭对话框后将无法再次查看
+
+生成的 Key 以 `ak_` 开头，例如：
+
+```
+ak_8791496aeb6f477293e7c5841b0356e8
+```
+
+## 权限
+
+| 权限 | 用途 |
+| --- | --- |
+| `queries:execute-adhoc` | 执行 SQL/DQL 查询 |
+| `executions:get` | 获取查询结果 |
+| `executions:list` | 列出历史执行记录 |
+| `datasources:read` | 读取数据源信息 |
+| `datasources:scan` | 触发数据源 Schema 扫描 |
+| `datasources:replace-file` | 替换数据源文件 |
+| `data-spaces:write` | 在 Data Spaces 中创建表、插入数据、删除表 |
+| `connections:read` | 读取连接信息 |
+| `user:read` | 读取用户资料 |
+
+根据实际用途选择最小必要权限。例如，仅需要查询数据的场景只需授予 `queries:execute-adhoc` 和 `executions:get` 即可。
+
+## 使用方式
+
+### HTTP 请求头
+
+在所有 API 请求中，通过 `X-Datadata-API-Key` 请求头传递 API Key：
+
+```bash
+curl -H "X-Datadata-API-Key: ak_8791496aeb6f477293e7c5841b0356e8" \
+  "https://www.datadata.com/api/v1/queries/{id}/results?format=ndjson"
+```
+
+## 安全管理
+
+- **不要将 API Key 提交到代码仓库** — 使用环境变量、密钥管理服务（如 1Password、Vault）或 `.env` 文件（确保已加入 `.gitignore`）
+- **按应用创建独立的 Key** — 方便在某个 Key 泄露或不再需要时单独吊销，不影响其他服务
+- **仅授予必要权限** — 遵循最小权限原则
+- **定期轮换** — 建议每 90 天更换一次 Key
+
+## 吊销 API Key
+
+1. 进入 **设置 → API Keys**
+2. 找到需要吊销的 Key
+3. 点击 **删除**
+4. 确认操作
+
+Key 删除后立即失效，使用该 Key 的 API 请求将返回 `401 Unauthorized`。

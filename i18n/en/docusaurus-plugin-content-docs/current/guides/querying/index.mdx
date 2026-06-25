@@ -1,0 +1,28 @@
+---
+sidebar_position: 3
+title: Data Querying
+description: Learn how to query and analyze data in Datadata.
+---
+
+# Data Querying
+
+Datadata supports two query modes: **standard SQL** and **DQL scripts**.
+
+## Query Modes
+
+| Mode | Use Case | Features |
+| --- | --- | --- |
+| **SQL** | Everyday data exploration | Standard SQL syntax with WHERE, JOIN, GROUP BY support |
+| **DQL** | Complex data pipelines | Starlark-based scripting with DataFrame operations, HTTP requests |
+
+## Query Engines
+
+- **DuckDB** — Default engine, supports cross-datasource JOIN queries
+- **ClickHouse** — High-performance time-series engine for large datasets
+
+## Related Guides
+
+- [Query Editor Guide](/docs/guides/querying/query-editor) — Editor layout, AI Copilot, shortcuts
+- [SQL Basics](/docs/guides/querying/sql-basics) — Common SQL syntax and examples
+- [DQL Introduction](/docs/guides/querying/dql-intro) — DQL language fundamentals
+- [Viewing and Exporting Results](/docs/guides/querying/viewing-and-exporting) — Tables, charts, NDJSON/CSV export

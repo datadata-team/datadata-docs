@@ -2,5 +2,6 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
-  }
+  },
+  "git-commit-message-generator.customInstructionsFile": ".vscode/commit-message-instructions.md",
 }

@@ -1,0 +1,69 @@
+---
+sidebar_position: 2
+title: SQL Basics
+description: Querying data with standard SQL in Datadata.
+---
+
+# SQL Basics
+
+Datadata supports standard SQL syntax with both DuckDB and ClickHouse engines.
+
+## Basic Query
+
+```sql
+SELECT column1, column2
+FROM table_name
+LIMIT 100;
+```
+
+## Filtering
+
+```sql
+SELECT *
+FROM futures_daily
+WHERE trade_date >= CURRENT_DATE - 30
+  AND symbol LIKE '%gold%'
+ORDER BY trade_date DESC;
+```
+
+## Aggregation
+
+```sql
+SELECT symbol,
+  COUNT(*) AS trade_days,
+  AVG(close) AS avg_price,
+  MAX(high) AS max_price,
+  MIN(low) AS min_price
+FROM futures_daily
+GROUP BY symbol
+HAVING COUNT(*) > 10
+ORDER BY avg_price DESC;
+```
+
+## Joins
+
+```sql
+SELECT a.symbol, a.trade_date, a.close, b.name
+FROM futures_daily a
+JOIN futures_info b ON a.symbol = b.symbol
+WHERE a.trade_date = CURRENT_DATE - 1;
+```
+
+## Cross-Datasource Queries
+
+With multiple datasources bound, DuckDB supports cross-datasource JOIN:
+
+```sql
+SELECT a.*, b.category
+FROM my_datasource.orders a
+JOIN public_datasource.products b ON a.product_id = b.id;
+```
+
+## Engine Differences
+
+| Feature | DuckDB | ClickHouse |
+| --- | --- | --- |
+| Cross-datasource JOIN | Yes | No |
+| Subqueries | Full | Limited |
+| Window Functions | Yes | Yes |
+| Best for | General analysis, cross-source joins | High-throughput time-series data |

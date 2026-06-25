@@ -1,0 +1,55 @@
+---
+sidebar_position: 4
+title: 结果查看与导出
+description: 了解如何查看和导出查询结果。
+---
+
+# 结果查看与导出
+
+查询执行完成后，Datadata 提供多种方式查看和导出结果。
+
+## 结果视图
+
+### 表格视图
+
+查询结果默认以表格形式展示，支持：
+
+- 列排序（点击列头）
+- 列宽调整
+- 分页浏览
+
+### 图表视图
+
+点击工具栏中的图表按钮，可将结果切换为可视化图表：
+
+- 折线图、柱状图、K 线图
+- 热力图、散点图
+- 饼图、面积图
+
+## 导出数据
+
+### 下载为 NDJSON
+
+每条记录一行 JSON 格式，适合程序化处理：
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://www.datadata.com/api/v1/queries/{id}/results?format=ndjson"
+```
+
+### 下载为 CSV
+
+适合导入 Excel 或其他表格工具：
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://www.datadata.com/api/v1/queries/{id}/results?format=csv"
+```
+
+### 在 UI 中导出
+
+在查询结果页面，点击 **导出** 按钮，选择 NDJSON 或 CSV 格式即可直接下载。
+
+## 定时查询
+
+你可以为查询设置定时执行计划，结果会自动保存。在 Studio 侧边栏进入 **定时查询** 页面即可配置。

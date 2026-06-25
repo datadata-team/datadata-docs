@@ -1,0 +1,77 @@
+---
+sidebar_position: 2
+title: Creating and Configuring Charts
+description: Learn how to create and configure charts in Datadata.
+---
+
+# Creating and Configuring Charts
+
+## Creating Charts from Queries
+
+1. Open a query in Studio
+2. Click **Run** to execute
+3. Click **Visualize** above the results
+4. Select a chart type from the picker
+5. Configure dimension and series in the right panel
+6. The chart renders a live preview
+7. Click **Save** to add to a dashboard
+
+## Configuration Panel
+
+The configuration panel includes:
+
+| Setting | Description |
+| --- | --- |
+| **Dimension** | X-axis or category field |
+| **Series** | Data fields, multiple series supported |
+| **Color** | Series colors and palette |
+| **Axis** | Labels, ticks, ranges |
+| **Legend** | Display and positioning |
+| **Markers** | Mark lines and areas for thresholds |
+
+## Example: Line Chart Config
+
+```yaml
+Dimension: trade_date
+Series:
+  - Field: close
+    Color: #2563eb
+    Type: line
+  - Field: high
+    Color: #ef4444
+    Type: line
+    Mark Line:
+      - Label: "All-time High"
+        Value: 263.7
+Legend: enabled
+```
+
+## Candlestick Configuration
+
+The Candlestick chart requires OHLC field mapping:
+
+| Field | Description |
+| --- | --- |
+| **timestamp** | Timestamp column |
+| **openingPrice** | Open price |
+| **closingPrice** | Close price |
+| **highestPrice** | High price |
+| **lowestPrice** | Low price |
+| **volume** | Volume (optional) |
+| **turnover** | Turnover (optional) |
+
+Additional K-line features:
+
+- Technical indicator overlays (built-in and custom)
+- Sub-panel splitting
+- Candle styles (solid, hollow, OHLC, area)
+- Color schemes (up-green-down-red / up-red-down-green)
+- Price and volume precision settings
+
+## Dashboard Layout
+
+In dashboards you can:
+
+- Drag to reposition charts
+- Resize chart panels
+- Link charts through drill-down events

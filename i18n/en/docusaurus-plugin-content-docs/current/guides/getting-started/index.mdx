@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+title: Getting Started
+description: Get up and running with Datadata in ten minutes.
+---
+
+# Getting Started
+
+This tutorial walks you through registration to running your first query.
+
+## Register and Login
+
+1. Go to [datadata.com](https://www.datadata.com)
+2. Click **Login** / **Register** in the top right
+3. After registration, you'll be directed to the [Explore](https://www.datadata.com/explore) page
+
+Once registered, use the top navigation to access:
+
+- **Discover** — Community content feed
+- **Explore** — Browse queries, dashboards, datasources, and creators
+- **AI Skills** — AI integration capabilities
+- **Studio** — Core workspace
+
+## Exploring the Studio
+
+[Studio](https://www.datadata.com/studio) is the core workspace with three main modules:
+
+| Module | Description |
+| --- | --- |
+| **Queries** | Create and manage SQL / DQL queries |
+| **Dashboards** | Compose queries into visual monitoring dashboards |
+| **Datasources** | Configure and manage database connections |
+
+## Run Your First Query
+
+1. Go to Studio → Click **New Query**
+2. Select a datasource from the left panel (e.g., "crypto tick")
+3. Enter SQL in the editor:
+
+```sql
+SELECT symbol, name,
+  ROUND((close - open) / open * 100, 2) AS change_pct
+FROM futures_daily
+WHERE trade_date >= CURRENT_DATE - 30
+ORDER BY change_pct DESC
+LIMIT 20;
+```
+
+4. Click the run button to see results
+5. Results display in a table; you can switch to chart view
+
+## Next Steps
+
+- Learn more about [Data Querying](/docs/guides/querying)
+- Explore the [DQL scripting language](/docs/guides/querying/dql-intro)
+- Check out [AI Skills](https://www.datadata.com/ai-skills)

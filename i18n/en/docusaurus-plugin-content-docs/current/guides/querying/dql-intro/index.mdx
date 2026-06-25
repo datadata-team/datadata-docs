@@ -1,0 +1,81 @@
+---
+sidebar_position: 3
+title: DQL Scripting
+description: Learn the DQL scripting language for data processing in Datadata.
+---
+
+# DQL Scripting
+
+DQL (Data Query Language) is Datadata's Starlark-based scripting language for complex data transformation, cleaning, and aggregation.
+
+## What is DQL
+
+Key features:
+
+- Based on **Starlark** (a Python dialect / Bazel's scripting language)
+- **DataFrame / Series** operations
+- SQL queries via `query()` returning DataFrames
+- **HTTP requests** via `fetch()`
+- **2D Canvas** drawing
+
+## Basic Syntax
+
+```python
+# Get data via SQL
+df = query("SELECT * FROM futures_daily LIMIT 100")
+
+# Data transformation
+df["change_pct"] = (df["close"] - df["open"]) / df["open"] * 100
+
+# Filtering
+high_volatility = df[df["change_pct"].abs() > 5]
+
+# Output
+print(high_volatility)
+```
+
+## DataFrame Operations
+
+DQL supports pandas-like DataFrame manipulation:
+
+```python
+# Column selection
+df = df[["symbol", "close", "volume"]]
+
+# Conditional filtering
+df = df[df["volume"] > 10000]
+
+# Sorting
+df = df.sort("close", reverse=True)
+
+# Group aggregation
+summary = df.group_by("symbol").aggregate(
+    avg_close=("close", "mean"),
+    max_close=("close", "max")
+)
+```
+
+## HTTP Requests
+
+DQL supports external API calls via `fetch()`:
+
+```python
+# GET request
+resp = fetch("https://api.example.com/data")
+data = resp.json()
+
+# POST request
+resp = fetch("https://api.example.com/submit",
+    method="POST",
+    headers={"Content-Type": "application/json"},
+    body={"key": "value"}
+)
+```
+
+## Charting
+
+```python
+# Line chart
+chart = df.plot("trade_date", "close")
+chart.show()
+```

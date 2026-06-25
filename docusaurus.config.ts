@@ -100,7 +100,6 @@ const config: Config = {
     },
     // https://docusaurus.io/docs/api/themes/configuration#navbar
     navbar: {
-      // title: "Datadata Docs",
       logo: {
         alt: "DataData Logo",
         src: "img/logo.svg",
@@ -109,7 +108,7 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          label: "指南",
+          label: "用户指南",
           position: "left",
           sidebarId: "guidesSidebar",
         },
@@ -126,10 +125,15 @@ const config: Config = {
         },
         {
           type: "search",
-          position: "left",
+          position: "right",
         },
         {
           type: "localeDropdown",
+          position: "right",
+        },
+        {
+          label: "返回主站",
+          href: "https://www.datadata.com",
           position: "right",
         },
       ],
@@ -140,43 +144,44 @@ const config: Config = {
         {
           title: "合作伙伴",
           items: [
-            // {
-            //   label: "优宽量化",
-            //   href: "https://www.youquant.com",
-            // },
             {
               label: "发明者量化",
               href: "https://www.fmz.com",
             },
           ],
         },
-        // {
-        //   title: "SDK",
-        //   items: [
-        //     {
-        //       label: "Go SDK",
-        //       href: "https://github.com/datadata-team/datadata-sdk-go",
-        //     },
-        //     {
-        //       label: "JavaScript SDK",
-        //       href: "https://github.com/datadata-team/datadata-sdk-javascript",
-        //     },
-        //   ],
-        // },
         {
-          title: "More",
+          title: "资源",
+          items: [
+            {
+              label: "AI Skills",
+              href: "https://www.skills.sh/datadata-team/datadata-skills",
+            },
+          ],
+        },
+        {
+          title: "链接",
           items: [
             {
               to: "/blog",
               label: "Blog",
             },
+          ],
+        },
+        {
+          title: "More",
+          items: [
+            {
+              label: "Datadata",
+              href: "https://www.datadata.com",
+            },
+            {
+              label: "Datadata Studio",
+              href: "https://www.datadata.com/studio",
+            },
             {
               label: "GitHub",
               href: "https://github.com/datadata-team",
-            },
-            {
-              label: "Datadata Platform",
-              href: "https://www.datadata.com",
             },
           ],
         },

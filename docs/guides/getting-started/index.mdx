@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+title: 快速入门
+description: 十分钟快速上手 Datadata 平台。
+---
+
+# 快速入门
+
+本教程将带你完成从注册到完成第一个查询的全过程。
+
+## 注册与登录
+
+1. 打开 [datadata.com](https://www.datadata.com)
+2. 点击右上角 **登录** / **注册**
+3. 完成注册后，你将被引导至 [Explore (探索)](https://www.datadata.com/explore) 页面
+
+注册完成后，你可以通过顶部导航快速访问各个功能模块：
+
+- **发现** — 社区数据内容广场
+- **探索** — 浏览查询、面板、数据源和创作者
+- **AI Skills** — AI 集成能力
+- **Studio** — 核心工作区
+
+## 认识 Studio 工作区
+
+[Studio](https://www.datadata.com/studio) 是 Datadata 的核心工作区，包含三个主要模块：
+
+| 模块 | 说明 |
+| --- | --- |
+| **查询** | 创建和管理 SQL / DQL 查询 |
+| **面板** | 将多个查询组合为可视化监控仪表盘 |
+| **数据源** | 配置和管理数据库连接 |
+
+## 完成第一个查询
+
+1. 进入 Studio → 点击 **新建查询**
+2. 在左侧选择一个数据源（如 "crypto tick"）
+3. 在编辑器中输入 SQL：
+
+```sql
+SELECT symbol, name,
+  ROUND((close - open) / open * 100, 2) AS change_pct
+FROM futures_daily
+WHERE trade_date >= CURRENT_DATE - 30
+ORDER BY change_pct DESC
+LIMIT 20;
+```
+
+4. 点击运行按钮查看结果
+5. 结果将以表格形式展示，你可以进一步切换为图表视图
+
+## 下一步
+
+- 了解 [数据查询](/docs/guides/querying) 的更多功能
+- 学习 [DQL 脚本](/docs/guides/dql/) 语言
+- 探索 [AI Skills](https://www.datadata.com/ai-skills) 集成能力

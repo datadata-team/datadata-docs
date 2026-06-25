@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+title: Datadata DQL
+description: datadata-dql skill 用于编写 DQL 数据处理脚本。
+---
+
+# datadata-dql
+
+`datadata-dql` 是供 AI Agent 编写 **DQL（Data Query Language）** 脚本的 skill。DQL 是基于 Starlark 扩展的脚本语言，支持数据转换、HTTP 请求、2D 绘图等功能。
+
+## 功能
+
+- **DataFrame / Series 操作** — 数据转换、清洗、聚合、合并、异常检测
+- **SQL 查询** — 通过 `query()` 执行 SQL 并返回 DataFrame
+- **HTTP 请求** — 通过 `fetch()` 调用外部 API
+- **2D 绘图** — Canvas 基础图形绘制
+- **JSON / 时间 / 数学等内置模块**
+
+## DQL 脚本基础
+
+DQL 脚本实际是一个函数的 body，**必须有 `return` 语句**返回数据：
+
+```python
+df = query("SELECT * FROM users LIMIT 100")
+return df
+```
+
+所有 DQL 扩展函数均为**内置全局名称**，无需 `import`：
+
+- `DataFrame`、`Series` — 数据结构
+- `query()` — SQL 查询
+- `fetch()` — HTTP 请求
+- `concat()` — 数据合并
+- `json`、`math`、`time` — 内置模块
+
+## 完整语言参考
+
+DQL 的完整语法、API 签名和示例详见 [DQL 查询脚本](/docs/guides/dql/) 章节。
+
+## 使用场景
+
+| 场景 | 示例 |
+| --- | --- |
+| 数据清洗 | 对查询结果做过滤、类型转换、缺失值处理 |
+| 数据转换 | 列计算、分组聚合、多表合并 |
+| 数据生成 | 通过 HTTP API 获取外部数据，转为 DataFrame |
+| 自定义分析 | 编写复杂的数据处理流水线 |
+| 可视化 | 使用 Canvas 绘制图表 |
