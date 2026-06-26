@@ -1601,6 +1601,88 @@ paths:
       summary: Execute a saved query
       tags:
         - queries
+  /api/v1/queries/{id}/results:
+    get:
+      description:
+        Get the latest execution results for a query. Results can be downloaded
+        in JSON, CSV, or Parquet format. Query parameters can be passed as
+        "$name" query string keys.
+      parameters:
+        - description: Query ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: Output format
+          in: query
+          name: format
+          required: false
+          schema:
+            default: json
+            enum:
+              - json
+              - csv
+              - parquet
+            type: string
+        - description: Override download filename
+          in: query
+          name: filename
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      items: {}
+                      type: array
+                    type: array
+                    uniqueItems: false
+                  duration:
+                    type: string
+                  schema:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: false
+                  truncated:
+                    type: boolean
+                type: object
+            text/csv:
+              schema:
+                format: binary
+                type: string
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Query result data
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters or execution failed
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Query or execution not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      summary: Get query results
+      tags:
+        - queries
   /api/v1/executions/{id}:
     get:
       description: Get the details and status of a query execution by its ID.

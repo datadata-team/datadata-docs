@@ -1,0 +1,70 @@
+---
+id: get-query-results
+title: "Get query results"
+description: "Get the latest execution results for a query. Results can be downloaded in JSON, CSV, or Parquet format. Query parameters can be passed as '$name' query string keys."
+sidebar_label: "Get query results"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV19v2zYQ/yrEYQ8bIFtt0b3oLWiLIiuwZM1aDEiC4SyeYzYSyZAnu56h7z4cKcWK46Yt9rQ+2BJPx7vf3fH+cAeaYh2MZ+MsVPCWWPGKVINMkRV9prqTTypQ7BqOaumCQnXXUdjO1fuBWKNVC1LabWzjUJNWxqrfLs5+L9Sri4+FckGdY7jriGV/izxXf4gE5TFgS0zhXobHGEkrjOoKfrLY0hVkbSpyMPZG3dI2zqGA/VaoLncHZmTpp6+hACNrj7yCAkQeVGA0FBDorjOBNFQcOiog1itqEaod8NYLV9YHfV8cSj/r2HejKaOKBHKv4/7jXs8Sm/hAkaYldg1DBZ+is1AA2a6F6nJc1nGdDRXPwXXxDcjWFILR+1CopWkoQfoCzP3nJ4Ae6r0W7uidjRTl+4tnz+RRO8tkWV7R+8bUKLDKZE21m8jzwXkKbPJujZyohqmN05f+3mIMAbdwuC6gs+auo9PMn2D3BeguYPbHI+RTo+7VPeL5FiUcOlsji7vuJSycawitBGYkucUnqjlT6DOXEtIHrhjOSQULYzFF5lGQHzjT1Uw8ixwI2++VJL45kiY5tVUKQ1/Ay/8UzNppOurUIcp9AS3FiDfHuSIjd9OoGMt0Q+GITwtgw40QVsz+bwrBhTh/I49jtp7aNTZGKznmUtompceFSaFbomlIZ0e8/BEdkYP+wGbrpJp1Npn9648af6ZgsVGRwpqCooGxAMYb6SGpNIoV1wKRV05DBTfEqQTzCioo0Zty/bwcGMud0X05NEYoIAs+1o7Og9NdnVydmaSqhGaAHquy3Gw2c/GQ/Oa1a0FqbKS6C4a3F+Lr7N4Tb97R9qQTPIdaTs5P1TvaKux4RZaHiM3VeaCl+aw2hlfqCrSeXYHarMimXistVRr+LW3nY49YEeqEcWgSf81eD9BmJ97M3tGkuGACJKE7E1QvTuqaYnw1nIKD7pQ4lPy7YP5J8JSwqmXjNlCAPJKZOGUZhT0gfnjSfaXwli79j9tyj1sGiquvbfYm731RsrslacWxdn7fraLrQk2xCoRySN4TarWnK2OXrlCNiawYFw3FQqHVKjtjQZmocgbJwZmKjDWKqy5kHJqIHJiTnBYt3gxSyto1XWtV7dqWLB9KC+QbrGkmbT4BTcs0FKgF1rcSfUzLmcRzonEQNIseRdAmGBYJrwIhU3FvS6F0cH4wM6EzNlJgFdwmyhQoQlQWIgPOWHJiJZmV5819HdLEaJosZ6gExZiWVWYTEG/ym4q4Jq3GtH3EOUO9cvWEP61H/pwPxjbGinvllMbU/CXi33tAptUp0RNFzsFYSrFOpXTIKEnVi857F/irpaBcEmkJVgmPitrIp3yDLAOA8t2iMbVCbyRHKbTxbHlBYW1qekpH4py55SwOvPvqOua+Ojk/hQKkxGXlz+fPBJF3kVu0E+skqHeT0SKdyinuSXf5H904hgCnOc43aKxYn2K3GzrEJWS/r5/vTyMUUA0XjuyL6wJWLrJw73YLjPQhNH0v5Dybp/ZhomTUfhb/ovsO7yJHQd7SdnolWWPTCROkC8S3q3rqcvGU3j3XXvO1LIIR1d9p8c/vh4vKL2pyzTuqf+xRdjvVPeIyGvrrvhjbnaDIH6SH+amjHg1A/XRGePvmT+j7fwEwmlRP
+sidebar_class_name: "get api-method"
+info_path: docs/api/openapi/datadata-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get query results"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/queries/{id}/results"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get the latest execution results for a query. Results can be downloaded in JSON, CSV, or Parquet format. Query parameters can be passed as "$name" query string keys.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-query-results.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-query-results.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-query-results.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

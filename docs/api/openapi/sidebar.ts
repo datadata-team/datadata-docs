@@ -118,6 +118,12 @@ const sidebar: SidebarsConfig = {
           label: "Execute a saved query",
           className: "api-method post",
         },
+        {
+          type: "doc",
+          id: "api/openapi/get-query-results",
+          label: "Get query results",
+          className: "api-method get",
+        },
       ],
     },
     {

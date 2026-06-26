@@ -24,6 +24,8 @@ const sidebars: SidebarsConfig = {
         slug: "/category/rest-api",
       },
       items: openapiSidebar,
+      collapsed: false,
+      collapsible: true,
     },
   ],
 };
