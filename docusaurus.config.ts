@@ -179,11 +179,11 @@ const config: Config = {
               label: "首页",
             },
             {
-              to: "/docs/guides",
+              to: "/docs/guides/intro",
               label: "用户指南",
             },
             {
-              to: "/docs/api",
+              to: "/docs/api/api-key",
               label: "API",
             },
             {
