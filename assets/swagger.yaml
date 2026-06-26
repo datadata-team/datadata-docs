@@ -1,0 +1,1677 @@
+components:
+  schemas:
+    api_v1_data_spaces.handleCreateTable.Data:
+      properties:
+        columns:
+          items:
+            $ref: "#/components/schemas/data_spaces.TableColumn"
+          minItems: 1
+          type: array
+          uniqueItems: false
+        tableName:
+          type: string
+      required:
+        - columns
+        - tableName
+      type: object
+    api_v1_data_spaces.handleDescribeTable.Data:
+      properties:
+        tableName:
+          type: string
+      required:
+        - tableName
+      type: object
+    api_v1_data_spaces.handleDropTable.Data:
+      properties:
+        tableName:
+          type: string
+      required:
+        - tableName
+      type: object
+    api_v1_data_spaces.handleInsertRows.Data:
+      properties:
+        columns:
+          items:
+            type: string
+          minItems: 1
+          type: array
+          uniqueItems: false
+        rows:
+          items:
+            items: {}
+            type: array
+          minItems: 1
+          type: array
+          uniqueItems: false
+        tableName:
+          type: string
+      required:
+        - columns
+        - rows
+        - tableName
+      type: object
+    api_v1_queries.handleExecuteAdhocQuery.Data:
+      properties:
+        datasources:
+          items:
+            $ref: "#/components/schemas/models.ExecutionDatasource"
+          type: array
+          uniqueItems: false
+        description:
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: "#/components/schemas/models.QueryParameter"
+          type: array
+          uniqueItems: false
+        queryEngine:
+          $ref: "#/components/schemas/models.QueryEngine"
+        script:
+          type: string
+        scriptType:
+          $ref: "#/components/schemas/models.QueryScriptType"
+      required:
+        - queryEngine
+        - script
+        - scriptType
+      type: object
+    data_spaces.TableColumn:
+      properties:
+        columnName:
+          type: string
+        columnType:
+          type: string
+      required:
+        - columnName
+        - columnType
+      type: object
+    http_errors.Error:
+      properties:
+        code:
+          type: string
+        data: {}
+        message:
+          type: string
+        status:
+          type: integer
+      type: object
+    models.CascaderOptions:
+      description: for cascader type
+      properties:
+        levels:
+          items:
+            $ref: "#/components/schemas/models.CascaderOptionsLevel"
+          type: array
+          uniqueItems: false
+        queryId:
+          type: string
+      type: object
+    models.CascaderOptionsLevel:
+      properties:
+        column:
+          type: string
+        label:
+          type: string
+      type: object
+    models.Datasource:
+      description: 关联实体
+      properties:
+        category:
+          type: string
+        createdAt:
+          type: string
+        description:
+          type: string
+        displayName:
+          type: string
+        entityStat:
+          $ref: "#/components/schemas/models.EntityStat"
+        folderPath:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        metadata:
+          $ref: "#/components/schemas/models.DatasourceMetadata"
+        name:
+          type: string
+        schemaStatus:
+          $ref: "#/components/schemas/models.DatasourceSchemaStatus"
+        schemaStatusMessage:
+          type: string
+        schemaUpdatedAt:
+          type: string
+        sid:
+          type: integer
+        storageSize:
+          description: 存储大小，上传文件类型时有值
+          type: integer
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        type:
+          $ref: "#/components/schemas/models.DatasourceType"
+        updatedAt:
+          type: string
+        user:
+          $ref: "#/components/schemas/models.UserInfo"
+        userId:
+          type: string
+        visibility:
+          $ref: "#/components/schemas/models.ResourceVisibility"
+      type: object
+    models.DatasourceMetadata:
+      properties:
+        contentType:
+          description: 文件类型
+          type: string
+        filename:
+          description: 文件类型
+          type: string
+        version:
+          type: string
+      type: object
+    models.DatasourceSchemaStatus:
+      enum:
+        - pending
+        - running
+        - success
+        - failed
+      type: string
+      x-enum-varnames:
+        - DatasourceSchemaStatusPending
+        - DatasourceSchemaStatusRunning
+        - DatasourceSchemaStatusSuccess
+        - DatasourceSchemaStatusFailed
+    models.DatasourceType:
+      enum:
+        - mysql
+        - postgres
+        - duckdb
+        - sqlite
+        - csv
+        - json
+        - excel
+        - parquet
+        - clickhouse
+        - ducklake
+      type: string
+      x-enum-varnames:
+        - DatasourceTypeMySQL
+        - DatasourceTypePostgres
+        - DatasourceTypeDuckDB
+        - DatasourceTypeSQLite
+        - DatasourceTypeCSV
+        - DatasourceTypeJSON
+        - DatasourceTypeExcel
+        - DatasourceTypeParquet
+        - DatasourceTypeClickhouse
+        - DatasourceTypeDucklake
+    models.EntityStat:
+      properties:
+        commentCount:
+          type: integer
+        createdAt:
+          type: string
+        dislikeCount:
+          type: integer
+        entityId:
+          type: string
+        entityType:
+          type: string
+        favoriteCount:
+          type: integer
+        likeCount:
+          type: integer
+        score:
+          type: number
+        updatedAt:
+          type: string
+        viewCount:
+          type: integer
+        visitCount:
+          type: integer
+      type: object
+    models.Execution:
+      properties:
+        checksum:
+          description: Parquet 文件校验和，使用 CRC32 算法
+          type: string
+        createdAt:
+          type: string
+        datasources:
+          items:
+            $ref: "#/components/schemas/models.ExecutionDatasource"
+          type: array
+          uniqueItems: false
+        finishedAt:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        parameters:
+          items:
+            $ref: "#/components/schemas/models.QueryParameter"
+          type: array
+          uniqueItems: false
+        query:
+          $ref: "#/components/schemas/models.Query"
+        queryEngine:
+          $ref: "#/components/schemas/models.QueryEngine"
+        queryId:
+          type: string
+        scriptHash:
+          type: string
+        scriptLogs:
+          type: string
+        scriptType:
+          $ref: "#/components/schemas/models.QueryScriptType"
+        scriptWarnings:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        startAt:
+          type: string
+        status:
+          $ref: "#/components/schemas/models.ExecutionStatus"
+        statusMessage:
+          type: string
+        storageSize:
+          type: integer
+        triggerSource:
+          $ref: "#/components/schemas/models.ExecutionTriggerSource"
+        updatedAt:
+          type: string
+        user:
+          $ref: "#/components/schemas/models.User"
+        userId:
+          type: string
+      type: object
+    models.ExecutionDatasource:
+      properties:
+        attachAlias:
+          type: string
+        datasourceId:
+          type: string
+      type: object
+    models.ExecutionStatus:
+      enum:
+        - pending
+        - running
+        - success
+        - failed
+        - canceled
+      type: string
+      x-enum-varnames:
+        - ExecutionStatusPending
+        - ExecutionStatusRunning
+        - ExecutionStatusSuccess
+        - ExecutionStatusFailed
+        - ExecutionStatusCanceled
+    models.ExecutionTriggerSource:
+      enum:
+        - manual
+        - schedule
+      type: string
+      x-enum-varnames:
+        - ExecutionTriggerSourceManual
+        - ExecutionTriggerSourceSchedule
+    models.ListOption:
+      properties:
+        label:
+          type: string
+        value:
+          type: string
+      type: object
+    models.ListOptions:
+      description: for list type
+      properties:
+        column:
+          description: query
+          type: string
+        options:
+          description: static
+          items:
+            $ref: "#/components/schemas/models.ListOption"
+          type: array
+          uniqueItems: false
+        queryId:
+          description: query
+          type: string
+        type:
+          description: static, query
+          type: string
+      type: object
+    models.Query:
+      properties:
+        category:
+          type: string
+        createdAt:
+          type: string
+        datasources:
+          items:
+            $ref: "#/components/schemas/models.QueryDatasource"
+          type: array
+          uniqueItems: false
+        description:
+          type: string
+        entityStat:
+          $ref: "#/components/schemas/models.EntityStat"
+        folderPath:
+          type: string
+        forkedFromID:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: "#/components/schemas/models.QueryParameter"
+          type: array
+          uniqueItems: false
+        persisted:
+          type: boolean
+        queryEngine:
+          $ref: "#/components/schemas/models.QueryEngine"
+        schedule:
+          $ref: "#/components/schemas/models.QuerySchedule"
+        script:
+          type: string
+        scriptType:
+          $ref: "#/components/schemas/models.QueryScriptType"
+        sid:
+          type: integer
+        slug:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        updatedAt:
+          type: string
+        user:
+          $ref: "#/components/schemas/models.UserInfo"
+        userId:
+          type: string
+        visibility:
+          $ref: "#/components/schemas/models.ResourceVisibility"
+        visualizations:
+          items:
+            $ref: "#/components/schemas/models.Visualization"
+          type: array
+          uniqueItems: false
+      type: object
+    models.QueryDatasource:
+      properties:
+        attachAlias:
+          type: string
+        datasource:
+          $ref: "#/components/schemas/models.Datasource"
+        datasourceId:
+          type: string
+        queryId:
+          type: string
+        updatedAt:
+          type: string
+      type: object
+    models.QueryEngine:
+      description: duckdb clickhouse
+      enum:
+        - auto
+        - duckdb
+        - clickhouse
+      type: string
+      x-enum-comments:
+        QueryEngineAuto: Auto 其实就是 duckdb，前端需要有 auto 状态来判断可以添加什么数据源
+      x-enum-varnames:
+        - QueryEngineAuto
+        - QueryEngineDuckDB
+        - QueryEngineClickHouse
+    models.QueryParameter:
+      properties:
+        cascaderOptions:
+          $ref: "#/components/schemas/models.CascaderOptions"
+        description:
+          type: string
+        displayName:
+          type: string
+        listOptions:
+          $ref: "#/components/schemas/models.ListOptions"
+        name:
+          type: string
+        type:
+          $ref: "#/components/schemas/models.QueryParameterType"
+        value:
+          type: string
+      type: object
+    models.QueryParameterType:
+      enum:
+        - text
+        - number
+        - boolean
+        - date
+        - list
+        - cascader
+        - time
+        - date-range
+        - date-time-range
+      type: string
+      x-enum-varnames:
+        - QueryParameterTypeText
+        - QueryParameterTypeNumber
+        - QueryParameterTypeBoolean
+        - QueryParameterTypeDate
+        - QueryParameterTypeList
+        - QueryParameterTypeCascader
+        - QueryParameterTypeTime
+        - QueryParameterTypeDateRange
+        - QueryParameterTypeDateTimeRange
+    models.QuerySchedule:
+      properties:
+        createdAt:
+          type: string
+        cronExpr:
+          type: string
+        enabled:
+          type: boolean
+        expiresAt:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        nextExecutionTime:
+          type: string
+        query:
+          $ref: "#/components/schemas/models.Query"
+        queryId:
+          type: string
+        timezone:
+          type: string
+        updatedAt:
+          type: string
+      type: object
+    models.QueryScriptType:
+      enum:
+        - sql
+        - dql
+        - javascript
+        - python
+      type: string
+      x-enum-varnames:
+        - QueryScriptSQL
+        - QueryScriptDQL
+        - QueryScriptJavaScript
+        - QueryScriptPython
+    models.QuerySummary:
+      properties:
+        category:
+          type: string
+        createdAt:
+          type: string
+        description:
+          type: string
+        folderPath:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: "#/components/schemas/models.QueryParameter"
+          type: array
+          uniqueItems: false
+        persisted:
+          type: boolean
+        scriptType:
+          $ref: "#/components/schemas/models.QueryScriptType"
+        sid:
+          type: integer
+        slug:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        updatedAt:
+          type: string
+        user:
+          $ref: "#/components/schemas/models.UserInfo"
+        userId:
+          type: string
+        visibility:
+          $ref: "#/components/schemas/models.ResourceVisibility"
+      type: object
+    models.ResourceVisibility:
+      enum:
+        - public
+        - private
+        - system
+      type: string
+      x-enum-varnames:
+        - ResourceVisibilityPublic
+        - ResourceVisibilityPrivate
+        - ResourceVisibilitySystem
+    models.Role:
+      properties:
+        code:
+          type: string
+        desc:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        permissions:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    models.User:
+      properties:
+        createdAt:
+          type: string
+        email:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        registerMethod:
+          $ref: "#/components/schemas/models.UserRegisterMethod"
+        roles:
+          description: 关联关系
+          items:
+            $ref: "#/components/schemas/models.Role"
+          type: array
+          uniqueItems: false
+        status:
+          $ref: "#/components/schemas/models.UserStatus"
+        updatedAt:
+          type: string
+        username:
+          type: string
+      type: object
+    models.UserInfo:
+      description: Relations
+      properties:
+        avatarUrl:
+          type: string
+        displayName:
+          type: string
+        id:
+          type: string
+        status:
+          $ref: "#/components/schemas/models.UserStatus"
+        username:
+          type: string
+      type: object
+    models.UserRegisterMethod:
+      enum:
+        - email
+        - oauth:fmz
+        - oauth:youquant
+        - oauth:google
+        - oauth:github
+        - admin
+      type: string
+      x-enum-varnames:
+        - UserRegisterMethodEmail
+        - UserRegisterMethodOAuthFMZ
+        - UserRegisterMethodOAuthYouquant
+        - UserRegisterMethodOAuthGoogle
+        - UserRegisterMethodOAuthGithub
+        - UserRegisterMethodAdmin
+    models.UserStatus:
+      enum:
+        - active
+        - disabled
+      type: string
+      x-enum-varnames:
+        - UserStatusActive
+        - UserStatusDisabled
+    models.Visualization:
+      properties:
+        createdAt:
+          type: string
+        description:
+          type: string
+        id:
+          description: 必须写 gorm default 不写会有问题 https://github.com/go-gorm/gorm/issues/7292
+          type: string
+        name:
+          type: string
+        options:
+          $ref: "#/components/schemas/models.VisualizationOptions"
+        position:
+          description: 排序字段，越小越靠前
+          type: integer
+        query:
+          $ref: "#/components/schemas/models.QuerySummary"
+        queryId:
+          type: string
+        type:
+          type: string
+        updatedAt:
+          type: string
+        user:
+          $ref: "#/components/schemas/models.UserInfo"
+        userId:
+          type: string
+      type: object
+    models.VisualizationOptions:
+      additionalProperties: {}
+      type: object
+    api_v1_datasources.handleGetDatasourceInfo.Response:
+      properties:
+        description:
+          type: string
+        displayName:
+          type: string
+        name:
+          type: string
+        schemas:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        type:
+          $ref: "#/components/schemas/models.DatasourceType"
+      type: object
+    api_v1_datasources.handleDescribeTable.Response:
+      properties:
+        columns:
+          items:
+            $ref: "#/components/schemas/api_v1_datasources.handleDescribeTable.TableColumnInfo"
+          type: array
+          uniqueItems: false
+      type: object
+    api_v1_datasources.handleDescribeTable.TableColumnInfo:
+      properties:
+        columnComment:
+          type: string
+        columnName:
+          type: string
+        columnType:
+          type: string
+        isNullable:
+          type: boolean
+      type: object
+    api_v1_datasources.handleDescribeTable.Query:
+      properties:
+        schemaName:
+          type: string
+        tableName:
+          type: string
+      required:
+        - schemaName
+        - tableName
+      type: object
+    api_v1_datasources.handleListTables.Query:
+      properties:
+        schemaName:
+          type: string
+      type: object
+    api_v1_datasources.handleCommentTable.Data:
+      properties:
+        columnComments:
+          additionalProperties:
+            type: string
+          type: object
+        tableComment:
+          type: string
+      type: object
+    api_v1_queries.handleExecuteQuery.Data:
+      properties:
+        force:
+          type: boolean
+        parameters:
+          items:
+            $ref: "#/components/schemas/models.QueryParameter"
+          type: array
+          uniqueItems: false
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: API Key authentication. Prefix with "dd-" when passing the key.
+      in: header
+      name: X-Datadata-Api-Key
+      type: apiKey
+    OAuth2AccessCode:
+      description: OAuth2 Authorization Code flow
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.datadata.com/auth/oauth/authorize
+          refreshUrl: https://www.datadata.com/api/oauth2/token
+          scopes:
+            datasources:read: Read datasource info, list tables, and describe table schemas
+            datasources:scan: Scan datasource schemas and manage table/column comments
+            datasources:replace-file: Replace file backing a file-type datasource
+            data-spaces:write: Create, describe, drop tables and insert rows in data spaces
+            executions:get: Get execution details and status
+            queries:execute: Execute saved queries
+            queries:execute-adhoc: Execute adhoc queries with inline scripts
+          tokenUrl: https://www.datadata.com/api/oauth2/token
+      type: oauth2
+externalDocs:
+  description: ""
+  url: ""
+info:
+  contact:
+    name: API Support
+    url: https://www.datadata.com/feedback/
+  description: datadata platform public api
+  termsOfService: https://www.datadata.com/terms-of-service
+  title: Datadata API
+  version: "1.0"
+openapi: 3.1.0
+paths:
+  /api/mcp/v1:
+    post:
+      description:
+        Streamable HTTP endpoint for the Model Context Protocol (MCP) server.
+        Accepts JSON-RPC messages to interact with Datadata tools including datasources,
+        data spaces, queries, and AI memory.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+          text/plain:
+            schema:
+              title: body
+              type: object
+        description: MCP JSON-RPC request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: MCP JSON-RPC response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: []
+        - OAuth2AccessCode: []
+      summary: MCP server endpoint
+      tags:
+        - mcp
+  /api/v1/auth/current:
+    get:
+      description:
+        Returns the currently authenticated user, along with optional API
+        key, session, and permissions info.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Current session data including user, apiKey, session, and permissions
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+      security:
+        - ApiKeyAuth: []
+        - OAuth2AccessCode: []
+      summary: Get current session
+      tags:
+        - auth
+  /api/v1/data-spaces/{datasourceId}/create-table:
+    post:
+      description:
+        Create a new table with specified columns in a data space. The
+        datasource must belong to the authenticated user.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: datasourceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_data_spaces.handleCreateTable.Data"
+        description: Table definition
+        required: true
+      responses:
+        "204":
+          description: Table created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden or quota exceeded
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource or data space not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Create table in data space
+      tags:
+        - data-spaces
+  /api/v1/data-spaces/{datasourceId}/describe-table:
+    post:
+      description: Returns column metadata for the specified table in a data space.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: datasourceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_data_spaces.handleDescribeTable.Data"
+        description: Table name
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Column information
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Data space not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Describe table in data space
+      tags:
+        - data-spaces
+  /api/v1/data-spaces/{datasourceId}/drop-table:
+    post:
+      description:
+        Drop the specified table from a data space. The datasource must
+        belong to the authenticated user.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: datasourceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_data_spaces.handleDropTable.Data"
+        description: Table name
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Table dropped
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource or data space not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Drop table from data space
+      tags:
+        - data-spaces
+  /api/v1/data-spaces/{datasourceId}/insert-rows:
+    post:
+      description:
+        Insert one or more rows into a table in a data space. The datasource
+        must belong to the authenticated user.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: datasourceId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_data_spaces.handleInsertRows.Data"
+        description: Rows to insert
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Rows inserted
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden or quota exceeded
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Data space not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Insert rows into data space table
+      tags:
+        - data-spaces
+  /api/v1/queries/execute-adhoc:
+    post:
+      description:
+        Submit a query script to create a temporary Query and execute it
+        asynchronously, returning the Execution object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_queries.handleExecuteAdhocQuery.Data"
+        description: Adhoc query request payload
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/models.Execution"
+          description: Execution created and enqueued
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden or quota exceeded
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Execute adhoc query
+      tags:
+        - queries
+  /api/v1/datasources/{id}/info:
+    get:
+      description:
+        Returns datasource metadata including name, type, tags, display
+        name, description, and available schema names.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api_v1_datasources.handleGetDatasourceInfo.Response"
+          description: Datasource info
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Get datasource info
+      tags:
+        - datasources
+  /api/v1/datasources/{id}/list-tables:
+    get:
+      description:
+        List all tables in a datasource, optionally filtered by schema
+        name.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: Schema name filter
+          in: query
+          name: schemaName
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    schemaName:
+                      type: string
+                    tableComment:
+                      type: string
+                    tableName:
+                      type: string
+                    tableType:
+                      type: string
+                  type: object
+                type: array
+                uniqueItems: false
+          description: List of tables
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: List tables in datasource
+      tags:
+        - datasources
+  /api/v1/datasources/{id}/describe-table:
+    get:
+      description: Describe a table in a datasource, returning its column metadata.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: Schema name
+          in: query
+          name: schemaName
+          required: true
+          schema:
+            type: string
+        - description: Table name
+          in: query
+          name: tableName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/api_v1_datasources.handleDescribeTable.Response"
+          description: Table column information
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Describe table in datasource
+      tags:
+        - datasources
+  /api/v1/datasources/{id}/scan:
+    post:
+      description: Trigger a schema scan for a datasource. Returns a task ID for
+        tracking the scan progress.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  state:
+                    type: string
+                  taskId:
+                    type: string
+                  taskType:
+                    type: string
+                type: object
+          description: Scan task created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Scan datasource schema
+      tags:
+        - datasources
+  /api/v1/datasources/{id}/replace-file:
+    post:
+      description:
+        Replace the file backing a file-type datasource. Accepts multipart/form-data
+        with a "file" field.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  format: binary
+                  type: string
+              required:
+                - file
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/models.Datasource"
+          description: File replaced
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "413":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: File too large
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Replace datasource file
+      tags:
+        - datasources
+  /api/v1/datasources/{id}/{schemaName}/{tableName}/comment:
+    post:
+      description: Add or update comments on a table and its columns.
+      parameters:
+        - description: Datasource ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: Schema name
+          in: path
+          name: schemaName
+          required: true
+          schema:
+            type: string
+        - description: Table name
+          in: path
+          name: tableName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_datasources.handleCommentTable.Data"
+        description: Comment data
+        required: true
+      responses:
+        "200":
+          description: Comments saved
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Datasource not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Comment on table
+      tags:
+        - datasources
+  /api/v1/queries/{queryId}/execute:
+    post:
+      description:
+        Execute a saved query by its ID. Optionally pass parameters and
+        force re-execution.
+      parameters:
+        - description: Query ID
+          in: path
+          name: queryId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/api_v1_queries.handleExecuteQuery.Data"
+        description: Execution options
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/models.Execution"
+          description: Execution created and enqueued
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden or quota exceeded
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Query not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Execute a saved query
+      tags:
+        - queries
+  /api/v1/executions/{id}:
+    get:
+      description: Get the details and status of a query execution by its ID.
+      parameters:
+        - description: Execution ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/models.Execution"
+          description: Execution details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Invalid request parameters
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Unauthenticated
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Execution not found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/http_errors.Error"
+          description: Internal server error
+      security:
+        - ApiKeyAuth: []
+      summary: Get execution detail
+      tags:
+        - executions
+tags:
+  - description: Model Context Protocol server endpoint
+    name: mcp
+    x-displayName: MCP
+  - description: Authentication and session management
+    name: auth
+    x-displayName: Auth
+  - description: Data source operations including info, table listing, schema scanning, and file management
+    name: datasources
+    x-displayName: Datasources
+  - description: Data Spaces table management (create, describe, drop, insert rows)
+    name: data-spaces
+    x-displayName: Data Spaces
+  - description: Query execution (adhoc and saved queries)
+    name: queries
+    x-displayName: Queries
+  - description: Query execution history and status
+    name: executions
+    x-displayName: Executions
+servers:
+  - description: Production server
+    url: https://www.datadata.com

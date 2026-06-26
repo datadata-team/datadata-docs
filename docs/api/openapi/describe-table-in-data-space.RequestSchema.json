@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"properties":{"tableName":{"type":"string"}},"required":["tableName"],"type":"object","title":"api_v1_data_spaces.handleDescribeTable.Data"}}},"description":"Table name","required":true}}

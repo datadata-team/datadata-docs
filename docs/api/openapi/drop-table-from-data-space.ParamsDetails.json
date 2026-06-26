@@ -1,0 +1,1 @@
+{"parameters":[{"description":"Datasource ID","in":"path","name":"datasourceId","required":true,"schema":{"type":"string"}}]}

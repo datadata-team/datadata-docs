@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"properties":{"columnComments":{"additionalProperties":{"type":"string"},"type":"object"},"tableComment":{"type":"string"}},"type":"object","title":"api_v1_datasources.handleCommentTable.Data"}}},"description":"Comment data","required":true}}

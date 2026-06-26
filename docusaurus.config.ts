@@ -44,7 +44,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
@@ -55,13 +54,15 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: [
+            "./src/css/custom.css", //
+            "./src/css/openapi.css", //
+          ],
         },
         sitemap: {
           priority: 0.5,
@@ -84,12 +85,16 @@ const config: Config = {
         id: "api",
         docsPluginId: "classic",
         config: {
-          petstore: {
-            specPath: "assets/petstore.yaml",
-            outputDir: "docs/api/petstore",
-            maskCredentials: false,
+          openapi: {
+            specPath: "assets/swagger.yaml",
+            outputDir: "docs/api/openapi",
+            // showSchemas: false,
+            // schemaTemplate: "templates/schema.mustache",
+            hideSendButton: true,
+            maskCredentials: true,
             sidebarOptions: {
               groupPathsBy: "tag",
+              // categoryLinkSource: "tag",
             },
           } satisfies OpenApiPlugin.Options,
         },

@@ -1,0 +1,70 @@
+---
+id: get-datasource-info
+title: "Get datasource info"
+description: "Returns datasource metadata including name, type, tags, display name, description, and available schema names."
+sidebar_label: "Get datasource info"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdV0tvGzcQ/ivEnFqA0sZpetmbG7uBmzRxrKQo4BgBRY4kRrskTXIlq8L+92LIlbR62EHRogcftCKHw5lvOJwH16AwSK9d1NZACTcYG28CUyKKYBsvkdUYBU2ZNrJqlDZTZkSNnMWVo6+YBs6UDq4Sq26lJ5MzYRQTC6ErMa6QBTnDWiS+MAQOTnhRY0QfoLxdH6C52KG4ugAOmohOxBlwIAlQglbAweN9oz0qKKNvkENWAuUaCCOUEKLXZgpte0fMwVkTMND6yxcv6E9aE9FEGgrnKi0FISi+BYKx7slz3jr0Uefde2iPlHHoTuV9gnpi3Ty2kBUmHTpiHU4ydQThvVgBh8bo+wavMvtEVAGJR0z/CymJZw1omhrKW6hX4b4i59kQpx4DcFCNnKsxcAj3lY4IHGRYAId0hBzwQWKV3X3fYKTlSsv5zDYBu92VmCPc8QOEHB4GpHawED5dGtK/uxefVg5/X40+vgN+QL3eYdtfuGjk/OKXI/Lo47uMe5/8evTHEe230Yf3R8TLzsIDFFt7D8T2rT/Gtz0LHSs6jNoqrMJwnxHanfvs+BtKUrPZIZz+ujj7uovjMJwJoyp8g3En5spM7PCmCwhoSeCjEajNxNKFefWvQkZadfrKE1Io1y2HGkMQ00cCI4rY9C+yNhGn6J88i1mM7it6b30YXtLfKUuvzEJUWjHKJRgi6yWmZPTZczT6sxFNnKGJZAmqbOlPz9HSX60fa6XQZBtfPUcbe8FqbGQT25jk0p+fa8RG9EZULKBfoGfYMXIIKBuv4yq1FOdOv8XVeRNnUN7eUQeQi+It9JIjJdsa48wqKGGaEnbqM0oohNPF4qzoMRdrrdoi5UPSRcpPdS/X3qpG0qRDSOXVV515oSyK5XI5JLn0G0pbA6HbgB+RP7IL+iYcajm/vmJvccV6gaytGbJrjxP9wJY6ztgXUGrwBdhyhoY5EQI1cXGGbI6r4aavmqFQCWPXWf05uOigDc6dHrxFag823UICRO79QKhenkuJIbzubso+wMzB6Gu9/ivBY8TKJpVdAgf6S2aKPstG2B7x85PHVxBvYdN3sw1TezjxGGbf2+x03vuyiHaO1LUEaV3X6e28X3oUKrXKQvX7ZLoPnFU6RBap1Q259c2HMcZMZJvOju+JDFLQUY2kMH2RHXOSUwsjpp2UQtqqqQ2Ttq7RxENpHl0lJA4mOgXTTZ4ymrKxkHPyvkjTAfmzp7ETNAhOkKClp5aohNceRdz29WMaees6MxM6bQL6yLxdBqazDSwLSc0fyobcF0oKrRLeYGRbIlMYha6ynC5bcLhv0GsMZWYjEJd5xIJYoGLd+jHnQKiZlT3+NN/w53jQptKGjpduaarvyeP/9IL0M1iiJ0rKC126FTKl2y6iKFRHjXPWx++mgmKCqMhZBRwlvg0fc5WIE+tr5ppxpSUTTlOMoq/Dh8kI/UJLfEpH4hzYySB0vLsMvIl9dn59BRwoxWXlZ8MXhIha/1qYnnXk1INwAH74RNrWoP//pdl5KuJDLFwldOoEkhPWXa6/hXyAi7P9gAIOZXpnJpvuOMxsiMS+Xo9FwM++alsi0x2jmnPHYSG8JhS5LOhAY9U9qJ44lB9uupfsj+zw7XsS/iYdG8rNC1E1NAMOc1zlt3F71/JNZicoeYHStYu9LUf9QNuvh28uPwFPibhXxoXT81QSugFJPwnnZB3JOOaphjyyb73OVaZtt/x56dEd2wrWmU9mtG37N8Jr5yY=
+sidebar_class_name: "get api-method"
+info_path: docs/api/openapi/datadata-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get datasource info"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/datasources/{id}/info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns datasource metadata including name, type, tags, display name, description, and available schema names.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-datasource-info.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-datasource-info.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-datasource-info.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

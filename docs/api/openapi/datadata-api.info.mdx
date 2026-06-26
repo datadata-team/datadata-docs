@@ -1,0 +1,151 @@
+---
+id: datadata-api
+title: "Datadata API"
+description: "datadata platform public api"
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0"}
+>
+</span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Datadata API"}
+>
+</Heading>
+
+
+
+datadata platform public api
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"API Key: ApiKeyAuth"}
+      value={"ApiKeyAuth"}
+    >
+      
+      
+      API Key authentication. Prefix with "dd-" when passing the key.
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                apiKey
+              </td>
+            </tr><tr>
+              <th>
+                Header parameter name:
+              </th><td>
+                X-Datadata-Api-Key
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem><TabItem
+      label={"OAuth 2.0: OAuth2AccessCode"}
+      value={"OAuth2AccessCode"}
+    >
+      
+      
+      OAuth2 Authorization Code flow
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                oauth2
+              </td>
+            </tr><tr>
+              <th>
+                OAuth Flow (authorizationCode):
+              </th><td>
+                <div>
+                  Token URL: https://www.datadata.com/api/oauth2/token
+                </div><div>
+                  Authorization URL: https://www.datadata.com/auth/oauth/authorize
+                </div><div>
+                  Refresh URL: https://www.datadata.com/api/oauth2/token
+                </div><span>
+                  Scopes:
+                </span><ul>
+                  <li>
+                    datasources:read: Read datasource info, list tables, and describe table schemas
+                  </li><li>
+                    datasources:scan: Scan datasource schemas and manage table/column comments
+                  </li><li>
+                    datasources:replace-file: Replace file backing a file-type datasource
+                  </li><li>
+                    data-spaces:write: Create, describe, drop tables and insert rows in data spaces
+                  </li><li>
+                    executions:get: Get execution details and status
+                  </li><li>
+                    queries:execute: Execute saved queries
+                  </li><li>
+                    queries:execute-adhoc: Execute adhoc queries with inline scripts
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    API Support: 
+  </span><span>
+    URL: [https://www.datadata.com/feedback/](https://www.datadata.com/feedback/)
+  </span>
+</div><div
+  style={{"marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Terms of Service
+  </h3><a
+    href={"https://www.datadata.com/terms-of-service"}
+  >
+    {'https://www.datadata.com/terms-of-service'}
+  </a>
+</div>
+      

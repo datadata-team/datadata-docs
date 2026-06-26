@@ -1,0 +1,90 @@
+/* ============================================================
+ * OpenAPI Sidebar Method Badges
+ * ============================================================ */
+
+.api-method > .menu__link,
+.schema > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before,
+.schema > .menu__link::before {
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.375rem;
+  line-height: 1.25;
+  width: 2.25rem;
+  height: auto;
+  border: none;
+  text-transform: uppercase;
+  margin-right: var(--ifm-spacing-horizontal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* Content labels */
+.get > .menu__link::before {
+  content: "get";
+}
+.post > .menu__link::before {
+  content: "post";
+}
+.delete > .menu__link::before {
+  content: "del";
+}
+.put > .menu__link::before {
+  content: "put";
+}
+.patch > .menu__link::before {
+  content: "patch";
+}
+
+/* Neutral: head / event / schema */
+.head > .menu__link::before,
+.event > .menu__link::before,
+.schema > .menu__link::before {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+.head > .menu__link::before {
+  content: "head";
+}
+.event > .menu__link::before {
+  content: "event";
+}
+.schema > .menu__link::before {
+  content: "schema";
+}
+
+/* Deprecated */
+.menu__list-item--deprecated > .menu__link,
+.menu__list-item--deprecated > .menu__link:hover {
+  text-decoration: line-through;
+}
+
+/* Badge colors — 复用 Docusaurus 语义色变量，不污染你的主题 */
+.get > .menu__link::before {
+  background-color: var(--ifm-color-info);
+  color: #fff;
+}
+.post > .menu__link::before {
+  background-color: var(--ifm-color-success);
+  color: #fff;
+}
+.delete > .menu__link::before {
+  background-color: var(--ifm-color-danger);
+  color: #fff;
+}
+.put > .menu__link::before {
+  background-color: var(--ifm-color-warning);
+  color: #fff;
+}
+.patch > .menu__link::before {
+  background-color: var(--ifm-color-warning);
+  color: #fff;
+}
