@@ -7,7 +7,7 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import { EnumChangefreq } from "sitemap";
 
-const baseUrl = process.env.BASE_URL || "/datadata-docs";
+const siteUrl = new URL(process.env.SITE_URL || "https://datadata-team.github.io/datadata-docs");
 
 const config: Config = {
   title: "DataData Docs",
@@ -16,8 +16,8 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: "https://datadata-team.github.io",
-  baseUrl: `${baseUrl}/`,
+  url: siteUrl.origin,
+  baseUrl: `${siteUrl.pathname}/`,
   organizationName: "datadata-team",
   projectName: "datadata-docs",
   onBrokenLinks: "warn",
