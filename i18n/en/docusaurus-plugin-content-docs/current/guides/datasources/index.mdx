@@ -1,0 +1,51 @@
+---
+sidebar_position: 7
+title: Datasource Management
+description: Learn how to configure and manage datasources in Datadata.
+---
+
+# Datasource Management
+
+Datadata supports three ways to bring in data: connecting external databases, uploading data files, and creating Data Spaces. Datasources are the foundation of querying and analysis.
+
+## Supported Datasource Types
+
+| Type | Method | Typical Use |
+| --- | --- | --- |
+| **MySQL** | Connect | Business databases |
+| **Postgres** | Connect | Business databases |
+| **ClickHouse** | Connect | High-performance time-series analytics |
+| **DuckDB** | Connect | Embedded analytics |
+| **CSV** | Upload / S3 / External URL | Tabular data |
+| **Excel** | Upload / S3 / External URL | Spreadsheets |
+| **JSON** | Upload / S3 / External URL | Structured data |
+| **Parquet** | Upload / S3 / External URL | Columnar storage data |
+| **DuckLake (Data Space)** | Create | Platform-hosted data storage |
+
+## Three Connection Methods
+
+| Method | Description |
+| --- | --- |
+| **Connect Database** | Fill in remote database connection info to directly access external databases |
+| **Upload Data File** | Upload CSV / Excel / JSON / Parquet files |
+| **Create Data Space** | Create tables and write data in platform-hosted storage |
+
+## Datasource Management Features
+
+Click **Datasources** in the Studio sidebar to access the management page:
+
+- **Type Filter** — Quick filter by database type
+- **Folders** — Organize datasources with folders
+- **Search** — Search by name
+
+Click into a datasource detail page to:
+
+- View table schema
+- Trigger schema scan
+- Edit basic info (name, description, tags)
+- Edit connection config
+- Delete the datasource
+
+## Security Recommendations
+
+When connecting external databases, follow the **principle of least privilege** — create a read-only account for query scenarios only, and never grant unnecessary write or admin permissions.

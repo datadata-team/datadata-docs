@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+title: Uploading Data Files
+description: Create datasources by uploading files.
+---
+
+# Uploading Data Files
+
+Datadata supports uploading CSV, Excel, JSON, and Parquet files as datasources.
+
+## Supported File Formats
+
+| Format | Description | Typical Scenario |
+| --- | --- | --- |
+| **CSV** | Comma-separated tabular data | Data export, data exchange |
+| **Excel** (.xlsx) | Microsoft Excel spreadsheets | Business data, reports |
+| **JSON** | Structured JSON data | API data, config data |
+| **Parquet** | Columnar storage format | Big data analytics |
+
+## Steps
+
+1. Click **Datasources** in the Studio sidebar
+2. Click **New Datasource** → **Upload Data File**
+3. Choose file type (CSV / Excel / JSON / Parquet)
+4. Upload the file or import via:
+   - **Local Upload** — Select a file from your machine
+   - **S3 Storage** — Import from Amazon S3
+   - **External URL** — Load a remote file via URL
+5. Enter a datasource name
+6. Click **Create**
+
+## Local File Upload
+
+Select a file directly from your machine to upload. Supports drag-and-drop or click-to-select.
+
+## S3 Storage Import
+
+For data files already stored in AWS S3, provide the file's S3 Key.
+
+## External URL Import
+
+Load remote data files via HTTP/HTTPS URL. Suitable for public datasets or API-exported data.
+
+## After Creation
+
+Once the file upload completes, Datadata automatically parses the file structure and creates the corresponding datasource. You can query the file data just like any other datasource.

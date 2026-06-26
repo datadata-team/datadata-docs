@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+title: Datadata API
+description: Detailed guide to the datadata-api skill.
+---
+
+# datadata-api
+
+`datadata-api` is a skill script that wraps Datadata API call logic. AI agents automatically invoke it when they need to execute SQL queries, inspect metadata, manage Data Spaces, etc. End users do not need to use it directly.
+
+## Features
+
+### Querying Data
+
+- **Search Datasources** — Supports public community search, private datasource search, and `username/name` exact lookup
+- **Metadata Querying** — Inspect datasource info, list tables, describe column structure
+- **Metadata Enhancement** — Set table and column comments to improve data understandability
+- **Execute SQL Queries** — Run SELECT queries via `execute-adhoc`, supporting DuckDB and ClickHouse engines
+- **Result Download** — Download query results in NDJSON or CSV format
+- **Schema Scanning** — Trigger async scanning to refresh datasource table metadata
+
+### Writing Data
+
+- **Data Spaces Table Management** — Create tables, batch insert data, and drop tables in `ducklake` Data Spaces
+- Data written can also be queried via `execute-adhoc`
+
+### User Information
+
+- **Current User & API Key Permissions** — Get user profile, API Key metadata, and permission list via `whoami`
+
+## Workflow
+
+```
+1. Configure authentication (auto-issued via device auth, or manually set API Key)
+2. Search datasource → Query metadata → Execute query → Fetch results
+```
+
+## Concepts
+
+- **Datasource** — The target for querying. Different types (ducklake, MySQL, ClickHouse, CSV, etc.) have different table naming conventions
+- **Data Space** — The target for writing data. A capability exclusive to `ducklake`-type datasources
+- **Query** — A **read-only** abstraction containing SQL script, datasource bindings, and engine type
+- **Execution** — An abstraction for running a query. Each `execute-adhoc` call returns an `executionId`
+
+## Authentication
+
+When the CLI lacks an API Key, it automatically guides you through **device authorization** — open the link to complete login, and the key is cached for 90 days.
+
+You can also manually set environment variables:
+
+```bash
+export DATADATA_API_KEY="ak_xxxxxxxxxxxxxxxx"
+export DATADATA_BASE_URL="https://www.datadata.com"
+```
+
+## Division of Responsibilities with Other Skills
+
+| Scenario | Use Skill |
+| --- | --- |
+| Interactive querying via Agent | `datadata-mcp` (MCP Server) |
+| Generate Python scripts (crawler/ETL/batch) | `datadata-api` |
+| Complex data processing scripts | `datadata-dql` |
+| Cross-session persistent memory | `datadata-memory` |

@@ -11,20 +11,48 @@
     "message": "发明者量化",
     "description": "The label of footer link with label=发明者量化 linking to https://www.fmz.com"
   },
-  "link.item.label.Blog": {
-    "message": "Blog",
-    "description": "The label of footer link with label=Blog linking to /blog"
-  },
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/datadata-team"
   },
-  "link.item.label.Datadata Platform": {
-    "message": "Datadata Platform",
-    "description": "The label of footer link with label=Datadata Platform linking to https://www.datadata.com"
-  },
   "copyright": {
     "message": "Copyright © 2023-2026 Datadata. Built with <a href=\"https://docusaurus.io/\" target=\"_blank\" rel=\"noopener noreferrer\">Docusaurus</a>.",
     "description": "The footer copyright"
+  },
+  "link.title.资源": {
+    "message": "资源",
+    "description": "The title of the footer links column with title=资源 in the footer"
+  },
+  "link.title.链接": {
+    "message": "链接",
+    "description": "The title of the footer links column with title=链接 in the footer"
+  },
+  "link.item.label.AI Skills": {
+    "message": "AI Skills",
+    "description": "The label of footer link with label=AI Skills linking to https://www.skills.sh/datadata-team/datadata-skills"
+  },
+  "link.item.label.首页": {
+    "message": "首页",
+    "description": "The label of footer link with label=首页 linking to /"
+  },
+  "link.item.label.用户指南": {
+    "message": "用户指南",
+    "description": "The label of footer link with label=用户指南 linking to /docs/guides/intro"
+  },
+  "link.item.label.API": {
+    "message": "API",
+    "description": "The label of footer link with label=API linking to /docs/api/api-key"
+  },
+  "link.item.label.博客": {
+    "message": "博客",
+    "description": "The label of footer link with label=博客 linking to /blog"
+  },
+  "link.item.label.Datadata": {
+    "message": "Datadata",
+    "description": "The label of footer link with label=Datadata linking to https://www.datadata.com"
+  },
+  "link.item.label.Datadata Studio": {
+    "message": "Datadata Studio",
+    "description": "The label of footer link with label=Datadata Studio linking to https://www.datadata.com/studio"
   }
 }

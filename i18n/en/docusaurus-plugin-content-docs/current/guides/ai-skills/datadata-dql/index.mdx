@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+title: Datadata DQL
+description: The datadata-dql skill for writing DQL data processing scripts.
+---
+
+# datadata-dql
+
+`datadata-dql` is a skill for AI agents to write **DQL (Data Query Language)** scripts. DQL is a Starlark-based extended scripting language supporting data transformation, HTTP requests, 2D drawing, and more.
+
+## Features
+
+- **DataFrame / Series Operations** — Data transformation, cleaning, aggregation, merging, anomaly detection
+- **SQL Queries** — Execute SQL via `query()` and return a DataFrame
+- **HTTP Requests** — Call external APIs via `fetch()`
+- **2D Drawing** — Canvas basic shape drawing
+- **Built-in Modules** — JSON, time, math, etc.
+
+## DQL Script Basics
+
+A DQL script is essentially a function body and **must have a `return` statement** to return data:
+
+```python
+df = query("SELECT * FROM users LIMIT 100")
+return df
+```
+
+All DQL extension functions are **built-in global names** — no `import` needed:
+
+- `DataFrame`, `Series` — Data structures
+- `query()` — SQL query
+- `fetch()` — HTTP request
+- `concat()` — Data concatenation
+- `json`, `math`, `time` — Built-in modules
+
+## Full Language Reference
+
+For the complete DQL syntax, API signatures, and examples, see the [DQL Query Scripts](/docs/guides/dql/) chapter.
+
+## Use Cases
+
+| Scenario | Example |
+| --- | --- |
+| Data Cleaning | Filter, type-cast, and handle missing values in query results |
+| Data Transformation | Column calculations, group aggregation, multi-table merging |
+| Data Generation | Fetch external data via HTTP API and convert to DataFrame |
+| Custom Analysis | Write complex data processing pipelines |
+| Visualization | Draw charts using Canvas |

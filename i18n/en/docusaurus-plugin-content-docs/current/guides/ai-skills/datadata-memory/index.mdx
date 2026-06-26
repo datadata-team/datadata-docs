@@ -1,0 +1,149 @@
+---
+sidebar_position: 3
+title: Datadata Memory
+description: Manage AI persistent memory with datadata-memory.
+---
+
+# Memory System
+
+`datadata-memory` provides cross-session persistent memory management. Agents can remember user preferences, project conventions, key decisions, and more during conversations, then retrieve and use them in future sessions.
+
+## MCP Tools
+
+| Tool | Purpose | Key Parameters |
+| --- | --- | --- |
+| `memory_add` | Add new memory (async indexing) | `content` (required), `category`, `tags`, `agentId`, `metadata` |
+| `memory_search` | Search existing memories | `search` (required), `limit`, `offset`, `category`, `agentId`, `sessionId`, `startTime`, `endTime` |
+| `memory_update` | Update existing memory (async indexing) | `id` (required), `content` (required), `tags`, `category`, `agentId`, `metadata` |
+| `memory_delete` | Delete memory | `id` (required) |
+| `memory_task_wait` | Wait for async task completion | `taskId` (required), `timeout` (seconds, default 60) |
+
+## Memory Properties
+
+| Property | Description | Example |
+| --- | --- | --- |
+| `content` | Atomic fact or preference, clear in one sentence | "User prefers writing Git commit messages in Chinese" |
+| `category` | Custom category for organization and filtering | `"preferences"`, `"project-notes"` |
+| `tags` | Array of searchable tags | `["git", "convention"]` |
+| `metadata` | Key-value additional info | `{"project": "datadata-skills"}` |
+
+## Search Strategy
+
+### Keyword vs. Semantic Search
+
+The `search` parameter of `memory_search` supports two modes:
+
+| Mode | Example | When to Use |
+| --- | --- | --- |
+| **Keyword** | `search="git commit chinese"` | You know specific terms, exact matching |
+| **Semantic** | `search="user's coding habits"` | Fuzzy recall, finding related content |
+
+**Recommendation**: Prefer semantic search by describing what you want to find. If results are imprecise, narrow down with keywords.
+
+### Filtering Tips
+
+| Filter Target | Parameter | Example Value |
+| --- | --- | --- |
+| Specific category | `category` | `"preferences"` |
+| Specific agent | `agentId` | `"codex"` |
+| Last week | `startTime` | `"2026-06-03T00:00:00Z"` |
+| Most recent N items | `limit` | `5` |
+
+### Typical Search Scenarios
+
+- **New conversation start**: Search for user preferences and context
+- **User asks about past info**: Search for specific content
+- **Check for duplicates before adding**: Search for a summary of what you're about to add
+
+## Memory Merging
+
+When multiple memories describe the same topic, they should be merged into one to eliminate fragmentation.
+
+### Similarity Criteria
+
+Any of the following qualifies as similar:
+
+- High semantic overlap within the same `category`
+- High keyword overlap (e.g., both contain "commit", "Chinese")
+- Same entity/topic (same project, same tool, etc.)
+
+### Merge Decision Matrix
+
+```
+Search existing memories
+├─ Exact duplicate (>95% similarity) → Skip adding
+├─ New info is a subset of existing → Skip adding
+├─ New info is a superset of existing → memory_update to replace
+├─ Complementary relationship → Merge then memory_update
+└─ Unrelated (<50%) → memory_add new entry
+```
+
+### Merge Format Convention
+
+Merged `content` should remain clear and readable:
+
+```
+✅ Good:
+"User preference: write commits in Chinese; follow AngularJS style"
+❌ Bad:
+"User likes Chinese commit and then he also..." (messy and unstructured)
+```
+
+## Conflict Resolution
+
+When new information contradicts existing memory, prioritize the latest information while preserving change history.
+
+### Conflict Detection
+
+| Signal | Meaning | Action |
+| --- | --- | --- |
+| "No, it should be..." | Explicit correction | Conflict merge |
+| "I now use..." | Preference change | Conflict merge |
+| Same fact inconsistent across time | Implicit conflict | Conflict merge |
+| Different choices for different contexts | Not conflicting, coexist | Add as separate memory |
+
+### Conflict Merge Example
+
+```
+Existing memory: "User phone: 1111"
+User says: "My phone is actually 2222"
+→ memory_update(content="User phone: 2222", metadata={
+    "history": [{"value": "User phone: 1111", "updatedAt": "..."}]
+  })
+```
+
+## Best Practices
+
+### Writing Memory Content
+
+```
+✅ Good memory:
+"User prefers writing Git commit messages in Chinese, following AngularJS style"
+"datadata-skills project convention: Markdown files do not auto-wrap"
+
+❌ Bad memory:
+"User's various preferences: Chinese, VS Code, TypeScript" (too many unrelated facts mixed)
+"Project convention" (too vague)
+```
+
+### Suggested Category System
+
+| category | Purpose |
+| --- | --- |
+| `preferences` | User preferences and habits |
+| `conventions` | Project conventions and agreements |
+| `project-notes` | Project-related knowledge and background |
+| `contacts` | Contact information |
+| `learnings` | Lessons learned from past conversations |
+
+### Indexing Mechanism
+
+`memory_add` and `memory_update` are **asynchronous operations**, typically completing indexing in milliseconds. Only call `memory_task_wait` when immediate retrieval is needed.
+
+### Lifecycle Management
+
+1. **Search before adding** — Avoid duplicates, trigger merge or conflict resolution
+2. **Merge similar items** — Reduce fragmentation
+3. **Preserve conflict history** — Record changes in `metadata.history`
+4. **Periodic cleanup** — Delete outdated memories promptly
+5. **Correct rather than append** — Use `memory_update` instead of `memory_add`

@@ -1,0 +1,41 @@
+---
+sidebar_position: 3
+title: Data Spaces
+description: Manage data in Datadata-hosted Data Spaces.
+---
+
+# Data Spaces (DuckLake)
+
+Data Spaces (DuckLake) is a platform-hosted data storage service provided by Datadata, built on the DuckDB engine, allowing you to create and manage data tables directly on the platform.
+
+## What Are Data Spaces
+
+Data Spaces are **platform-hosted data storage** with the following features:
+
+- Built on **DuckDB** engine
+- Create, write, and delete tables via API or AI Skills
+- Participate in cross-source JOIN queries with external datasources
+
+## Creating a Data Space
+
+1. Click **Datasources** in the Studio sidebar
+2. Click **New Datasource** → **Create Data Space**
+3. Enter a name for the Data Space
+4. Done
+
+## Managing Tables in Data Spaces
+
+The following operations are available via API:
+
+| Operation | API Permission | Description |
+| --- | --- | --- |
+| Create Table | `data-spaces:write` | Create tables in the Data Space |
+| Batch Insert | `data-spaces:write` | Write data into tables |
+| Drop Table | `data-spaces:write` | Delete existing tables |
+| Query Data | `data-spaces:read` | Read data from the Data Space |
+
+## Use Cases
+
+- **Data Cleaning** — After uploading CSV files, clean and transform via DQL scripts
+- **Intermediate Storage** — Save intermediate results of data processing for later analysis
+- **Data Integration** — Consolidate data from different sources into a unified Data Space

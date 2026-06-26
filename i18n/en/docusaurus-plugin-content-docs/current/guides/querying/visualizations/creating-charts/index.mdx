@@ -1,0 +1,100 @@
+---
+sidebar_position: 2
+title: Creating & Configuring Charts
+description: Learn how to create and configure charts.
+---
+
+# Creating & Configuring Charts
+
+## Creating Charts from Queries
+
+1. Open any query in Studio
+2. Click **Run** to get results
+3. Click the **Visualize** button above the results
+4. Select a chart type in the popup panel
+5. Configure dimension and series fields in the right panel
+6. The chart previews automatically
+7. Click **Save** to add it to a dashboard
+
+## Chart Configuration Panel
+
+After selecting a chart type, the right panel shows configuration options:
+
+### Dimension
+
+Select the X-axis or category field, typically a date, category, etc.
+
+### Series
+
+Each series corresponds to a data field; you can add multiple series for comparison. Each series can be configured with:
+
+- **Data field** — Select a column from the dataset
+- **Color** — Series color
+- **Chart type** (Cartesian) — Options: line / bar / area / scatter
+- **Y-axis** — Bind to left or right value axis
+- **Label** — Show data labels
+- **Mark Line** — Add reference lines (mean, max, threshold)
+- **Mark Area** — Add highlighted areas
+- **Dynamic Color** — Dynamically change color based on values
+
+### Legend
+
+| Option | Description |
+| --- | --- |
+| Show/Hide | Control legend visibility |
+| Orientation | Horizontal or vertical |
+| Position | Legend position within chart |
+| Selection Mode | Single or multi-select to toggle series |
+
+### Axis
+
+Both category and value axes have rich configuration options:
+
+| Option | Category Axis | Value Axis |
+| --- | --- | --- |
+| Name | ✓ | ✓ |
+| Show/Hide | ✓ | ✓ |
+| Axis & Tick Lines | ✓ | ✓ |
+| Split Lines | ✓ | ✓ |
+| Label Rotation | ✓ | — |
+| Value Range | — | ✓ (Min/Max) |
+| Scale | — | ✓ |
+| Decimal Places | — | ✓ |
+
+### DataZoom
+
+Front-end and back-end data zooming for focused analysis of large datasets:
+
+- **X-axis zoom** — Slider to select time range
+- **Y-axis zoom** — Slider to select value range
+
+### Stack
+
+Multiple series can be displayed in stacked mode:
+
+- **All stack** — All positive/negative values stacked
+- **Same-sign stack** — Only same-sign values stacked
+- **Positive/Negative stack** — Only positive or only negative values stacked
+
+## Configuration Example: Line Chart
+
+```yaml
+dimension: trade_date
+series:
+  - field: close
+    color: "#2563eb"
+    type: line
+  - field: high
+    color: "#ef4444"
+    type: line
+    mark_line:
+      - label: "Highest Price"
+        value: 263.7
+legend: show
+x_axis: trade_date
+data_zoom: slider on
+```
+
+## Candlestick Configuration
+
+Candlestick charts require specific OHLC field mapping:

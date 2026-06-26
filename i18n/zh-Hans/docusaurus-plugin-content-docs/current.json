@@ -3,20 +3,124 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.guidesSidebar.category.Tutorial - Basics": {
-    "message": "Tutorial - Basics",
-    "description": "The label for category 'Tutorial - Basics' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.数据查询": {
+    "message": "数据查询",
+    "description": "The label for category '数据查询' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Tutorial - Basics.link.generated-index.description": {
-    "message": "5 minutes to learn the most important Docusaurus concepts.",
-    "description": "The generated-index page description for category 'Tutorial - Basics' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.数据可视化": {
+    "message": "数据可视化",
+    "description": "The label for category '数据可视化' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Tutorial - Extras": {
-    "message": "Tutorial - Extras",
-    "description": "The label for category 'Tutorial - Extras' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.DQL 查询脚本": {
+    "message": "DQL 查询脚本",
+    "description": "The label for category 'DQL 查询脚本' in sidebar 'guidesSidebar'"
   },
-  "sidebar.apiSidebar.category.petstore": {
-    "message": "petstore",
-    "description": "The label for category 'petstore' in sidebar 'apiSidebar'"
+  "sidebar.guidesSidebar.category.AI 集成": {
+    "message": "AI 集成",
+    "description": "The label for category 'AI 集成' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.数据源管理": {
+    "message": "数据源管理",
+    "description": "The label for category '数据源管理' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.apiSidebar.category.Rest API": {
+    "message": "Rest API",
+    "description": "The label for category 'Rest API' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Rest API.link.generated-index.title": {
+    "message": "Rest API",
+    "description": "The generated-index page title for category 'Rest API' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Rest API.link.generated-index.description": {
+    "message": "xxxx",
+    "description": "The generated-index page description for category 'Rest API' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.MCP": {
+    "message": "MCP",
+    "description": "The label for category 'MCP' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Auth": {
+    "message": "Auth",
+    "description": "The label for category 'Auth' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Datasources": {
+    "message": "Datasources",
+    "description": "The label for category 'Datasources' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Data Spaces": {
+    "message": "Data Spaces",
+    "description": "The label for category 'Data Spaces' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Queries": {
+    "message": "Queries",
+    "description": "The label for category 'Queries' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Executions": {
+    "message": "Executions",
+    "description": "The label for category 'Executions' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.doc.MCP server endpoint": {
+    "message": "MCP server endpoint",
+    "description": "The label for the doc item 'MCP server endpoint' in sidebar 'apiSidebar', linking to the doc api/openapi/mcp-server-endpoint"
+  },
+  "sidebar.apiSidebar.doc.Get current session": {
+    "message": "Get current session",
+    "description": "The label for the doc item 'Get current session' in sidebar 'apiSidebar', linking to the doc api/openapi/get-current-session"
+  },
+  "sidebar.apiSidebar.doc.Get datasource info": {
+    "message": "Get datasource info",
+    "description": "The label for the doc item 'Get datasource info' in sidebar 'apiSidebar', linking to the doc api/openapi/get-datasource-info"
+  },
+  "sidebar.apiSidebar.doc.List tables in datasource": {
+    "message": "List tables in datasource",
+    "description": "The label for the doc item 'List tables in datasource' in sidebar 'apiSidebar', linking to the doc api/openapi/list-tables-in-datasource"
+  },
+  "sidebar.apiSidebar.doc.Describe table in datasource": {
+    "message": "Describe table in datasource",
+    "description": "The label for the doc item 'Describe table in datasource' in sidebar 'apiSidebar', linking to the doc api/openapi/describe-table-in-datasource"
+  },
+  "sidebar.apiSidebar.doc.Scan datasource schema": {
+    "message": "Scan datasource schema",
+    "description": "The label for the doc item 'Scan datasource schema' in sidebar 'apiSidebar', linking to the doc api/openapi/scan-datasource-schema"
+  },
+  "sidebar.apiSidebar.doc.Replace datasource file": {
+    "message": "Replace datasource file",
+    "description": "The label for the doc item 'Replace datasource file' in sidebar 'apiSidebar', linking to the doc api/openapi/replace-datasource-file"
+  },
+  "sidebar.apiSidebar.doc.Comment on table": {
+    "message": "Comment on table",
+    "description": "The label for the doc item 'Comment on table' in sidebar 'apiSidebar', linking to the doc api/openapi/comment-on-table"
+  },
+  "sidebar.apiSidebar.doc.Create table in data space": {
+    "message": "Create table in data space",
+    "description": "The label for the doc item 'Create table in data space' in sidebar 'apiSidebar', linking to the doc api/openapi/create-table-in-data-space"
+  },
+  "sidebar.apiSidebar.doc.Describe table in data space": {
+    "message": "Describe table in data space",
+    "description": "The label for the doc item 'Describe table in data space' in sidebar 'apiSidebar', linking to the doc api/openapi/describe-table-in-data-space"
+  },
+  "sidebar.apiSidebar.doc.Drop table from data space": {
+    "message": "Drop table from data space",
+    "description": "The label for the doc item 'Drop table from data space' in sidebar 'apiSidebar', linking to the doc api/openapi/drop-table-from-data-space"
+  },
+  "sidebar.apiSidebar.doc.Insert rows into data space table": {
+    "message": "Insert rows into data space table",
+    "description": "The label for the doc item 'Insert rows into data space table' in sidebar 'apiSidebar', linking to the doc api/openapi/insert-rows-into-data-space-table"
+  },
+  "sidebar.apiSidebar.doc.Execute adhoc query": {
+    "message": "Execute adhoc query",
+    "description": "The label for the doc item 'Execute adhoc query' in sidebar 'apiSidebar', linking to the doc api/openapi/execute-adhoc-query"
+  },
+  "sidebar.apiSidebar.doc.Execute a saved query": {
+    "message": "Execute a saved query",
+    "description": "The label for the doc item 'Execute a saved query' in sidebar 'apiSidebar', linking to the doc api/openapi/execute-a-saved-query"
+  },
+  "sidebar.apiSidebar.doc.Get query results": {
+    "message": "Get query results",
+    "description": "The label for the doc item 'Get query results' in sidebar 'apiSidebar', linking to the doc api/openapi/get-query-results"
+  },
+  "sidebar.apiSidebar.doc.Get execution detail": {
+    "message": "Get execution detail",
+    "description": "The label for the doc item 'Get execution detail' in sidebar 'apiSidebar', linking to the doc api/openapi/get-execution-detail"
   }
 }

@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+title: Chart Types
+description: Descriptions of all chart types supported by Datadata.
+---
+
+# Chart Type Reference
+
+Datadata offers a rich set of chart types covering statistical analysis, data exploration, and quantitative finance scenarios.
+
+## Statistical Analysis
+
+These charts are suitable for general data analysis and statistical display.
+
+| Chart Type | Category | Use Case |
+| --- | --- | --- |
+| **Line** | Cartesian | Trend analysis, time-series data |
+| **Bar** | Cartesian | Category comparison, value comparison |
+| **Area** | Cartesian | Show value trends and proportions |
+| **Row** | Cartesian | Horizontal comparison, ideal for long labels |
+| **Pie** | Proportion | Part-to-whole relationships |
+| **Doughnut** | Proportion | Similar to pie, hollow center for extra info |
+| **Rose** | Proportion | Multi-dimensional data via sector angle & radius |
+| **Scatter** | Cartesian | Show correlation between two variables |
+| **Table** | Basic | Raw data display with sorting & column resize |
+| **Number** | Basic | Highlight a single key metric |
+
+## Data Exploration
+
+These charts help discover patterns and distributions in data.
+
+| Chart Type | Category | Use Case |
+| --- | --- | --- |
+| **Heatmap** | Matrix | Show data density or 2D distribution |
+| **Treemap** | Hierarchy | Show hierarchical structure and proportions |
+| **Calendar** | Time | Show data distribution by date |
+| **Sankey** | Flow | Show traffic and conversion paths |
+| **Sunburst** | Hierarchy | Multi-level ring proportions |
+| **Funnel** | Flow | Show progressive reduction in conversion |
+| **Map** | Geographic | Leaflet-based geographic data display |
+
+## Quantitative Finance
+
+These charts are designed for financial and quantitative analysis.
+
+| Chart Type | Description |
+| --- | --- |
+| **Candlestick (K-line)** | Financial K-line chart based on KlineCharts library, supports OHLC data, indicator overlay, and sub-panels |
+| **Live Replay** | Trading strategy live replay simulation for strategy validation and review |
+
+## Cartesian Chart Configuration
+
+Line, bar, area, row, and scatter charts share Cartesian coordinate configuration:
+
+- **Dimension field (dimension)** — X-axis field
+- **Series** — Each series configures:
+  - Data field, color, label
+  - DataZoom
+  - Mark lines and mark areas
+  - Dynamic colors
+- **Dual value axes** — Support independent left/right Y-axes
+- **Stack** — Support value stacking
+- **Legend** — Support position, orientation, selection mode
+
+## Chart Events & Linking
+
+Charts support drill-down and linking events for interaction between charts within a dashboard.

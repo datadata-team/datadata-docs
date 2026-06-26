@@ -1,0 +1,79 @@
+---
+sidebar_position: 1
+title: Connecting External Databases
+description: Connect external databases to Datadata.
+---
+
+# Connecting External Databases
+
+Datadata supports connecting four types of external databases: MySQL, Postgres, ClickHouse, and DuckDB.
+
+## Steps
+
+1. Click **Datasources** in the Studio sidebar
+2. Click **New Datasource** → **Connect Datasource**
+3. Select database type
+4. Fill in connection info
+5. Click **Test Connection** to verify
+6. Click **Create**
+
+## MySQL Connection Config
+
+| Field | Description | Default |
+| --- | --- | --- |
+| Name | Unique identifier for the datasource, 3-32 characters | — |
+| Display Name | Display name for the datasource | — |
+| Host | Database host address | — |
+| Port | Database port | 3306 |
+| Database | Database name | — |
+| Username | Connection username | — |
+| Password | Connection password | — |
+| Charset | Connection charset | utf8mb4 |
+
+## Postgres Connection Config
+
+| Field | Description |
+| --- | --- |
+| Name | Unique identifier |
+| Display Name | Display name |
+| Host | Database host address |
+| Port | Database port (default 5432) |
+| Database | Database name |
+| Username | Connection username |
+| Password | Connection password |
+
+## ClickHouse Connection Config
+
+| Field | Description |
+| --- | --- |
+| Name | Unique identifier |
+| Display Name | Display name |
+| Host | Database host address |
+| Port | Database port (default 8123) |
+| Database | Database name |
+| Username | Connection username |
+| Password | Connection password |
+| Secure | Enable TLS/SSL |
+
+## DuckDB Connection Config
+
+| Field | Description |
+| --- | --- |
+| Name | Unique identifier |
+| Display Name | Display name |
+| Host | DuckDB file path or in-memory |
+| Port | — |
+
+## Testing Connection
+
+After filling in the configuration, click **Test Connection** to verify it works. You can only create the datasource after a successful test.
+
+## After Connecting
+
+Once created, the datasource will appear in the query editor's datasource panel. You can:
+
+- Bind it to queries
+- View table structure and column info
+- Write SQL to query data
+
+If the datasource's table schema hasn't loaded, you can manually trigger a schema scan.

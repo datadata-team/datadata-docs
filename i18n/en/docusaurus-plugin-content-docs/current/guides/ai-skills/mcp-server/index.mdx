@@ -1,0 +1,145 @@
+---
+sidebar_position: 1
+title: MCP Server
+description: Complete guide to the datadata-mcp skill and Datadata MCP Server.
+---
+
+# MCP Server
+
+Datadata provides a standard **MCP (Model Context Protocol)** service endpoint, allowing AI agents to interact with the Datadata platform as if calling local tools.
+
+`datadata-mcp` is the skill that instructs agents on how to use the MCP Server.
+
+## Installing the datadata-mcp Skill
+
+```bash
+npx skills add datadata-team/datadata-skills
+```
+
+Once installed, agents can interact with Datadata through the following MCP tools.
+
+## MCP Endpoint
+
+```
+https://www.datadata.com/api/mcp/v1
+```
+
+## Authentication
+
+### OAuth 2.0 (Recommended)
+
+When configuring the MCP client, choose OAuth. The browser will redirect to Datadata for authorization. This is the most standard and convenient method, supported by Claude Desktop, VS Code, Cursor, Windsurf, Claude Code, and other MCP clients.
+
+### API Key Authentication
+
+You can also authenticate via API Key:
+
+1. Log in to [datadata.com](https://www.datadata.com) → Settings → API Keys
+2. Create a new key and select the required permissions
+3. Configure it in your MCP client
+
+**Recommended Permissions**:
+
+| Permission | Purpose |
+| --- | --- |
+| `queries:execute-adhoc` | Run SQL queries |
+| `executions:get` | Retrieve query results |
+| `datasources:read` | Read datasource information |
+| `datasources:scan` | Scan datasource structure |
+| `datasources:replace-file` | Replace datasource files |
+| `data-spaces:write` | Create tables and insert data |
+
+## MCP Tools
+
+### Datasource Discovery & Metadata
+
+| Tool | Purpose | Key Parameters |
+| --- | --- | --- |
+| `search-datasource` | Search for datasources | `search` — username or keyword |
+| `get-datasource-info` | Get datasource metadata | `datasourceId` |
+| `list-tables` | List tables and views | `datasourceId`, `schemaName` (optional) |
+| `describe-table` | Get table column structure (cached metadata with comments) | `datasourceId`, `schemaName`, `tableName` |
+| `scan-datasource` | Trigger async schema scan | `datasourceId` |
+| `set-table-comment` | Set table/column comments | `datasourceId`, `schemaName`, `tableName` |
+
+### Data Querying
+
+| Tool | Purpose |
+| --- | --- |
+| `execute-adhoc` | Execute SQL/DQL queries, returns execution ID and result download link |
+
+### Data Spaces Management
+
+| Tool | Purpose | Key Parameters |
+| --- | --- | --- |
+| `create-table` | Create a table with column names and types | `datasourceId`, `tableName`, `columns` |
+| `describe-data-space-table` | View table structure in real-time | `datasourceId`, `tableName` |
+| `insert-rows` | Batch insert data (transactional) | `datasourceId`, `tableName`, `columns`, `rows` |
+| `drop-table` | Delete a table | `datasourceId`, `tableName` |
+
+## Query Engine & SQL Writing
+
+### Engine Selection
+
+- Default to `duckdb` engine
+- Switch to `clickhouse` only for ClickHouse datasources
+- DuckDB supports cross-datasource JOINs; ClickHouse does not
+
+### Datasource Binding
+
+Bind datasources via the `datasources` parameter, format:
+
+```
+["DATASOURCE_ID:ATTACH_ALIAS"]
+```
+
+Reference tables in SQL by **alias**, not datasource ID.
+
+### Table Naming Conventions
+
+**Ducklake (Data Spaces)**:
+```
+ducklake.{datasourceName}.{tableName}
+```
+
+**Database datasources (MySQL, PostgreSQL, etc.)**:
+```
+attachAlias.schemaName.tableName
+```
+
+**File datasources (CSV, JSON, Parquet, etc.)**:
+```
+memory.main.attachAlias
+```
+
+## Data Spaces
+
+Data Spaces are the table management capability exclusive to `ducklake`-type datasources.
+
+### Full Workflow
+
+```
+create-table → describe-data-space-table → insert-rows → execute-adhoc → drop-table
+```
+
+## Result Handling
+
+`execute-adhoc` returns an execution ID and a result download link (NDJSON/CSV). Agents download to local storage using `curl` for preview.
+
+**Do not read full large datasets directly into context.**
+
+## Configuration Example
+
+```json
+{
+  "mcpServers": {
+    "datadata": {
+      "command": "npx",
+      "args": ["-y", "@datadata/mcp-server"],
+      "env": {
+        "DATADATA_API_KEY": "ak_xxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}
+```
