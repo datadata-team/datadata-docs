@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 import type { ReactNode } from "react";
 
+import { useIsInsideIframe } from "../hooks";
 import styles from "./index.module.css";
 
 const docSections = [
@@ -124,6 +125,33 @@ function DocSection({ icon, title, desc, link, linkText }: (typeof docSections)[
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
+  const isInsideIframe = useIsInsideIframe();
+
+  if (isInsideIframe) {
+    return (
+      <Layout
+        title={siteConfig.title}
+        description="DataData 文档中心 — 查询、可视化、AI 集成一站式数据平台的使用指南与 API 参考。"
+      >
+        <div className="homepage-main-wrapper">
+          <section className={styles.section}>
+            <div className={styles.sectionInner}>
+              <div className={styles.sectionHeader}>
+                <h2 className={styles.sectionTitle}>探索文档</h2>
+                <p className={styles.sectionDesc}>根据你的需求选择对应模块，快速找到所需内容。</p>
+              </div>
+              <div className={styles.docGrid}>
+                {docSections.map((item, idx) => (
+                  <DocSection key={idx} {...item} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout
       title={siteConfig.title}

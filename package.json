@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "dev": "docusaurus start",
+    "start": "pnpm run serve",
     "build": "docusaurus build",
     "build:dev": "docusaurus build --dev",
     "swizzle": "docusaurus swizzle",
@@ -19,7 +20,9 @@
   "dependencies": {
     "@docusaurus/core": "3.10.1",
     "@docusaurus/faster": "3.10.1",
+    "@docusaurus/plugin-client-redirects": "^3.10.1",
     "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/theme-common": "^3.10.1",
     "@docusaurus/theme-mermaid": "^3.10.1",
     "@easyops-cn/docusaurus-search-local": "^0.55.2",
     "@mdx-js/react": "^3.0.0",

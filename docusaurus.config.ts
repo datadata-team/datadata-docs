@@ -44,7 +44,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
@@ -55,7 +55,7 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -73,10 +73,16 @@ const config: Config = {
   ],
   plugins: [
     [
+      // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
+      "@docusaurus/plugin-client-redirects",
+      {},
+    ],
+    [
+      // https://github.com/PaloAltoNetworks/docusaurus-openapi-docs
       "docusaurus-plugin-openapi-docs",
       {
-        id: "api", // plugin id
-        docsPluginId: "classic", // configured for preset-classic
+        id: "api",
+        docsPluginId: "classic",
         config: {
           petstore: {
             specPath: "assets/petstore.yaml",
@@ -118,11 +124,11 @@ const config: Config = {
           position: "left",
           sidebarId: "apiSidebar",
         },
-        {
-          to: "/blog",
-          label: "博客",
-          position: "left",
-        },
+        // {
+        //   to: "/blog",
+        //   label: "博客",
+        //   position: "left",
+        // },
         {
           type: "search",
           position: "right",
@@ -137,6 +143,7 @@ const config: Config = {
           position: "right",
         },
       ],
+      hideOnScroll: true,
     },
     footer: {
       style: "dark",
@@ -163,8 +170,20 @@ const config: Config = {
           title: "链接",
           items: [
             {
+              to: "/",
+              label: "首页",
+            },
+            {
+              to: "/docs/guides",
+              label: "用户指南",
+            },
+            {
+              to: "/docs/api",
+              label: "API",
+            },
+            {
               to: "/blog",
-              label: "Blog",
+              label: "博客",
             },
           ],
         },
