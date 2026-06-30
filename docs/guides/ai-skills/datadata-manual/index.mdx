@@ -1,16 +1,16 @@
 ---
 sidebar_position: 1
-title: MCP Server
-description: datadata-mcp skill 和 Datadata MCP Server 的完整说明。
+title: Datadata Manual
+description: datadata-manual skill 和 Datadata MCP Server 的完整说明。
 ---
 
-# MCP Server
+# Datadata Manual
 
-Datadata 提供标准的 **MCP（Model Context Protocol）** 服务端点，AI Agent 可以像调用本地工具一样直接操作 Datadata 平台。
+`datadata-manual` 是 Datadata 平台的交互式操作手册，通过 **MCP（Model Context Protocol）Server** 直接调用平台能力。AI Agent 可以像调用本地工具一样搜索数据源、执行查询、管理 Data Spaces。
 
-`datadata-mcp` 是指导 Agent 如何使用 MCP Server 的 skill。
+> **生成独立 Python 脚本（爬虫/ETL/批处理）请使用 [`datadata-rest-api`](/docs/guides/ai-skills/datadata-rest-api/) skill。** MCP 专为聊天交互设计，不适用于生成独立运行的脚本文件。
 
-## 安装 datadata-mcp skill
+## 安装
 
 ```bash
 npx skills add datadata-team/datadata-skills
@@ -42,7 +42,7 @@ https://www.datadata.com/api/mcp/v1
 
 | 权限 | 用途 |
 | --- | --- |
-| `queries:execute-adhoc` | 运行 SQL 查询 |
+| `queries:execute-adhoc` | 运行 SQL/DQL 查询 |
 | `executions:get` | 获取查询结果 |
 | `datasources:read` | 读取数据源信息 |
 | `datasources:scan` | 扫描数据源结构 |

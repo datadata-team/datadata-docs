@@ -1,0 +1,73 @@
+---
+sidebar_position: 2
+title: Datadata REST API
+description: Detailed guide to the datadata-rest-api skill — for generating standalone Python scripts.
+---
+
+# datadata-rest-api
+
+`datadata-rest-api` provides a complete reference for the Datadata REST API, demonstrating all endpoints through `urllib.request` (standard library only, zero extra dependencies).
+
+The **primary use case** is generating standalone Python scripts (crawlers, ETL, batch processing), but the API documentation itself is universal — applicable to any scenario requiring direct Datadata API calls.
+
+> **For interactive operations (running queries, exploring data in chat), use the [`datadata-manual`](/docs/guides/ai-skills/datadata-manual/) skill.** MCP fully covers daily interactive functions like search, query, and Data Spaces management.
+
+## Core Capabilities
+
+### REST API Reference
+
+- **Datasource Search** — Public search engine (no auth) and private datasource search (API Key required)
+- **Metadata Querying** — Get datasource info, list tables, describe column structure
+- **Metadata Enhancement** — Set table and column comments
+- **Schema Scanning** — Trigger async scan to refresh datasource table metadata
+
+### SQL Queries
+
+- **execute-adhoc** — Execute SELECT queries, supporting DuckDB and ClickHouse engines
+- **Result Download** — Download query results in NDJSON or CSV format
+
+### Data Spaces Management
+
+- **Create Table** — Define table structure in `ducklake` Data Spaces
+- **Batch Insert** — Insert data rows
+- **Drop Table** — Delete a Data Space table
+- Data written can also be queried via `execute-adhoc`
+
+### Authentication
+
+- **Device Authorization** — Auto-obtain/refresh API Key in scripts (cached for 90 days)
+- **Manual Configuration** — Set API Key via environment variables
+
+## Workflow
+
+```
+1. Configure authentication (auto-issued via device auth, or manually set API Key)
+2. Search datasource → Query metadata → Execute query → Fetch results
+```
+
+## Concepts
+
+- **Datasource** — The target for querying. Different types (ducklake, MySQL, ClickHouse, CSV, etc.) have different table naming conventions
+- **Data Space** — The target for writing data. A capability exclusive to `ducklake`-type datasources
+- **Query** — A **read-only** abstraction containing SQL script, datasource bindings, and engine type
+- **Execution** — An abstraction for running a query. Each `execute-adhoc` call returns an `executionId`
+
+## Authentication Configuration
+
+When the CLI lacks an API Key, it automatically guides you through **device authorization** — open the link to complete login, and the key is cached for 90 days.
+
+You can also manually set environment variables:
+
+```bash
+export DATADATA_API_KEY="ak_xxxxxxxxxxxxxxxx"
+export DATADATA_BASE_URL="https://www.datadata.com"
+```
+
+## Division of Responsibilities with Other Skills
+
+| Scenario | Use Skill |
+| --- | --- |
+| Interactive querying via Agent | [`datadata-manual`](/docs/guides/ai-skills/datadata-manual/) (MCP Server) |
+| Generate Python scripts (crawler/ETL/batch) | `datadata-rest-api` |
+| Complex data processing scripts | [`datadata-dql`](/docs/guides/ai-skills/datadata-dql/) |
+| Cross-session persistent memory | [`datadata-memory`](/docs/guides/ai-skills/datadata-memory/) |

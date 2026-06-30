@@ -1,0 +1,73 @@
+---
+sidebar_position: 2
+title: Datadata REST API
+description: datadata-rest-api skill 的详细说明 — 用于生成独立 Python 脚本。
+---
+
+# datadata-rest-api
+
+`datadata-rest-api` 提供 Datadata REST API 的完整参考文档，通过 `urllib.request`（仅标准库，零额外依赖）展示所有端点的调用方式。
+
+**首要用例**是生成独立 Python 脚本（爬虫、ETL、批处理），但 API 文档本身是通用的——任何需要直接调用 Datadata API 的场景均可参考。
+
+> **交互式操作（聊天中执行查询、探索数据等）请使用 [`datadata-manual`](/docs/guides/ai-skills/datadata-manual/) skill。** MCP 已完整覆盖搜索、查询、Data Spaces 等日常交互功能。
+
+## 核心能力
+
+### REST API 参考
+
+- **数据源搜索** — 公开搜索引擎（无需认证）和私有数据源搜索（需 API Key）
+- **元数据查询** — 获取数据源信息、列出表、描述列结构
+- **元数据增强** — 设置表注释和列注释
+- **Schema 扫描** — 触发异步扫描，刷新数据源表元数据
+
+### SQL 查询
+
+- **execute-adhoc** — 执行 SELECT 查询，支持 DuckDB 和 ClickHouse 引擎
+- **结果下载** — 以 NDJSON 或 CSV 格式下载查询结果
+
+### Data Spaces 管理
+
+- **建表** — 在 `ducklake` 数据空间中创建表结构
+- **批量写入** — 插入数据行
+- **删除表** — 删除 Data Space 表
+- 录入的数据同样可通过 `execute-adhoc` 查询
+
+### 认证
+
+- **设备授权** — 脚本中自动获取/刷新 API Key（缓存 90 天）
+- **手动配置** — 通过环境变量设置 API Key
+
+## 工作流
+
+```
+1. 配置认证（设备授权自动签发，或手动设置 API Key）
+2. 搜索数据源 → 查询元信息 → 执行查询 → 获取结果
+```
+
+## 概念
+
+- **Datasource** — 查询目标的数据源。不同类型（ducklake、MySQL、ClickHouse、CSV 等）有不同的表命名约定
+- **Data Space** — 录入数据的目标。`ducklake` 类型 datasource 独有的能力
+- **Query** — **只读**抽象，包含 SQL 脚本、datasource 绑定和引擎类型
+- **Execution** — 运行查询的抽象。每次 `execute-adhoc` 返回一个 `executionId`
+
+## 认证配置
+
+CLI 缺少 API Key 时会自动引导完成**设备授权**——打开链接完成登录即可，密钥缓存 90 天。
+
+也可手动设置环境变量：
+
+```bash
+export DATADATA_API_KEY="ak_xxxxxxxxxxxxxxxx"
+export DATADATA_BASE_URL="https://www.datadata.com"
+```
+
+## 与其他 skill 的分工
+
+| 场景 | 使用 skill |
+| --- | --- |
+| 直接通过 Agent 交互查询 | [`datadata-manual`](/docs/guides/ai-skills/datadata-manual/)（MCP Server） |
+| 生成 Python 脚本（爬虫/ETL/批处理） | `datadata-rest-api` |
+| 复杂数据处理脚本 | [`datadata-dql`](/docs/guides/ai-skills/datadata-dql/) |
+| 跨会话持久化记忆 | [`datadata-memory`](/docs/guides/ai-skills/datadata-memory/) |

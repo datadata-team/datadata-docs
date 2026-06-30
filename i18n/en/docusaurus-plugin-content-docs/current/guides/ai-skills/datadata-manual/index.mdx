@@ -1,16 +1,16 @@
 ---
 sidebar_position: 1
-title: MCP Server
-description: Complete guide to the datadata-mcp skill and Datadata MCP Server.
+title: Datadata Manual
+description: Complete guide to the datadata-manual skill and Datadata MCP Server.
 ---
 
-# MCP Server
+# Datadata Manual
 
-Datadata provides a standard **MCP (Model Context Protocol)** service endpoint, allowing AI agents to interact with the Datadata platform as if calling local tools.
+`datadata-manual` is the interactive operations manual for the Datadata platform, calling platform capabilities directly through the **MCP (Model Context Protocol) Server**. AI agents can search datasources, execute queries, and manage Data Spaces as if calling local tools.
 
-`datadata-mcp` is the skill that instructs agents on how to use the MCP Server.
+> **For generating standalone Python scripts (crawlers/ETL/batch), use the [`datadata-rest-api`](/docs/guides/ai-skills/datadata-rest-api/) skill.** MCP is designed for chat interaction and is not suitable for generating independently runnable script files.
 
-## Installing the datadata-mcp Skill
+## Installation
 
 ```bash
 npx skills add datadata-team/datadata-skills
@@ -42,7 +42,7 @@ You can also authenticate via API Key:
 
 | Permission | Purpose |
 | --- | --- |
-| `queries:execute-adhoc` | Run SQL queries |
+| `queries:execute-adhoc` | Run SQL/DQL queries |
 | `executions:get` | Retrieve query results |
 | `datasources:read` | Read datasource information |
 | `datasources:scan` | Scan datasource structure |
